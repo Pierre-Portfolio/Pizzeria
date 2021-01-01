@@ -92,6 +92,7 @@ namespace Pizzeria
             txtBlock1.FontWeight = FontWeights.Bold;
             txtBlock1.Foreground = new SolidColorBrush(Colors.Green);
             txtBlock1.VerticalAlignment = VerticalAlignment.Top;
+            txtBlock1.HorizontalAlignment = HorizontalAlignment.Center;
             Grid.SetRow(txtBlock1, 0);
             Grid.SetColumn(txtBlock1, 0);
             DynamicGrid.Children.Add(txtBlock1);
@@ -117,6 +118,7 @@ namespace Pizzeria
             TextBlock txtBlock2 = new TextBlock();
             txtBlock2.Text = "Liste des Commis";
             txtBlock2.FontSize = 14;
+            txtBlock2.HorizontalAlignment = HorizontalAlignment.Center;
             txtBlock2.Background = new SolidColorBrush(Colors.Orange);
             txtBlock2.FontWeight = FontWeights.Bold;
             txtBlock2.Foreground = new SolidColorBrush(Colors.Green);
@@ -131,10 +133,10 @@ namespace Pizzeria
             myGridCommis.Height = 80;
             myGridCommis.Margin = new Thickness(0, -45, 0, 0);
             List<Commis> commis = new List<Commis>();
-            commis.Add(new Commis("Patrick", "Sur commis", new DateTime(2010, 8, 18)));
-            commis.Add(new Commis("Patrick", "Sur commis", new DateTime(2010, 8, 18)));
-            commis.Add(new Commis("Patrick", "Sur commis", new DateTime(2010, 8, 18)));
-            commis.Add(new Commis("Patrick", "Sur commis", new DateTime(2010, 8, 18)));
+            commis.Add(new Commis("Patrick", "Sur place", new DateTime(2010, 8, 18)));
+            commis.Add(new Commis("Patrick", "Sur place", new DateTime(2010, 8, 18)));
+            commis.Add(new Commis("Patrick", "Sur place", new DateTime(2010, 8, 18)));
+            commis.Add(new Commis("Patrick", "Sur place", new DateTime(2010, 8, 18)));
             myGridCommis.ItemsSource = commis;
             myGridCommis.Foreground = new SolidColorBrush(Colors.Orange);
             Grid.SetRow(myGridCommis, 4);
@@ -142,7 +144,36 @@ namespace Pizzeria
             //Grid.SetColumnSpan(myGridClient, 4);
             DynamicGrid.Children.Add(myGridCommis);
 
+            // titre 3
+            TextBlock txtBlock3 = new TextBlock();
+            txtBlock3.Text = "Liste des Livreur";
+            txtBlock3.FontSize = 14;
+            txtBlock3.Background = new SolidColorBrush(Colors.Orange);
+            txtBlock3.FontWeight = FontWeights.Bold;
+            txtBlock3.Foreground = new SolidColorBrush(Colors.Green);
+            txtBlock3.VerticalAlignment = VerticalAlignment.Top;
+            txtBlock3.Margin = new Thickness(0, 5, 0, 0);
+            txtBlock3.HorizontalAlignment = HorizontalAlignment.Center;
+            Grid.SetRow(txtBlock3, 5);
+            Grid.SetColumn(txtBlock3, 0);
+            DynamicGrid.Children.Add(txtBlock3);
 
+            // tableau des serveur
+            DataGrid myGridLivreur = new DataGrid();
+            myGridLivreur.Width = 655;
+            myGridLivreur.Height = 80;
+            myGridLivreur.Margin = new Thickness(0, 20, 0, 0);
+            List<Livreur> livreur = new List<Livreur>();
+            livreur.Add(new Livreur("Patrick", "Sur place", "scooteur"));
+            livreur.Add(new Livreur("Patrick", "Sur place", "scooteur"));
+            livreur.Add(new Livreur("Patrick", "Sur place", "scooteur"));
+            livreur.Add(new Livreur("Patrick", "Sur place", "scooteur"));
+            myGridLivreur.ItemsSource = livreur;
+            myGridLivreur.Foreground = new SolidColorBrush(Colors.Orange);
+            Grid.SetRow(myGridLivreur, 6);
+            Grid.SetColumn(myGridLivreur, 0);
+            //Grid.SetColumnSpan(myGridClient, 4);
+            DynamicGrid.Children.Add(myGridLivreur);
         }
 
         public MainWindow()
