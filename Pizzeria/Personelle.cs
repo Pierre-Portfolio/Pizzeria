@@ -6,11 +6,16 @@ namespace Pizzeria
 {
     abstract class Personelle
     {
-        private string NomEmploye;
+        private string nomEmploye;
 
-        public Personelle(string NomEmploye)
+        public Personelle(string nomEmploye)
         {
-            this.NomEmploye = NomEmploye;
+            this.nomEmploye = nomEmploye;
+        }
+        public string NomEmploye
+        {
+            get { return nomEmploye; }
+            set { nomEmploye = value; }
         }
     }
 }

@@ -40,11 +40,6 @@
             <Grid.Background>
                 <ImageBrush ImageSource="/Pizza-Background.jpg"/>
             </Grid.Background>
-
-            <!-- Grid contenant la parti dynamique client -->
-            <DataGrid x:Name="myGridClient" HorizontalAlignment="Left" Height="83" VerticalAlignment="Center" Width="749" Margin="20,0,0,0" Visibility="Hidden"/>
         </Grid>
-
-
     </Grid>
 </Window>

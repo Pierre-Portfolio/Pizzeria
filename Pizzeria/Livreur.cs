@@ -7,12 +7,23 @@ namespace Pizzeria
     class Livreur : Personelle
     {
         private string etatLivreur;
-        private DateTime moyenEmbauche;
+        private string moyenEmbauche;
 
-        public Livreur(string NomEmploye, string etatLivreur, DateTime moyenEmbauche) : base(NomEmploye)
+        public Livreur(string nomEmploye, string etatLivreur, string moyenEmbauche) : base(nomEmploye)
         {
             this.etatLivreur = etatLivreur;
             this.moyenEmbauche = moyenEmbauche;
+        }
+
+        public string EtatLivreur
+        {
+            get { return etatLivreur; }
+            set { etatLivreur = value; }
+        }
+        public string DateEmbauche
+        {
+            get { return moyenEmbauche; }
+            set { moyenEmbauche = value; }
         }
     }
 }
