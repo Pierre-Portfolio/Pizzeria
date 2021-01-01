@@ -19,49 +19,71 @@ namespace Pizzeria
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     /// 
-
-    // permet de savoir la fenetre actuel
-    //public string actualWindow = "home";
     public partial class MainWindow : Window
     {
+        // permet de savoir la fenetre actuel
+        public string actualWindow = "home";
+
+        // On crée toutes les pages dynamique
+        Grid DynamicGridClient = new Grid();
+        Grid DynamicGridCommandes = new Grid();
+        Grid DynamicGridStatistiques = new Grid();
+        Grid DynamicGridAdministrations = new Grid();
+
+        public void Refresh()
+        {
+            DynamicGridClient.Visibility = Visibility.Hidden;
+            DynamicGridCommandes.Visibility = Visibility.Hidden;
+            DynamicGridStatistiques.Visibility = Visibility.Hidden;
+            DynamicGridAdministrations.Visibility = Visibility.Hidden;
+        }
 
         private void ClientsBtn_Click(object sender, RoutedEventArgs e)
         {
+            actualWindow = "clients";
+            Refresh();
             FillClient();
         }
 
         private void CommandesBtn_Click(object sender, RoutedEventArgs e)
         {
+            actualWindow = "commandes";
+            Refresh();
             MessageBox.Show("text");
         }
 
         private void StatistiqueBtn_Click(object sender, RoutedEventArgs e)
         {
+            actualWindow = "statistiques";
+            Refresh();
             MessageBox.Show("text");
         }
 
         private void AdminitrationBtn_Click(object sender, RoutedEventArgs e)
         {
+            actualWindow = "administrations";
+            Refresh();
             MessageBox.Show("text");
         }
 
         public void FillClient()
         {
+            Refresh();
+            DynamicGridClient.Visibility = Visibility.Visible;
             // création grid dynamic
-            Grid DynamicGrid = new Grid();
-            DynamicGrid.HorizontalAlignment = HorizontalAlignment.Left;
-            DynamicGrid.Height = 324;
-            DynamicGrid.Margin = new Thickness(27, 0, 0, 0);
-            DynamicGrid.VerticalAlignment = VerticalAlignment.Center;
-            DynamicGrid.Width = 743;
-            Grid.SetRow(DynamicGrid, 2);
-            Grid.SetColumn(DynamicGrid, 0);
-            Grid.SetColumnSpan(DynamicGrid, 4);
-            MainGrid.Children.Add(DynamicGrid);
+            DynamicGridClient.HorizontalAlignment = HorizontalAlignment.Left;
+            DynamicGridClient.Height = 324;
+            DynamicGridClient.Margin = new Thickness(27, 0, 0, 0);
+            DynamicGridClient.VerticalAlignment = VerticalAlignment.Center;
+            DynamicGridClient.Width = 743;
+            Grid.SetRow(DynamicGridClient, 2);
+            Grid.SetColumn(DynamicGridClient, 0);
+            Grid.SetColumnSpan(DynamicGridClient, 4);
+            MainGrid.Children.Add(DynamicGridClient);
 
             // Create Columns
             ColumnDefinition gridCol1 = new ColumnDefinition();
-            DynamicGrid.ColumnDefinitions.Add(gridCol1);
+            DynamicGridClient.ColumnDefinitions.Add(gridCol1);
 
             // Create Rows
             RowDefinition gridRow1 = new RowDefinition();
@@ -76,13 +98,13 @@ namespace Pizzeria
             gridRow5.Height = new GridLength(30);
             RowDefinition gridRow6 = new RowDefinition();
             gridRow6.Height = new GridLength(80);
-            DynamicGrid.RowDefinitions.Add(gridRow1);
-            DynamicGrid.RowDefinitions.Add(gridRow2);
-            DynamicGrid.RowDefinitions.Add(gridRow3);
-            DynamicGrid.RowDefinitions.Add(gridRow4);
-            DynamicGrid.RowDefinitions.Add(gridRow5);
-            DynamicGrid.RowDefinitions.Add(gridRow6);
-            DynamicGrid.Margin = new Thickness(0, 0, 0, 0);
+            DynamicGridClient.RowDefinitions.Add(gridRow1);
+            DynamicGridClient.RowDefinitions.Add(gridRow2);
+            DynamicGridClient.RowDefinitions.Add(gridRow3);
+            DynamicGridClient.RowDefinitions.Add(gridRow4);
+            DynamicGridClient.RowDefinitions.Add(gridRow5);
+            DynamicGridClient.RowDefinitions.Add(gridRow6);
+            DynamicGridClient.Margin = new Thickness(0, 0, 0, 0);
 
             // titre 1
             TextBlock txtBlock1 = new TextBlock();
@@ -95,7 +117,7 @@ namespace Pizzeria
             txtBlock1.HorizontalAlignment = HorizontalAlignment.Center;
             Grid.SetRow(txtBlock1, 0);
             Grid.SetColumn(txtBlock1, 0);
-            DynamicGrid.Children.Add(txtBlock1);
+            DynamicGridClient.Children.Add(txtBlock1);
 
             // tableau des clients
             DataGrid myGridClient = new DataGrid();
@@ -112,7 +134,7 @@ namespace Pizzeria
             Grid.SetRow(myGridClient, 1);
             Grid.SetColumn(myGridClient, 0);
             //Grid.SetColumnSpan(myGridClient, 4);
-            DynamicGrid.Children.Add(myGridClient);
+            DynamicGridClient.Children.Add(myGridClient);
 
             // titre 2
             TextBlock txtBlock2 = new TextBlock();
@@ -125,13 +147,14 @@ namespace Pizzeria
             txtBlock2.VerticalAlignment = VerticalAlignment.Top;
             Grid.SetRow(txtBlock2, 3);
             Grid.SetColumn(txtBlock2, 0);
-            DynamicGrid.Children.Add(txtBlock2);
+            DynamicGridClient.Children.Add(txtBlock2);
 
             // tableau des commis
             DataGrid myGridCommis = new DataGrid();
             myGridCommis.Width = 655;
             myGridCommis.Height = 80;
             myGridCommis.Margin = new Thickness(0, -45, 0, 0);
+
             List<Commis> commis = new List<Commis>();
             commis.Add(new Commis("Patrick", "Sur place", new DateTime(2010, 8, 18)));
             commis.Add(new Commis("Patrick", "Sur place", new DateTime(2010, 8, 18)));
@@ -142,7 +165,7 @@ namespace Pizzeria
             Grid.SetRow(myGridCommis, 4);
             Grid.SetColumn(myGridCommis, 0);
             //Grid.SetColumnSpan(myGridClient, 4);
-            DynamicGrid.Children.Add(myGridCommis);
+            DynamicGridClient.Children.Add(myGridCommis);
 
             // titre 3
             TextBlock txtBlock3 = new TextBlock();
@@ -156,7 +179,7 @@ namespace Pizzeria
             txtBlock3.HorizontalAlignment = HorizontalAlignment.Center;
             Grid.SetRow(txtBlock3, 5);
             Grid.SetColumn(txtBlock3, 0);
-            DynamicGrid.Children.Add(txtBlock3);
+            DynamicGridClient.Children.Add(txtBlock3);
 
             // tableau des serveur
             DataGrid myGridLivreur = new DataGrid();
@@ -173,13 +196,13 @@ namespace Pizzeria
             Grid.SetRow(myGridLivreur, 6);
             Grid.SetColumn(myGridLivreur, 0);
             //Grid.SetColumnSpan(myGridClient, 4);
-            DynamicGrid.Children.Add(myGridLivreur);
+            DynamicGridClient.Children.Add(myGridLivreur);
         }
 
         public MainWindow()
         {
             InitializeComponent();
-            FillClient();
+            //FillClient();
         }
     }
 }
