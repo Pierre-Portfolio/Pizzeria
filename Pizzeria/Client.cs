@@ -4,25 +4,67 @@ using System.Text;
 
 namespace Pizzeria
 {
-    class Client
+    public class Client
     {
-        private bool FirstCommande;
-        private int NumClient;
-        private string AdrClient;
-        private string NomClient;
-        private string PrenomClient;
-        private DateTime DatePremiereCmd;
-        private int CumulCommande;
+        private bool firstCommande;
+        private int numClient;
+        private string adrClient;
+        private string nomClient;
+        private string prenomClient;
+        private DateTime datePremiereCmd;
+        private int cumulCommande;
 
-        public Client(bool FirstCommande, int NumClient, string AdrClient, string NomClient, string PrenomClient, DateTime DatePremiereCmd, int CumulCommande)
+        public Client(bool firstCommande, int numClient, string adrClient, string nomClient, string prenomClient, DateTime datePremiereCmd, int cumulCommande)
         {
-            this.FirstCommande = FirstCommande;
-            this.NumClient = NumClient;
-            this.AdrClient = AdrClient;
-            this.NomClient = NomClient;
-            this.PrenomClient = PrenomClient;
-            this.DatePremiereCmd = DatePremiereCmd;
-            this.CumulCommande = CumulCommande;
+            this.firstCommande = firstCommande;
+            this.numClient = numClient;
+            this.adrClient = adrClient;
+            this.nomClient = nomClient;
+            this.prenomClient = prenomClient;
+            this.datePremiereCmd = datePremiereCmd;
+            this.cumulCommande = cumulCommande;
         }
+
+        public bool FirstCommande
+        {
+            get{return firstCommande; }
+            set { firstCommande = value;}
+        }
+
+        public int NumClient
+        {
+            get { return numClient; }
+            set { numClient = value; }
+        }
+        public string AdrClient
+        {
+            get { return adrClient; }
+            set { adrClient = value; }
+        }
+
+        public string NomClient
+        {
+            get { return nomClient; }
+            set { nomClient = value; }
+        }
+
+        public string PrenomClient
+        {
+            get { return prenomClient; }
+            set { prenomClient = value; }
+        }
+
+        public DateTime DatePremiereCmd
+        {
+            get { return datePremiereCmd; }
+            set { datePremiereCmd = value; }
+        }
+
+        public int CumulCommande
+        {
+            get { return cumulCommande; }
+            set { CumulCommande = value; }
+        }
+
     }
 }
