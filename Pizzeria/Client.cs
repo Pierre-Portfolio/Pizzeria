@@ -63,7 +63,7 @@ namespace Pizzeria
         public int CumulCommande
         {
             get { return cumulCommande; }
-            set { CumulCommande = value; }
+            set { cumulCommande = value; }
         }
 
     }

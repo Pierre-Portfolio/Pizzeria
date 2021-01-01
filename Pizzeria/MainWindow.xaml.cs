@@ -20,38 +20,49 @@ namespace Pizzeria
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private void Refresh()
         {
-            InitializeComponent();
+            myGridClient.Visibility = Visibility.Hidden;
         }
 
         private void ClientsBtn_Click(object sender, RoutedEventArgs e)
         {
+            Refresh();
             FillClient();
         }
 
         private void CommandesBtn_Click(object sender, RoutedEventArgs e)
         {
+            Refresh();
             MessageBox.Show("text");
         }
 
         private void StatistiqueBtn_Click(object sender, RoutedEventArgs e)
         {
+            Refresh();
             MessageBox.Show("text");
         }
 
         private void AdminitrationBtn_Click(object sender, RoutedEventArgs e)
         {
+            Refresh();
             MessageBox.Show("text");
         }
 
         public void FillClient()
         {
+            Refresh();
+            myGridClient.Visibility = Visibility.Visible;
             List<Client> clients = new List<Client>();
             clients.Add(new Client(false, 1, "8 rue machin", "Patrick", "Jean", new DateTime(2010, 8, 18), 4));
             clients.Add(new Client(false, 2, "9 rue machin", "Pierre", "Jean", new DateTime(2010, 8, 18), 4));
             clients.Add(new Client(false, 3, "10 rue machin", "Pierre", "Jean", new DateTime(2010, 8, 18), 4));
+            clients.Add(new Client(false, 4, "10 rue machin", "Pierre", "Jean", new DateTime(2010, 8, 18), 4));
             myGridClient.ItemsSource = clients;
+        }
+        public MainWindow()
+        {
+            InitializeComponent();
         }
     }
 }

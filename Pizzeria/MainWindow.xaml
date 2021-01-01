@@ -42,8 +42,7 @@
             </Grid.Background>
 
             <!-- Grid contenant la parti dynamique client -->
-            <DataGrid x:Name="myGridClient" HorizontalAlignment="Left" Height="49" VerticalAlignment="Center" Width="749" Margin="20,0,0,0">
-            </DataGrid>
+            <DataGrid x:Name="myGridClient" HorizontalAlignment="Left" Height="83" VerticalAlignment="Center" Width="749" Margin="20,0,0,0" Visibility="Hidden"/>
         </Grid>
 
 
