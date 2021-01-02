@@ -21,6 +21,7 @@ namespace Pizzeria
     /// 
     public partial class MainWindow : Window
     {
+        #region Variable Globale
         // permet de savoir la fenetre actuel
         public string actualWindow = "home";
 
@@ -29,47 +30,28 @@ namespace Pizzeria
         Grid DynamicGridCommandes = new Grid();
         Grid DynamicGridStatistiques = new Grid();
         Grid DynamicGridAdministrations = new Grid();
+        #endregion
 
+        #region fonction refresh
         public void Refresh()
         {
-            DynamicGridClient.Visibility = Visibility.Hidden;
-            DynamicGridCommandes.Visibility = Visibility.Hidden;
-            DynamicGridStatistiques.Visibility = Visibility.Hidden;
-            DynamicGridAdministrations.Visibility = Visibility.Hidden;
+            if(actualWindow != "home")
+            {
+                MainGrid.Children.RemoveAt(6);
+            }
         }
+        #endregion
 
+        #region Parti Client
         private void ClientsBtn_Click(object sender, RoutedEventArgs e)
         {
+            Refresh();
             actualWindow = "clients";
-            Refresh();
             FillClient();
-        }
-
-        private void CommandesBtn_Click(object sender, RoutedEventArgs e)
-        {
-            actualWindow = "commandes";
-            Refresh();
-            MessageBox.Show("text");
-        }
-
-        private void StatistiqueBtn_Click(object sender, RoutedEventArgs e)
-        {
-            actualWindow = "statistiques";
-            Refresh();
-            MessageBox.Show("text");
-        }
-
-        private void AdminitrationBtn_Click(object sender, RoutedEventArgs e)
-        {
-            actualWindow = "administrations";
-            Refresh();
-            MessageBox.Show("text");
         }
 
         public void FillClient()
         {
-            Refresh();
-            DynamicGridClient.Visibility = Visibility.Visible;
             // création grid dynamic
             DynamicGridClient.HorizontalAlignment = HorizontalAlignment.Left;
             DynamicGridClient.Height = 324;
@@ -198,11 +180,44 @@ namespace Pizzeria
             //Grid.SetColumnSpan(myGridClient, 4);
             DynamicGridClient.Children.Add(myGridLivreur);
         }
+        #endregion
 
+        #region Parti Commande
+        private void CommandesBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Refresh();
+            actualWindow = "commandes";
+            FillClient();
+            MessageBox.Show("text");
+        }
+        #endregion
+
+        #region Parti Statistique
+        private void StatistiqueBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Refresh();
+            actualWindow = "statistiques";
+            FillClient();
+            MessageBox.Show("text");
+        }
+        #endregion
+
+        #region Parti Administration
+        private void AdminitrationBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Refresh();
+            actualWindow = "administrations";
+            FillClient();
+            MessageBox.Show("text");
+        }
+        #endregion
+
+        #region Parti Main
         public MainWindow()
         {
             InitializeComponent();
             //FillClient();
         }
+        #endregion
     }
 }
