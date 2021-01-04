@@ -24,6 +24,7 @@ namespace Pizzeria
         #region Variable Globale
         // permet de savoir la fenetre actuel
         public string actualWindow = "home";
+        Pizzerria p1 = new Pizzerria("Tom et Pierre", "Enface de l'ESILV", new List<Client>() , new List<Commis>(), new List<Livreur>());
 
         // On crée toutes les pages dynamique
         Grid DynamicGridClient = new Grid();
@@ -106,12 +107,12 @@ namespace Pizzeria
             myGridClient.Width = 655;
             myGridClient.Height = 80;
             // myGridClient.Margin = new Thickness(20, -80, 20, 72);
-            List<Client> clients = new List<Client>();
-            clients.Add(new Client(false, 1, "8 rue machin", "Patrick", "Jean", new DateTime(2010, 8, 18), 4));
-            clients.Add(new Client(false, 2, "9 rue machin", "Pierre", "Jean", new DateTime(2010, 8, 18), 4));
-            clients.Add(new Client(false, 3, "10 rue machin", "Pierre", "Jean", new DateTime(2010, 8, 18), 4));
-            clients.Add(new Client(false, 4, "11 rue machin", "Pierre", "Jean", new DateTime(2010, 8, 18), 4));
-            myGridClient.ItemsSource = clients;
+            //List<Client> clients = new List<Client>();
+            p1.addClient(new Client(false, 1, "8 rue machin", "Patrick", "Jean", new DateTime(2010, 8, 18), 4));
+            p1.addClient(new Client(false, 2, "9 rue machin", "Pierre", "Jean", new DateTime(2010, 8, 18), 4));
+            p1.addClient(new Client(false, 3, "10 rue machin", "Pierre", "Jean", new DateTime(2010, 8, 18), 4));
+            p1.addClient(new Client(false, 4, "11 rue machin", "Pierre", "Jean", new DateTime(2010, 8, 18), 4));
+            myGridClient.ItemsSource = p1.Clients;
             myGridClient.Foreground = new SolidColorBrush(Colors.Orange);
             Grid.SetRow(myGridClient, 1);
             Grid.SetColumn(myGridClient, 0);
@@ -137,12 +138,12 @@ namespace Pizzeria
             myGridCommis.Height = 80;
             myGridCommis.Margin = new Thickness(0, -45, 0, 0);
 
-            List<Commis> commis = new List<Commis>();
-            commis.Add(new Commis("Patrick", "Sur place", new DateTime(2010, 8, 18)));
-            commis.Add(new Commis("Patrick", "Sur place", new DateTime(2010, 8, 18)));
-            commis.Add(new Commis("Patrick", "Sur place", new DateTime(2010, 8, 18)));
-            commis.Add(new Commis("Patrick", "Sur place", new DateTime(2010, 8, 18)));
-            myGridCommis.ItemsSource = commis;
+            //List<Commis> commis = new List<Commis>();
+            p1.addCommis(new Commis("Patrick", "Sur place", new DateTime(2010, 8, 18)));
+            p1.addCommis(new Commis("Patrick", "Sur place", new DateTime(2010, 8, 18)));
+            p1.addCommis(new Commis("Patrick", "Sur place", new DateTime(2010, 8, 18)));
+            p1.addCommis(new Commis("Patrick", "Sur place", new DateTime(2010, 8, 18)));
+            myGridCommis.ItemsSource = p1.Commis;
             myGridCommis.Foreground = new SolidColorBrush(Colors.Orange);
             Grid.SetRow(myGridCommis, 4);
             Grid.SetColumn(myGridCommis, 0);
@@ -169,11 +170,11 @@ namespace Pizzeria
             myGridLivreur.Height = 80;
             myGridLivreur.Margin = new Thickness(0, 20, 0, 0);
             List<Livreur> livreur = new List<Livreur>();
-            livreur.Add(new Livreur("Patrick", "Sur place", "scooteur"));
-            livreur.Add(new Livreur("Patrick", "Sur place", "scooteur"));
-            livreur.Add(new Livreur("Patrick", "Sur place", "scooteur"));
-            livreur.Add(new Livreur("Patrick", "Sur place", "scooteur"));
-            myGridLivreur.ItemsSource = livreur;
+            p1.addLivreur(new Livreur("Patrick", "Sur place", "scooteur"));
+            p1.addLivreur(new Livreur("Patrick", "Sur place", "scooteur"));
+            p1.addLivreur(new Livreur("Patrick", "Sur place", "scooteur"));
+            p1.addLivreur(new Livreur("Patrick", "Sur place", "scooteur"));
+            myGridLivreur.ItemsSource = p1.Livreur;
             myGridLivreur.Foreground = new SolidColorBrush(Colors.Orange);
             Grid.SetRow(myGridLivreur, 6);
             Grid.SetColumn(myGridLivreur, 0);
