@@ -6,7 +6,6 @@ namespace Pizzeria
 {
     public class Client
     {
-        //Test Git
         private bool firstCommande;
         private int numClient;
         private string adrClient;
