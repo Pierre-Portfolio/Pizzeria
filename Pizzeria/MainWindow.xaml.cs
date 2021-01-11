@@ -24,21 +24,40 @@ namespace Pizzeria
         #region Variable Globale
         // permet de savoir la fenetre actuel
         public string actualWindow = "home";
-        Pizzerria p1 = new Pizzerria("Tom et Pierre", "Enface de l'ESILV", new List<Client>() , new List<Commis>(), new List<Livreur>());
 
         // On crée toutes les pages dynamique
+        Grid DynamicGrid = new Grid();
         Grid DynamicGridClient = new Grid();
-        Grid DynamicGridCommandes = new Grid();
-        Grid DynamicGridStatistiques = new Grid();
-        Grid DynamicGridAdministrations = new Grid();
+        Grid DynamicGridCommands = new Grid();
+        Grid DynamicGridStat= new Grid();
+        Grid DynamicGridAdmin = new Grid();
         #endregion
 
         #region fonction refresh
-        public void Refresh()
+        public void RefreshHard()
         {
             if(actualWindow != "home")
             {
                 MainGrid.Children.RemoveAt(6);
+            }
+        }
+
+        public void RefreshPasOpti()
+        {
+            if (MainGrid.Children.Contains(DynamicGridClient))
+            {
+                MainGrid.Children.Remove(DynamicGridClient);
+            }
+            else if (MainGrid.Children.Contains(DynamicGridCommands))
+            {
+                MainGrid.Children.Remove(DynamicGridCommands);
+            }
+            else if (MainGrid.Children.Contains(DynamicGridStat))
+            {
+                MainGrid.Children.Remove(DynamicGridStat);
+            }
+            else if (MainGrid.Children.Contains(DynamicGridAdmin)){
+                MainGrid.Children.Remove(DynamicGridAdmin);
             }
         }
         #endregion
@@ -46,27 +65,56 @@ namespace Pizzeria
         #region Parti Client
         private void ClientsBtn_Click(object sender, RoutedEventArgs e)
         {
-            Refresh();
-            actualWindow = "clients";
-            FillClient();
+            RefreshPasOpti();
+            MainGrid.Children.Add(DynamicGridClient);
         }
+        #endregion
 
-        public void FillClient()
+        #region Parti Commande
+        private void CommandesBtn_Click(object sender, RoutedEventArgs e)
         {
+            RefreshPasOpti();
+            MainGrid.Children.Add(DynamicGridCommands);
+        }
+        #endregion
+
+        #region Parti Statistique
+        private void StatistiqueBtn_Click(object sender, RoutedEventArgs e)
+        {
+            RefreshPasOpti();
+            MainGrid.Children.Add(DynamicGridStat);
+        }
+        #endregion
+
+        #region Parti Administration
+        private void AdminitrationBtn_Click(object sender, RoutedEventArgs e)
+        {
+            RefreshPasOpti();
+            MainGrid.Children.Add(DynamicGridAdmin);
+        }
+        #endregion
+
+        #region Parti Main
+        public MainWindow()
+        {
+            InitializeComponent();
+            Pizzerria p1 = new Pizzerria("Tom et Pierre", "Enface de l'ESILV", new List<Client>(), new List<Commis>(), new List<Livreur>());
+
+
+            #region creation window Client
             // création grid dynamic
             DynamicGridClient.HorizontalAlignment = HorizontalAlignment.Left;
             DynamicGridClient.Height = 324;
             DynamicGridClient.Margin = new Thickness(27, 0, 0, 0);
             DynamicGridClient.VerticalAlignment = VerticalAlignment.Center;
             DynamicGridClient.Width = 743;
+
+            // Create Columns
             Grid.SetRow(DynamicGridClient, 2);
             Grid.SetColumn(DynamicGridClient, 0);
             Grid.SetColumnSpan(DynamicGridClient, 4);
-            MainGrid.Children.Add(DynamicGridClient);
-
-            // Create Columns
             ColumnDefinition gridCol1 = new ColumnDefinition();
-            DynamicGridClient.ColumnDefinitions.Add(gridCol1);
+            DynamicGrid.ColumnDefinitions.Add(gridCol1);
 
             // Create Rows
             RowDefinition gridRow1 = new RowDefinition();
@@ -88,6 +136,7 @@ namespace Pizzeria
             DynamicGridClient.RowDefinitions.Add(gridRow5);
             DynamicGridClient.RowDefinitions.Add(gridRow6);
             DynamicGridClient.Margin = new Thickness(0, 0, 0, 0);
+            MainGrid.Children.Add(DynamicGrid);
 
             // titre 1
             TextBlock txtBlock1 = new TextBlock();
@@ -180,44 +229,33 @@ namespace Pizzeria
             Grid.SetColumn(myGridLivreur, 0);
             //Grid.SetColumnSpan(myGridClient, 4);
             DynamicGridClient.Children.Add(myGridLivreur);
-        }
-        #endregion
+            #endregion creation window client
 
-        #region Parti Commande
-        private void CommandesBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Refresh();
-            actualWindow = "commandes";
-            FillClient();
-            MessageBox.Show("text");
-        }
-        #endregion
+            #region creation window Commande
+            // création grid dynamic
+            DynamicGridCommands.HorizontalAlignment = HorizontalAlignment.Left;
+            DynamicGridCommands.Height = 324;
+            DynamicGridCommands.Margin = new Thickness(27, 0, 0, 0);
+            DynamicGridCommands.VerticalAlignment = VerticalAlignment.Center;
+            DynamicGridCommands.Width = 743;
+            #endregion creation window Commande
 
-        #region Parti Statistique
-        private void StatistiqueBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Refresh();
-            actualWindow = "statistiques";
-            FillClient();
-            MessageBox.Show("text");
-        }
-        #endregion
+            #region creation window Statistique
+            // création grid dynamic
+            DynamicGridStat.HorizontalAlignment = HorizontalAlignment.Left;
+            DynamicGridStat.Height = 324;
+            DynamicGridStat.Margin = new Thickness(27, 0, 0, 0);
+            DynamicGridStat.VerticalAlignment = VerticalAlignment.Center;
+            DynamicGridStat.Width = 743;
+            #endregion creation window Statistique
 
-        #region Parti Administration
-        private void AdminitrationBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Refresh();
-            actualWindow = "administrations";
-            FillClient();
-            MessageBox.Show("text");
-        }
-        #endregion
-
-        #region Parti Main
-        public MainWindow()
-        {
-            InitializeComponent();
-            //FillClient();
+            #region creation window Administration
+            DynamicGridAdmin.HorizontalAlignment = HorizontalAlignment.Left;
+            DynamicGridAdmin.Height = 324;
+            DynamicGridAdmin.Margin = new Thickness(27, 0, 0, 0);
+            DynamicGridAdmin.VerticalAlignment = VerticalAlignment.Center;
+            DynamicGridAdmin.Width = 743;
+            #endregion creation window Administration
         }
         #endregion
     }
