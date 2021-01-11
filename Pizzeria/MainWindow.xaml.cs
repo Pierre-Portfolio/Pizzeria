@@ -26,7 +26,6 @@ namespace Pizzeria
         public string actualWindow = "home";
 
         // On crée toutes les pages dynamique
-        Grid DynamicGrid = new Grid();
         Grid DynamicGridClient = new Grid();
         Grid DynamicGridCommands = new Grid();
         Grid DynamicGridStat= new Grid();
@@ -100,7 +99,6 @@ namespace Pizzeria
             InitializeComponent();
             Pizzerria p1 = new Pizzerria("Tom et Pierre", "Enface de l'ESILV", new List<Client>(), new List<Commis>(), new List<Livreur>());
 
-
             #region creation window Client
             // création grid dynamic
             DynamicGridClient.HorizontalAlignment = HorizontalAlignment.Left;
@@ -114,7 +112,7 @@ namespace Pizzeria
             Grid.SetColumn(DynamicGridClient, 0);
             Grid.SetColumnSpan(DynamicGridClient, 4);
             ColumnDefinition gridCol1 = new ColumnDefinition();
-            DynamicGrid.ColumnDefinitions.Add(gridCol1);
+            DynamicGridClient.ColumnDefinitions.Add(gridCol1);
 
             // Create Rows
             RowDefinition gridRow1 = new RowDefinition();
@@ -136,7 +134,6 @@ namespace Pizzeria
             DynamicGridClient.RowDefinitions.Add(gridRow5);
             DynamicGridClient.RowDefinitions.Add(gridRow6);
             DynamicGridClient.Margin = new Thickness(0, 0, 0, 0);
-            MainGrid.Children.Add(DynamicGrid);
 
             // titre 1
             TextBlock txtBlock1 = new TextBlock();
@@ -256,6 +253,8 @@ namespace Pizzeria
             DynamicGridAdmin.VerticalAlignment = VerticalAlignment.Center;
             DynamicGridAdmin.Width = 743;
             #endregion creation window Administration
+
+
         }
         #endregion
     }
