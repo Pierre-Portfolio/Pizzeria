@@ -18,12 +18,10 @@ namespace Pizzeria
         public string EtatLivreur
         {
             get { return etatLivreur; }
-            set { etatLivreur = value; }
         }
         public string MoyenLivraison
         {
             get { return moyenLivraison; }
-            set { moyenLivraison = value; }
         }
     }
 }

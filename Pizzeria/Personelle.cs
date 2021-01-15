@@ -6,7 +6,7 @@ namespace Pizzeria
 {
     abstract class Personelle
     {
-        private string nomEmploye;
+        protected string nomEmploye;
 
         public Personelle(string nomEmploye)
         {
@@ -15,7 +15,6 @@ namespace Pizzeria
         public string NomEmploye
         {
             get { return nomEmploye; }
-            set { nomEmploye = value; }
         }
     }
 }

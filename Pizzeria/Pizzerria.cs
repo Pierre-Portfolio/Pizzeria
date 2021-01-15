@@ -24,31 +24,26 @@ namespace Pizzeria
         public string Nom
         {
             get { return nom; }
-            set { nom = value; }
         }
 
         public string Adresse
         {
             get { return adresse; }
-            set { adresse = value; }
         }
 
         public List<Client> Clients
         {
             get { return clients; }
-            set { clients = value; }
         }
 
         public List<Commis> Commis
         {
             get { return commis; }
-            set { commis = value; }
         }
 
         public List<Livreur> Livreur
         {
             get { return livreur; }
-            set { livreur = value; }
         }
 
         public void addClient(Client c)
