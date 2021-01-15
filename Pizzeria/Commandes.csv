@@ -1,0 +1,4 @@
+N° de commande;heure;jour;client;commis;livreur;etat;solde
+111;18H;02/01/2021;601020304;Chene;chenal;fermee;ok
+112;18h;03/01/2021;601020304;Chene;chenal;fermee;ok
+113;20h;03/01/2021;601020305;Ormal;chenal;fermee;perdue

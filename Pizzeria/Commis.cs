@@ -4,14 +4,15 @@ using System.Text;
 
 namespace Pizzeria
 {
-    class Commis : Personelle
+    public class Commis : Personelle
     {
         private string etatCommis;
         private DateTime dateEmbauche;
 
-        public Commis(string nomEmploye, string etatCommis, DateTime dateEmbauche) : base(nomEmploye)
+        public Commis(string nomEmploye, string prenomEmploye, string adrEmploye, string numEmploye, string etatCommis, DateTime dateEmbauche) : base(nomEmploye, prenomEmploye, adrEmploye, numEmploye)
         {
             this.etatCommis = etatCommis;
+            this.dateEmbauche = dateEmbauche;
         }
         public string EtatCommis
         {

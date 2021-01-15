@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
+using System.Net.NetworkInformation;
 
 namespace Pizzeria
 {
@@ -66,6 +68,90 @@ namespace Pizzeria
         {
             RefreshPasOpti();
             MainGrid.Children.Add(DynamicGridClient);
+        }
+
+        public List<Client> ChargerCSVClient(string path)
+        {
+            List<Client> c1 = new List<Client>();
+            if (File.Exists(path))
+            {
+                c1.Add(new Client(1, "11 rue machin", "Pierre", "Jean", "601020304"));
+                StreamReader lecteur = new StreamReader(path);
+                string ligne = "";
+                while (lecteur.Peek() > 0)
+                {
+                    //Peek() est une fonction qui retourne -1 s'il n'y a
+                    //plus de caractère à lire
+                    ligne = lecteur.ReadLine();
+                    if (ligne != null)
+                    {
+                        string[] tem = ligne.Split(';');
+                        c1.Add(new Client(Convert.ToInt32(tem[0]), tem[1], tem[2], tem[3],tem[4]));
+                    }
+                }
+                lecteur.Close();
+            }
+            else
+            {
+                c1.Add(new Client(2, "11 rue machin", "Pierre", "Jean", "601020304"));
+            }
+            return c1;
+        }
+
+        public List<Commis> ChargerCSVCommis(string path)
+        {
+            List<Commis> c1 = new List<Commis>();
+            if (File.Exists(path))
+            {
+                c1.Add(new Commis("Chene", "Alain", "23 rue des Louviers 75002 Paris", "0613424305", "surplace", new DateTime(2020 , 10 , 10)));
+                StreamReader lecteur = new StreamReader(path);
+                string ligne = "";
+                while (lecteur.Peek() > 0)
+                {
+                    //Peek() est une fonction qui retourne -1 s'il n'y a
+                    //plus de caractère à lire
+                    ligne = lecteur.ReadLine();
+                    if (ligne != null)
+                    {
+                        string[] tem = ligne.Split(';');
+                        c1.Add(new Commis(tem[0], tem[1], tem[2], tem[3],tem[4],Convert.ToDateTime(tem[5])));
+                    }
+                }
+                lecteur.Close();
+            }
+            else
+            {
+                c1.Add(new Commis("Chemin", "Alain", "23 rue des Louviers 75002 Paris", "0613424305", "surplace", new DateTime(2020, 10, 10)));
+            }
+            return c1;
+        }
+
+        public List<Livreur> ChargerCSVLivreur(string path)
+        {
+            List<Livreur> c1 = new List<Livreur>();
+            if (File.Exists(path))
+            {
+                c1.Add(new Livreur("Chenal", "Louis", "23 rue des frenes 75003 Paris", "0613424305", "surplace", "velo"));
+                StreamReader lecteur = new StreamReader(path);
+                string ligne = "";
+                while (lecteur.Peek() > 0)
+                {
+                    //Peek() est une fonction qui retourne -1 s'il n'y a
+                    //plus de caractère à lire
+                    ligne = lecteur.ReadLine();
+                    if (ligne != null)
+                    {
+                        string[] tem = ligne.Split(';');
+                        c1.Add(new Livreur(tem[0], tem[1], tem[2], tem[3],tem[4],tem[5]));
+                    }
+                }
+                lecteur.Close();
+            }
+            else
+            {
+                c1.Add(new Livreur("Chemin", "Louis", "23 rue des frenes 75003 Paris", "0613424305", "surplace", "velo"));
+            }
+            return c1;
         }
         #endregion
 
@@ -152,13 +238,7 @@ namespace Pizzeria
             DataGrid myGridClient = new DataGrid();
             myGridClient.Width = 655;
             myGridClient.Height = 80;
-            // myGridClient.Margin = new Thickness(20, -80, 20, 72);
-            //List<Client> clients = new List<Client>();
-            p1.addClient(new Client(false, 1, "8 rue machin", "Patrick", "Jean", new DateTime(2010, 8, 18), 4));
-            p1.addClient(new Client(false, 2, "9 rue machin", "Pierre", "Jean", new DateTime(2010, 8, 18), 4));
-            p1.addClient(new Client(false, 3, "10 rue machin", "Pierre", "Jean", new DateTime(2010, 8, 18), 4));
-            p1.addClient(new Client(false, 4, "11 rue machin", "Pierre", "Jean", new DateTime(2010, 8, 18), 4));
-            myGridClient.ItemsSource = p1.Clients;
+            myGridClient.ItemsSource = ChargerCSVClient("C:\\Users\\petil\\source\\repos\\Pizzeria\\Pizzeria\\Clients.csv");
             myGridClient.Foreground = new SolidColorBrush(Colors.Orange);
             Grid.SetRow(myGridClient, 1);
             Grid.SetColumn(myGridClient, 0);
@@ -183,13 +263,7 @@ namespace Pizzeria
             myGridCommis.Width = 655;
             myGridCommis.Height = 80;
             myGridCommis.Margin = new Thickness(0, -45, 0, 0);
-
-            //List<Commis> commis = new List<Commis>();
-            p1.addCommis(new Commis("Patrick", "Sur place", new DateTime(2010, 8, 18)));
-            p1.addCommis(new Commis("Patrick", "Sur place", new DateTime(2010, 8, 18)));
-            p1.addCommis(new Commis("Patrick", "Sur place", new DateTime(2010, 8, 18)));
-            p1.addCommis(new Commis("Patrick", "Sur place", new DateTime(2010, 8, 18)));
-            myGridCommis.ItemsSource = p1.Commis;
+            myGridCommis.ItemsSource = ChargerCSVCommis("C:\\Users\\petil\\source\\repos\\Pizzeria\\Pizzeria\\Commis.csv");
             myGridCommis.Foreground = new SolidColorBrush(Colors.Orange);
             Grid.SetRow(myGridCommis, 4);
             Grid.SetColumn(myGridCommis, 0);
@@ -216,15 +290,10 @@ namespace Pizzeria
             myGridLivreur.Height = 80;
             myGridLivreur.Margin = new Thickness(0, 20, 0, 0);
             List<Livreur> livreur = new List<Livreur>();
-            p1.addLivreur(new Livreur("Patrick", "Sur place", "scooteur"));
-            p1.addLivreur(new Livreur("Patrick", "Sur place", "scooteur"));
-            p1.addLivreur(new Livreur("Patrick", "Sur place", "scooteur"));
-            p1.addLivreur(new Livreur("Patrick", "Sur place", "scooteur"));
-            myGridLivreur.ItemsSource = p1.Livreur;
+            myGridLivreur.ItemsSource = ChargerCSVLivreur("C:\\Users\\petil\\source\\repos\\Pizzeria\\Pizzeria\\Livreur.csv");
             myGridLivreur.Foreground = new SolidColorBrush(Colors.Orange);
             Grid.SetRow(myGridLivreur, 6);
             Grid.SetColumn(myGridLivreur, 0);
-            //Grid.SetColumnSpan(myGridClient, 4);
             DynamicGridClient.Children.Add(myGridLivreur);
             #endregion creation window client
 

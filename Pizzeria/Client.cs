@@ -6,28 +6,21 @@ namespace Pizzeria
 {
     public class Client
     {
-        private bool firstCommande;
         private int numClient;
         private string adrClient;
         private string nomClient;
         private string prenomClient;
         private DateTime datePremiereCmd;
-        private int cumulCommande;
+        private string cumulCommande;
 
-        public Client(bool firstCommande, int numClient, string adrClient, string nomClient, string prenomClient, DateTime datePremiereCmd, int cumulCommande)
+        public Client(int numClient, string adrClient, string nomClient, string prenomClient, string cumulCommande)
         {
-            this.firstCommande = firstCommande;
             this.numClient = numClient;
-            this.adrClient = adrClient;
             this.nomClient = nomClient;
             this.prenomClient = prenomClient;
-            this.datePremiereCmd = datePremiereCmd;
+            this.adrClient = adrClient;
+            this.datePremiereCmd = DateTime.Now;
             this.cumulCommande = cumulCommande;
-        }
-
-        public bool FirstCommande
-        {
-            get{return firstCommande; }
         }
 
         public int NumClient
@@ -54,7 +47,7 @@ namespace Pizzeria
             get { return datePremiereCmd; }
         }
 
-        public int CumulCommande
+        public string CumulCommande
         {
             get { return cumulCommande; }
         }

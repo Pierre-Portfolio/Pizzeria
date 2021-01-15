@@ -4,12 +4,12 @@ using System.Text;
 
 namespace Pizzeria
 {
-    class Livreur : Personelle
+    public class Livreur : Personelle
     {
         private string etatLivreur;
         private string moyenLivraison;
 
-        public Livreur(string nomEmploye, string etatLivreur, string moyenLivraison) : base(nomEmploye)
+        public Livreur(string nomEmploye, string prenomEmploye, string adrEmploye, string numEmploye, string etatLivreur, string moyenLivraison) : base(nomEmploye, prenomEmploye, adrEmploye, numEmploye)
         {
             this.etatLivreur = etatLivreur;
             this.moyenLivraison = moyenLivraison;
