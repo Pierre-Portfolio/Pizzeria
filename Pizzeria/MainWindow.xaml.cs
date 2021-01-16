@@ -188,10 +188,10 @@ namespace Pizzeria
             #region creation window Client
             // création grid dynamic
             DynamicGridClient.HorizontalAlignment = HorizontalAlignment.Left;
-            DynamicGridClient.Height = 324;
-            DynamicGridClient.Margin = new Thickness(27, 0, 0, 0);
+            DynamicGridClient.Height = 400;
+            DynamicGridClient.Margin = new Thickness(0, 0, 0, 0);
             DynamicGridClient.VerticalAlignment = VerticalAlignment.Center;
-            DynamicGridClient.Width = 743;
+            DynamicGridClient.Width = 780;
 
             // Create Columns
             Grid.SetRow(DynamicGridClient, 2);
@@ -219,7 +219,8 @@ namespace Pizzeria
             DynamicGridClient.RowDefinitions.Add(gridRow4);
             DynamicGridClient.RowDefinitions.Add(gridRow5);
             DynamicGridClient.RowDefinitions.Add(gridRow6);
-            DynamicGridClient.Margin = new Thickness(0, 0, 0, 0);
+            DynamicGridClient.Margin = new Thickness(100, 20, 0, 0);
+
 
             // titre 1
             TextBlock txtBlock1 = new TextBlock();
@@ -232,11 +233,12 @@ namespace Pizzeria
             txtBlock1.HorizontalAlignment = HorizontalAlignment.Center;
             Grid.SetRow(txtBlock1, 0);
             Grid.SetColumn(txtBlock1, 0);
+            Grid.SetColumnSpan(txtBlock1, 4);
             DynamicGridClient.Children.Add(txtBlock1);
 
             // tableau des clients
             DataGrid myGridClient = new DataGrid();
-            myGridClient.Width = 655;
+            myGridClient.Width = 700;
             myGridClient.Height = 80;
             myGridClient.ItemsSource = ChargerCSVClient("C:\\Users\\petil\\source\\repos\\Pizzeria\\Pizzeria\\Clients.csv");
             myGridClient.Foreground = new SolidColorBrush(Colors.Orange);
@@ -260,7 +262,7 @@ namespace Pizzeria
 
             // tableau des commis
             DataGrid myGridCommis = new DataGrid();
-            myGridCommis.Width = 655;
+            myGridCommis.Width = 700;
             myGridCommis.Height = 80;
             myGridCommis.Margin = new Thickness(0, -45, 0, 0);
             myGridCommis.ItemsSource = ChargerCSVCommis("C:\\Users\\petil\\source\\repos\\Pizzeria\\Pizzeria\\Commis.csv");
@@ -286,7 +288,7 @@ namespace Pizzeria
 
             // tableau des serveur
             DataGrid myGridLivreur = new DataGrid();
-            myGridLivreur.Width = 655;
+            myGridLivreur.Width = 700;
             myGridLivreur.Height = 80;
             myGridLivreur.Margin = new Thickness(0, 20, 0, 0);
             List<Livreur> livreur = new List<Livreur>();

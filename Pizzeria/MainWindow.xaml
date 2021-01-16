@@ -5,14 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pizzeria"
         mc:Ignorable="d"
-        Title="Pizzeria" Height="457" Width="800">
+        Title="Pizzeria" Height="600" Width="1000" Icon="/logoPizza.png" ResizeMode="NoResize">
     <Grid x:Name="MainGrid" Margin="0,0,0,10">
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="25*" />
+            <ColumnDefinition Width="25*" />
+            <ColumnDefinition Width="25*" />
+            <ColumnDefinition Width="24*" />
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -21,7 +22,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4">
+        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5">
             <Grid.Background>
                 <ImageBrush ImageSource="/banner3.jpg"/>
             </Grid.Background>
@@ -34,9 +35,9 @@
 
         <Button x:Name="StatistiqueBtn" Content="Statistiques" Grid.Row="1" Grid.Column="2" Background="Orange" BorderThickness="0" Click="StatistiqueBtn_Click"/>
 
-        <Button x:Name="AdminitrationBtn" Content="Administrations" Grid.Row="1" Grid.Column="3" Background="Orange"  BorderThickness="0" Click="AdminitrationBtn_Click"/>
+        <Button x:Name="AdminitrationBtn" Content="Administrations" Grid.Row="1" Grid.Column="3" Background="Orange"  BorderThickness="0" Click="AdminitrationBtn_Click" Grid.ColumnSpan="2"/>
 
-        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Margin="0,0,0,-13" >
+        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" Margin="0,0,0,-13" >
             <Grid.Background>
                 <ImageBrush ImageSource="/Pizza-Background.jpg"/>
             </Grid.Background>
