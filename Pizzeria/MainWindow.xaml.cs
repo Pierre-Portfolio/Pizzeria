@@ -75,7 +75,7 @@ namespace Pizzeria
             List<Client> c1 = new List<Client>();
             if (File.Exists(path))
             {
-                c1.Add(new Client(1, "11 rue machin", "Pierre", "Jean", "601020304"));
+                c1.Add(new Client(1, "11 rue machin", "Pierre", "CheminExiste", "601020304"));
                 StreamReader lecteur = new StreamReader(path);
                 string ligne = "";
                 while (lecteur.Peek() > 0)
@@ -240,7 +240,7 @@ namespace Pizzeria
             DataGrid myGridClient = new DataGrid();
             myGridClient.Width = 700;
             myGridClient.Height = 80;
-            myGridClient.ItemsSource = ChargerCSVClient("C:\\Users\\petil\\source\\repos\\Pizzeria\\Pizzeria\\Clients.csv");
+            myGridClient.ItemsSource = ChargerCSVClient("..\\..\\..\\Clients.csv");
             myGridClient.Foreground = new SolidColorBrush(Colors.Orange);
             Grid.SetRow(myGridClient, 1);
             Grid.SetColumn(myGridClient, 0);
@@ -265,7 +265,7 @@ namespace Pizzeria
             myGridCommis.Width = 700;
             myGridCommis.Height = 80;
             myGridCommis.Margin = new Thickness(0, -45, 0, 0);
-            myGridCommis.ItemsSource = ChargerCSVCommis("C:\\Users\\petil\\source\\repos\\Pizzeria\\Pizzeria\\Commis.csv");
+            myGridCommis.ItemsSource = ChargerCSVCommis("..\\..\\..\\Commis.csv");
             myGridCommis.Foreground = new SolidColorBrush(Colors.Orange);
             Grid.SetRow(myGridCommis, 4);
             Grid.SetColumn(myGridCommis, 0);
@@ -292,7 +292,7 @@ namespace Pizzeria
             myGridLivreur.Height = 80;
             myGridLivreur.Margin = new Thickness(0, 20, 0, 0);
             List<Livreur> livreur = new List<Livreur>();
-            myGridLivreur.ItemsSource = ChargerCSVLivreur("C:\\Users\\petil\\source\\repos\\Pizzeria\\Pizzeria\\Livreur.csv");
+            myGridLivreur.ItemsSource = ChargerCSVLivreur("..\\..\\..\\Livreur.csv");
             myGridLivreur.Foreground = new SolidColorBrush(Colors.Orange);
             Grid.SetRow(myGridLivreur, 6);
             Grid.SetColumn(myGridLivreur, 0);
