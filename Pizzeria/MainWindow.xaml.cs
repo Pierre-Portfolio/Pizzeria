@@ -25,8 +25,6 @@ namespace Pizzeria
     {
         #region Variable Globale
         // permet de savoir la fenetre actuel
-        public string actualWindow = "home";
-
         // On crée toutes les pages dynamique
         Grid DynamicGridClient = new Grid();
         Grid DynamicGridCommands = new Grid();
@@ -38,13 +36,7 @@ namespace Pizzeria
         #endregion
 
         #region fonction refresh
-        public void RefreshHard()
-        {
-            if(actualWindow != "home")
-            {
-                MainGrid.Children.RemoveAt(6);
-            }
-        }
+
 
         public void RefreshPasOpti()
         {
@@ -164,6 +156,63 @@ namespace Pizzeria
             RefreshPasOpti();
             MainGrid.Children.Add(DynamicGridCommands);
         }
+
+        private List<Commande> ChargerCSVCommande()
+        {
+            string path = "..\\..\\..\\Commandes.csv" ;
+            List<Commande> c1 = new List<Commande>();
+            if (File.Exists(path))
+            {
+                StreamReader lecteur = new StreamReader(path);
+                string ligne = "";
+                while (lecteur.Peek() > 0)
+                {
+                    //Peek() est une fonction qui retourne -1 s'il n'y a
+                    //plus de caractère à lire
+                    ligne = lecteur.ReadLine();
+                    if (ligne != null)
+                    {
+
+                        string[] tem = ligne.Split(';');
+                        string[] date = tem[2].Split('/');
+                        DateTime newDate = DateTime.Now;
+                        if (date != null && date.Length == 3)
+                        {
+                            newDate = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
+                        }
+
+                        Commande.EtatCommande en = Enum.Parse<Commande.EtatCommande>(tem[6]);
+                        List<Pizza> p = new List<Pizza>();
+                        string[] pizzas = tem[7].Split('/');
+                        foreach(string s in pizzas)
+                        {
+                            string[] elem = s.Split(',');
+                            List<Pizza.Garniture> pg = new List<Pizza.Garniture>();
+                            for(int i = 1; i < elem.Length; i++)
+                            {
+                                Pizza.Garniture e = Enum.Parse<Pizza.Garniture>(elem[i]);
+                                pg.Add(e);
+                            }
+                            Pizza piz = new Pizza(pg,Enum.Parse<Pizza.TaillePizza>(elem[0]));
+                            p.Add(piz);
+                        }
+                        List<Boisson> b = new List<Boisson>();
+                        string[] boisson = tem[8].Split('/');
+                        foreach (string s in boisson)
+                        {
+                            string[] elem = s.Split(',');
+                            if (elem != null && elem.Length == 2)
+                            {
+                                b.Add(new Boisson(elem[0], double.Parse(elem[1])));
+                            }
+                        }
+                        c1.Add(new Commande(int.Parse(tem[0]), tem[1],newDate,int.Parse(tem[3]) ,tem[4],tem[5], en, p, b));
+                    }
+                }
+                lecteur.Close();
+            }
+            return c1;
+        }
         #endregion
 
         #region Parti Statistique
@@ -200,28 +249,28 @@ namespace Pizzeria
             Grid.SetRow(DynamicGridClient, 2);
             Grid.SetColumn(DynamicGridClient, 0);
             Grid.SetColumnSpan(DynamicGridClient, 4);
-            ColumnDefinition gridCol1 = new ColumnDefinition();
-            DynamicGridClient.ColumnDefinitions.Add(gridCol1);
+            ColumnDefinition gridColClient1 = new ColumnDefinition();
+            DynamicGridClient.ColumnDefinitions.Add(gridColClient1);
 
             // Create Rows
-            RowDefinition gridRow1 = new RowDefinition();
-            gridRow1.Height = new GridLength(30);
-            RowDefinition gridRow2 = new RowDefinition();
-            gridRow2.Height = new GridLength(100);
-            RowDefinition gridRow3 = new RowDefinition();
-            gridRow3.Height = new GridLength(30);
-            RowDefinition gridRow4 = new RowDefinition();
-            gridRow4.Height = new GridLength(100);
-            RowDefinition gridRow5 = new RowDefinition();
-            gridRow5.Height = new GridLength(30);
-            RowDefinition gridRow6 = new RowDefinition();
-            gridRow6.Height = new GridLength(100);
-            DynamicGridClient.RowDefinitions.Add(gridRow1);
-            DynamicGridClient.RowDefinitions.Add(gridRow2);
-            DynamicGridClient.RowDefinitions.Add(gridRow3);
-            DynamicGridClient.RowDefinitions.Add(gridRow4);
-            DynamicGridClient.RowDefinitions.Add(gridRow5);
-            DynamicGridClient.RowDefinitions.Add(gridRow6);
+            RowDefinition gridRowClient1 = new RowDefinition();
+            gridRowClient1.Height = new GridLength(30);
+            RowDefinition gridRowClient2 = new RowDefinition();
+            gridRowClient2.Height = new GridLength(100);
+            RowDefinition gridRowClient3 = new RowDefinition();
+            gridRowClient3.Height = new GridLength(30);
+            RowDefinition gridRowClient4 = new RowDefinition();
+            gridRowClient4.Height = new GridLength(100);
+            RowDefinition gridRowClient5 = new RowDefinition();
+            gridRowClient5.Height = new GridLength(30);
+            RowDefinition gridRowClient6 = new RowDefinition();
+            gridRowClient6.Height = new GridLength(100);
+            DynamicGridClient.RowDefinitions.Add(gridRowClient1);
+            DynamicGridClient.RowDefinitions.Add(gridRowClient2);
+            DynamicGridClient.RowDefinitions.Add(gridRowClient3);
+            DynamicGridClient.RowDefinitions.Add(gridRowClient4);
+            DynamicGridClient.RowDefinitions.Add(gridRowClient5);
+            DynamicGridClient.RowDefinitions.Add(gridRowClient6);
             DynamicGridClient.Margin = new Thickness(100, 20, 0, 0);
 
             #region DynamicClient
@@ -337,12 +386,125 @@ namespace Pizzeria
             #endregion creation window client
 
             #region creation window Commande
-            // création grid dynamic
+            /*=== Creation du GridGlobal ===*/
             DynamicGridCommands.HorizontalAlignment = HorizontalAlignment.Left;
-            DynamicGridCommands.Height = 324;
-            DynamicGridCommands.Margin = new Thickness(27, 0, 0, 0);
             DynamicGridCommands.VerticalAlignment = VerticalAlignment.Center;
-            DynamicGridCommands.Width = 743;
+            DynamicGridCommands.Height = 400;
+            DynamicGridCommands.Width = 780;
+            DynamicGridCommands.Margin = new Thickness(100, 20, 0, 0);
+            DynamicGridCommands.Background = new SolidColorBrush(Colors.White);
+
+            Grid.SetRow(DynamicGridCommands, 2);
+            Grid.SetColumn(DynamicGridCommands, 0);
+            Grid.SetColumnSpan(DynamicGridCommands, 4);
+            /*=== Fin creation GridGlobal === */
+
+            //Creation du tableau 
+            ColumnDefinition gridColCommande = new ColumnDefinition();
+            DynamicGridCommands.ColumnDefinitions.Add(gridColCommande);
+
+            // Create Rows
+            RowDefinition gridRowCommande1 = new RowDefinition();
+            gridRowCommande1.Height = new GridLength(370);
+            RowDefinition gridRowCommande2 = new RowDefinition();
+            gridRowCommande2.Height = new GridLength(30);
+            DynamicGridCommands.RowDefinitions.Add(gridRowCommande1);
+            DynamicGridCommands.RowDefinitions.Add(gridRowCommande2);
+            
+            //Creation premier sous tableau (tab de commande)
+            Grid TabCommande = new Grid();
+            
+            ColumnDefinition Col1Commande = new ColumnDefinition();
+            TabCommande.ColumnDefinitions.Add(Col1Commande);
+
+            RowDefinition Row1Commande = new RowDefinition();
+            RowDefinition Row2Commande = new RowDefinition();
+            RowDefinition Row3Commande = new RowDefinition();
+            TabCommande.RowDefinitions.Add(Row1Commande);
+            TabCommande.RowDefinitions.Add(Row2Commande);
+            TabCommande.RowDefinitions.Add(Row3Commande);
+
+            TabCommande.HorizontalAlignment = HorizontalAlignment.Left;
+            TabCommande.VerticalAlignment = VerticalAlignment.Top;
+            TabCommande.Height = 370;
+            TabCommande.Width = 780;
+            TabCommande.Background = new SolidColorBrush(Colors.GreenYellow);
+            Grid.SetRow(TabCommande, 0);
+            DynamicGridCommands.Children.Add(TabCommande);
+
+            //Ajout des commandes
+            List<Commande> listeCommandes = ChargerCSVCommande();
+            if(listeCommandes.Count != 0)
+            {
+                int i = 0;
+                foreach(Commande c in listeCommandes)
+                {
+                    Grid Commande1 = new Grid();
+                    ColumnDefinition Test1commande1Colum = new ColumnDefinition();
+                    ColumnDefinition Test2commande1Colum = new ColumnDefinition();
+                    ColumnDefinition Test3commande1Colum = new ColumnDefinition();
+                    Commande1.ColumnDefinitions.Add(Test1commande1Colum);
+                    Commande1.ColumnDefinitions.Add(Test2commande1Colum);
+                    Commande1.ColumnDefinitions.Add(Test3commande1Colum);
+
+                    Commande1.HorizontalAlignment = HorizontalAlignment.Left;
+                    Commande1.VerticalAlignment = VerticalAlignment.Top;
+                    Commande1.Height = 100;
+                    Commande1.Width = 780;
+                    Commande1.Margin = new Thickness(0, 0, 0, 0);
+                    Commande1.Background = new SolidColorBrush(Colors.Gray);
+                    Grid.SetRow(Commande1, i);
+                    TabCommande.Children.Add(Commande1);
+
+                    Label pizza1 = new Label();
+                    pizza1.Content = "Test Pizza "+i;
+                    Grid.SetColumn(pizza1, 0);
+                    Commande1.Children.Add(pizza1);
+                    i++;
+                }
+            }
+            /*
+            Grid Commande1 = new Grid();
+            ColumnDefinition Test1commande1Colum = new ColumnDefinition();
+            ColumnDefinition Test2commande1Colum = new ColumnDefinition();
+            ColumnDefinition Test3commande1Colum = new ColumnDefinition();
+            Commande1.ColumnDefinitions.Add(Test1commande1Colum);
+            Commande1.ColumnDefinitions.Add(Test2commande1Colum);
+            Commande1.ColumnDefinitions.Add(Test3commande1Colum);
+
+            Commande1.HorizontalAlignment = HorizontalAlignment.Left;
+            Commande1.VerticalAlignment = VerticalAlignment.Top;
+            Commande1.Height = 100;
+            Commande1.Width = 780;
+            Commande1.Margin = new Thickness(0, 0, 0, 0);
+            Commande1.Background = new SolidColorBrush(Colors.Gray);
+            Grid.SetRow(Commande1, 0);
+            TabCommande.Children.Add(Commande1);
+            
+            Label pizza1 = new Label();
+            pizza1.Content = "Test Pizza 1";
+            Grid.SetColumn(pizza1, 0);
+            Commande1.Children.Add(pizza1); 
+            Label pizza2 = new Label();
+            pizza2.Content = "Test Pizza 2";
+            Grid.SetColumn(pizza2, 1);
+            Commande1.Children.Add(pizza2);
+
+            Label pizza3 = new Label();
+            pizza3.Content = "Test Pizza 3";
+            Grid.SetColumn(pizza3, 2);
+            Commande1.Children.Add(pizza3);*/
+
+
+            //Ajout des btns
+            Button btnCommander = new Button();
+            btnCommander.Content = "Commander";
+            btnCommander.Height = 30;
+            btnCommander.Width = 100;
+            btnCommander.Background = new SolidColorBrush(Colors.Orange);
+            Grid.SetRow(btnCommander, 1);
+            //btnCommander.Click += new RoutedEventHandler(OpenChercherClient);
+            DynamicGridCommands.Children.Add(btnCommander);
             #endregion creation window Commande
 
             #region creation window Statistique

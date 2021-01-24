@@ -18,6 +18,7 @@ namespace Pizzeria
     public partial class Rechercher : Window
     {
         public List<Client> listeClient;
+        public Client client;
         public Rechercher()
         {
             InitializeComponent();
@@ -48,12 +49,14 @@ namespace Pizzeria
                 int tel = 0;
                 Int32.TryParse(BoxTel.Text, out tel);
                 Client c = FindClient(tel);
+                this.client = c;
                 if(c != null)
                 {
                     LabelNom.Content = c.NomClient;
                     LabelPrenom.Content = c.PrenomClient;
                     LabelTel.Content = c.TelClient;
                     LabelAdresse.Content = c.AdrClient;
+                    BtnCommande.Content = "Commander";
                 }
                 else
                 {
@@ -61,6 +64,7 @@ namespace Pizzeria
                     LabelPrenom.Content = "Prenom : Introuvable";
                     LabelTel.Content = "Tel : Introuvable";
                     LabelAdresse.Content = "Adresse : Introuvable";
+                    BtnCommande.Content = "Fermer";
                 }
                 CanvaClient.Visibility = Visibility.Visible;
              
@@ -79,7 +83,12 @@ namespace Pizzeria
 
         private void PasserCommande(object sender, RoutedEventArgs e)
         {
-
+            if (client != null)
+            {
+                var WindowPasserCommande = new PasserCommande();
+                WindowPasserCommande.Show();
+            }
+            this.Close();
         }
     }
 }

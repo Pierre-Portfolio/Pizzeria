@@ -40,3 +40,5 @@ C:\Users\tompa\OneDrive\Documents\ESILV\POO\Pizzeria\Pizzeria\Pizzeria\obj\Debug
 C:\Users\tompa\OneDrive\Documents\ESILV\POO\Pizzeria\Pizzeria\Pizzeria\obj\Debug\netcoreapp3.1\AddClient.baml
 C:\Users\tompa\OneDrive\Documents\ESILV\POO\Pizzeria\Pizzeria\Pizzeria\obj\Debug\netcoreapp3.1\Rechercher.g.cs
 C:\Users\tompa\OneDrive\Documents\ESILV\POO\Pizzeria\Pizzeria\Pizzeria\obj\Debug\netcoreapp3.1\Rechercher.baml
+C:\Users\tompa\OneDrive\Documents\ESILV\POO\Pizzeria\Pizzeria\Pizzeria\obj\Debug\netcoreapp3.1\PasserCommande.g.cs
+C:\Users\tompa\OneDrive\Documents\ESILV\POO\Pizzeria\Pizzeria\Pizzeria\obj\Debug\netcoreapp3.1\PasserCommande.baml

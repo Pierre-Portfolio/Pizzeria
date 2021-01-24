@@ -25,7 +25,7 @@
                 <Label Name="LabelPrenom" Content="Prenom" Canvas.Left="11" Canvas.Top="55" Width="190"/>
                 <Label Name="LabelTel" Content="Tel" Canvas.Left="11" Canvas.Top="91" Width="190"/>
                 <Label Name="LabelAdresse" Content="Adresse" Canvas.Left="11" Canvas.Top="117" Width="190" Height="80"/>
-                <Button Content="Commander" Canvas.Left="51" Canvas.Top="202" Width="112" Click="PasserCommande"/>
+                <Button Name="BtnCommande" Content="Commander" Canvas.Left="51" Canvas.Top="202" Width="112" Click="PasserCommande"/>
             </Canvas>
         </Canvas>
 
