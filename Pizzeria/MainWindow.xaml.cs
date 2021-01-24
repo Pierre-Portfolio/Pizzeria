@@ -138,6 +138,12 @@ namespace Pizzeria
             }
             return c1;
         }
+
+        private void OpenAddClient(object sender, RoutedEventArgs e)
+        {
+            var WindowAddClient = new AddClient();
+            WindowAddClient.Show();
+        }
         #endregion
 
         #region Parti Commande
@@ -236,6 +242,7 @@ namespace Pizzeria
             btnAddClient.Height = 15;
             btnAddClient.Width = 15;
             btnAddClient.Margin = new Thickness(150,-10, 0, 0);
+            btnAddClient.Click += new RoutedEventHandler(OpenAddClient);
             DynamicGridClient.Children.Add(btnAddClient);
 
             //Btn del

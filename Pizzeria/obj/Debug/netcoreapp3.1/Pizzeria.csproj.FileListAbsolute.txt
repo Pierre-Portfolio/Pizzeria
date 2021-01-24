@@ -36,3 +36,5 @@ C:\Users\tompa\OneDrive\Documents\ESILV\POO\Pizzeria\Pizzeria\Pizzeria\obj\Debug
 C:\Users\tompa\OneDrive\Documents\ESILV\POO\Pizzeria\Pizzeria\Pizzeria\obj\Debug\netcoreapp3.1\Pizzeria.dll
 C:\Users\tompa\OneDrive\Documents\ESILV\POO\Pizzeria\Pizzeria\Pizzeria\obj\Debug\netcoreapp3.1\Pizzeria.pdb
 C:\Users\tompa\OneDrive\Documents\ESILV\POO\Pizzeria\Pizzeria\Pizzeria\obj\Debug\netcoreapp3.1\Pizzeria.genruntimeconfig.cache
+C:\Users\tompa\OneDrive\Documents\ESILV\POO\Pizzeria\Pizzeria\Pizzeria\obj\Debug\netcoreapp3.1\AddClient.g.cs
+C:\Users\tompa\OneDrive\Documents\ESILV\POO\Pizzeria\Pizzeria\Pizzeria\obj\Debug\netcoreapp3.1\AddClient.baml
