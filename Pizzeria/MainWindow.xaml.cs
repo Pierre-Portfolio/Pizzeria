@@ -409,26 +409,23 @@ namespace Pizzeria
             gridRowCommande2.Height = new GridLength(30);
             DynamicGridCommands.RowDefinitions.Add(gridRowCommande1);
             DynamicGridCommands.RowDefinitions.Add(gridRowCommande2);
-            
+
             //Creation premier sous tableau (tab de commande)
+            ScrollViewer scrollCommande = new ScrollViewer();
+            scrollCommande.Height = 370;
+            scrollCommande.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
+            DynamicGridCommands.Children.Add(scrollCommande);
+
             Grid TabCommande = new Grid();
-            
             ColumnDefinition Col1Commande = new ColumnDefinition();
             TabCommande.ColumnDefinitions.Add(Col1Commande);
-
-            RowDefinition Row1Commande = new RowDefinition();
-            RowDefinition Row2Commande = new RowDefinition();
-            RowDefinition Row3Commande = new RowDefinition();
-            TabCommande.RowDefinitions.Add(Row1Commande);
-            TabCommande.RowDefinitions.Add(Row2Commande);
-            TabCommande.RowDefinitions.Add(Row3Commande);
 
             TabCommande.HorizontalAlignment = HorizontalAlignment.Left;
             TabCommande.VerticalAlignment = VerticalAlignment.Top;
             TabCommande.Height = 370;
             TabCommande.Width = 780;
             Grid.SetRow(TabCommande, 0);
-            DynamicGridCommands.Children.Add(TabCommande);
+            scrollCommande.Content = TabCommande;
 
             //Ajout des commandes
             List<Commande> listeCommandes = ChargerCSVCommande();
@@ -437,6 +434,10 @@ namespace Pizzeria
                 int i = 0;
                 foreach(Commande c in listeCommandes)
                 {
+                    RowDefinition Row1Commande = new RowDefinition();
+                    Row1Commande.MinHeight = 100;
+                    TabCommande.RowDefinitions.Add(Row1Commande);
+
                     Grid Commande1 = new Grid();
                     ColumnDefinition Test1commande1Colum = new ColumnDefinition();
                     ColumnDefinition Test2commande1Colum = new ColumnDefinition();
