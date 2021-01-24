@@ -32,6 +32,9 @@ namespace Pizzeria
         Grid DynamicGridCommands = new Grid();
         Grid DynamicGridStat= new Grid();
         Grid DynamicGridAdmin = new Grid();
+
+        //Test
+        public List<Client> listeClient;
         #endregion
 
         #region fonction refresh
@@ -145,6 +148,13 @@ namespace Pizzeria
         {
             var WindowAddClient = new AddClient();
             WindowAddClient.Show();
+            this.Close();
+        }
+
+        private void OpenChercherClient(object sender, RoutedEventArgs e)
+        {
+            var WindowChercher = new Rechercher(this.listeClient);
+            WindowChercher.Show();
         }
         #endregion
 
@@ -197,15 +207,15 @@ namespace Pizzeria
             RowDefinition gridRow1 = new RowDefinition();
             gridRow1.Height = new GridLength(30);
             RowDefinition gridRow2 = new RowDefinition();
-            gridRow2.Height = new GridLength(80);
+            gridRow2.Height = new GridLength(100);
             RowDefinition gridRow3 = new RowDefinition();
             gridRow3.Height = new GridLength(30);
             RowDefinition gridRow4 = new RowDefinition();
-            gridRow4.Height = new GridLength(80);
+            gridRow4.Height = new GridLength(100);
             RowDefinition gridRow5 = new RowDefinition();
             gridRow5.Height = new GridLength(30);
             RowDefinition gridRow6 = new RowDefinition();
-            gridRow6.Height = new GridLength(80);
+            gridRow6.Height = new GridLength(100);
             DynamicGridClient.RowDefinitions.Add(gridRow1);
             DynamicGridClient.RowDefinitions.Add(gridRow2);
             DynamicGridClient.RowDefinitions.Add(gridRow3);
@@ -214,6 +224,7 @@ namespace Pizzeria
             DynamicGridClient.RowDefinitions.Add(gridRow6);
             DynamicGridClient.Margin = new Thickness(100, 20, 0, 0);
 
+            #region DynamicClient
             // titre 1
             TextBlock txtBlock1 = new TextBlock();
             txtBlock1.Text = "Liste des Clients";
@@ -227,15 +238,6 @@ namespace Pizzeria
             Grid.SetColumn(txtBlock1, 0);
             Grid.SetColumnSpan(txtBlock1, 4);
             DynamicGridClient.Children.Add(txtBlock1);
-
-            //Bouton add client
-            /*Image img = new Image();
-            img.Source = new BitmapImage(new Uri("./addbtn.png"));
-
-            StackPanel stackPnl = new StackPanel();
-            stackPnl.Orientation = Orientation.Horizontal;
-            stackPnl.Margin = new Thickness(10);
-            stackPnl.Children.Add(img);*/
 
             //Btn ajouter
             Button btnAddClient = new Button();
@@ -256,17 +258,30 @@ namespace Pizzeria
             btnSuprClient.Margin = new Thickness(200, -10, 0, 0);
             DynamicGridClient.Children.Add(btnSuprClient);
 
+            //Btn Rechercher
+            Button btnChercher = new Button();
+            btnChercher.Content = "Chercher";
+            btnChercher.Height = 20;
+            btnChercher.Width = 70;
+            btnChercher.Margin = new Thickness(300, -10, 0, 0);
+            btnChercher.Click += new RoutedEventHandler(OpenChercherClient);
+            DynamicGridClient.Children.Add(btnChercher);
+
             // tableau des clients
             DataGrid myGridClient = new DataGrid();
             myGridClient.Width = 700;
-            myGridClient.Height = 80;
-            myGridClient.ItemsSource = ChargerCSVClient("..\\..\\..\\Clients.csv");
+            myGridClient.Height = 100;
+            List<Client> l = ChargerCSVClient("..\\..\\..\\Clients.csv");
+            this.listeClient = l;
+            myGridClient.ItemsSource = l;
             myGridClient.Foreground = new SolidColorBrush(Colors.Orange);
             Grid.SetRow(myGridClient, 1);
             Grid.SetColumn(myGridClient, 0);
             Grid.SetColumnSpan(myGridClient, 4);
             DynamicGridClient.Children.Add(myGridClient);
+            #endregion
 
+            #region DynamicCommis
             // titre 2
             TextBlock txtBlock2 = new TextBlock();
             txtBlock2.Text = "Liste des Commis";
@@ -291,7 +306,8 @@ namespace Pizzeria
             Grid.SetColumn(myGridCommis, 0);
             //Grid.SetColumnSpan(myGridClient, 4);
             DynamicGridClient.Children.Add(myGridCommis);
-
+            #endregion
+            #region DynamicLivreur
             // titre 3
             TextBlock txtBlock3 = new TextBlock();
             txtBlock3.Text = "Liste des Livreur";
@@ -317,6 +333,7 @@ namespace Pizzeria
             Grid.SetRow(myGridLivreur, 6);
             Grid.SetColumn(myGridLivreur, 0);
             DynamicGridClient.Children.Add(myGridLivreur);
+            #endregion
             #endregion creation window client
 
             #region creation window Commande

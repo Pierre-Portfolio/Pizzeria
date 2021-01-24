@@ -53,7 +53,8 @@ namespace Pizzeria
             {
                 Client c = new Client(Client.lastNum + 1,  BoxNom.Text, BoxPrenom.Text, BoxAdresse.Text, int.Parse(BoxTel.Text));
                 AddToCsv(c);
-                //MainWindow.ChargerCSVClient("..\\..\\..\\Clients.csv");
+                var WindowMain = new MainWindow();
+                WindowMain.Show(); 
                 this.Close();
             }
             else

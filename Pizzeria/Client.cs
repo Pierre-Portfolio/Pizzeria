@@ -7,9 +7,9 @@ namespace Pizzeria
     public class Client
     {
         private int numClient;
-        private string adrClient;
         private string nomClient;
         private string prenomClient;
+        private string adrClient;
         private DateTime datePremiereCmd;
         private int telClient;
         private int cumulCommande;
@@ -25,7 +25,7 @@ namespace Pizzeria
             this.cumulCommande = cumulCommande;
             lastNum = numClient;
         }
-        public Client(int numClient, string adrClient, string nomClient, string prenomClient, int telClient, DateTime datefirstCommande, int cumulCommande = 0)
+        public Client(int numClient, string nomClient, string prenomClient,string adrClient, int telClient, DateTime datefirstCommande, int cumulCommande = 0)
         {
             this.numClient = numClient;
             this.nomClient = nomClient;
@@ -42,10 +42,6 @@ namespace Pizzeria
         {
             get { return numClient; }
         }
-        public string AdrClient
-        {
-            get { return adrClient; }
-        }
 
         public string NomClient
         {
@@ -56,7 +52,10 @@ namespace Pizzeria
         {
             get { return prenomClient; }
         }
-
+        public string AdrClient
+        {
+            get { return adrClient; }
+        }
         public int TelClient
         {
             get{ return this.telClient; }
