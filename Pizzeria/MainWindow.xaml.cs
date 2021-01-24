@@ -75,7 +75,6 @@ namespace Pizzeria
             List<Client> c1 = new List<Client>();
             if (File.Exists(path))
             {
-                c1.Add(new Client(1, "11 rue machin", "Pierre", "CheminExiste", "601020304"));
                 StreamReader lecteur = new StreamReader(path);
                 string ligne = "";
                 while (lecteur.Peek() > 0)
@@ -91,10 +90,6 @@ namespace Pizzeria
                 }
                 lecteur.Close();
             }
-            else
-            {
-                c1.Add(new Client(2, "11 rue machin", "Pierre", "Jean", "601020304"));
-            }
             return c1;
         }
 
@@ -103,7 +98,6 @@ namespace Pizzeria
             List<Commis> c1 = new List<Commis>();
             if (File.Exists(path))
             {
-                c1.Add(new Commis("Chene", "Alain", "23 rue des Louviers 75002 Paris", "0613424305", "surplace", new DateTime(2020 , 10 , 10)));
                 StreamReader lecteur = new StreamReader(path);
                 string ligne = "";
                 while (lecteur.Peek() > 0)
@@ -119,10 +113,6 @@ namespace Pizzeria
                 }
                 lecteur.Close();
             }
-            else
-            {
-                c1.Add(new Commis("Chemin", "Alain", "23 rue des Louviers 75002 Paris", "0613424305", "surplace", new DateTime(2020, 10, 10)));
-            }
             return c1;
         }
 
@@ -131,7 +121,6 @@ namespace Pizzeria
             List<Livreur> c1 = new List<Livreur>();
             if (File.Exists(path))
             {
-                c1.Add(new Livreur("Chenal", "Louis", "23 rue des frenes 75003 Paris", "0613424305", "surplace", "velo"));
                 StreamReader lecteur = new StreamReader(path);
                 string ligne = "";
                 while (lecteur.Peek() > 0)
@@ -146,10 +135,6 @@ namespace Pizzeria
                     }
                 }
                 lecteur.Close();
-            }
-            else
-            {
-                c1.Add(new Livreur("Chemin", "Louis", "23 rue des frenes 75003 Paris", "0613424305", "surplace", "velo"));
             }
             return c1;
         }
@@ -221,7 +206,6 @@ namespace Pizzeria
             DynamicGridClient.RowDefinitions.Add(gridRow6);
             DynamicGridClient.Margin = new Thickness(100, 20, 0, 0);
 
-
             // titre 1
             TextBlock txtBlock1 = new TextBlock();
             txtBlock1.Text = "Liste des Clients";
@@ -235,6 +219,14 @@ namespace Pizzeria
             Grid.SetColumn(txtBlock1, 0);
             Grid.SetColumnSpan(txtBlock1, 4);
             DynamicGridClient.Children.Add(txtBlock1);
+            
+            //Bouton add client
+            Button btnAddClient = new Button();
+            btnAddClient.Height = 15;
+            btnAddClient.Width = 15;
+            Grid.SetColumn(txtBlock1, 1);
+            Grid.SetColumnSpan(txtBlock1, 1);
+            DynamicGridClient.Children.Add(btnAddClient);
 
             // tableau des clients
             DataGrid myGridClient = new DataGrid();
