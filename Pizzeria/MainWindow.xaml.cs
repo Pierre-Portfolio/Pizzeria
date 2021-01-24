@@ -70,7 +70,7 @@ namespace Pizzeria
             MainGrid.Children.Add(DynamicGridClient);
         }
 
-        public List<Client> ChargerCSVClient(string path)
+        public static List<Client> ChargerCSVClient(string path)
         {
             List<Client> c1 = new List<Client>();
             if (File.Exists(path))
@@ -84,8 +84,10 @@ namespace Pizzeria
                     ligne = lecteur.ReadLine();
                     if (ligne != null)
                     {
+
                         string[] tem = ligne.Split(';');
-                        c1.Add(new Client(Convert.ToInt32(tem[0]), tem[1], tem[2], tem[3],tem[4]));
+                        string[] date = tem[5].Split('/');
+                        c1.Add(new Client(Convert.ToInt32(tem[0]), tem[1], tem[2], tem[3], int.Parse(tem[4]), new DateTime(int.Parse(date[2]),int.Parse(date[1]),int.Parse(date[0])), int.Parse(tem[6])));
                     }
                 }
                 lecteur.Close();

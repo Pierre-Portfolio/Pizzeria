@@ -11,18 +11,33 @@ namespace Pizzeria
         private string nomClient;
         private string prenomClient;
         private DateTime datePremiereCmd;
-        private string cumulCommande;
-
-        public Client(int numClient, string adrClient, string nomClient, string prenomClient, string cumulCommande)
+        private int telClient;
+        private int cumulCommande;
+        public static int lastNum = 1;
+        public Client(int numClient, string nomClient, string prenomClient, string adrClient, int telClient, int cumulCommande = 0)
         {
             this.numClient = numClient;
             this.nomClient = nomClient;
             this.prenomClient = prenomClient;
             this.adrClient = adrClient;
+            this.telClient = telClient;
             this.datePremiereCmd = DateTime.Now;
             this.cumulCommande = cumulCommande;
+            lastNum = numClient;
+        }
+        public Client(int numClient, string adrClient, string nomClient, string prenomClient, int telClient, DateTime datefirstCommande, int cumulCommande = 0)
+        {
+            this.numClient = numClient;
+            this.nomClient = nomClient;
+            this.prenomClient = prenomClient;
+            this.adrClient = adrClient;
+            this.telClient = telClient;
+            this.datePremiereCmd = datefirstCommande;
+            this.cumulCommande = cumulCommande;
+            lastNum = numClient;
         }
 
+        #region Propietes
         public int NumClient
         {
             get { return numClient; }
@@ -42,15 +57,20 @@ namespace Pizzeria
             get { return prenomClient; }
         }
 
+        public int TelClient
+        {
+            get{ return this.telClient; }
+        }
+
         public DateTime DatePremiereCmd
         {
             get { return datePremiereCmd; }
         }
 
-        public string CumulCommande
+        public int CumulCommande
         {
             get { return cumulCommande; }
         }
-
+        #endregion
     }
 }
