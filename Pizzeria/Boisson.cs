@@ -33,5 +33,9 @@ namespace Pizzeria
             get { return this.prix; }
         }
 
+        public string AfficherBoisson()
+        {
+            return this.nomBoisson + " " + this.volume + "L " + this.prix + "€\n";
+        }
     }
 }

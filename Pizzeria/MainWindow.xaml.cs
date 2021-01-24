@@ -200,7 +200,7 @@ namespace Pizzeria
                         string[] boisson = tem[8].Split('/');
                         foreach (string s in boisson)
                         {
-                            string[] elem = s.Split(',');
+                            string[] elem = s.Split('-');
                             if (elem != null && elem.Length == 2)
                             {
                                 b.Add(new Boisson(elem[0], double.Parse(elem[1])));
@@ -392,7 +392,6 @@ namespace Pizzeria
             DynamicGridCommands.Height = 400;
             DynamicGridCommands.Width = 780;
             DynamicGridCommands.Margin = new Thickness(100, 20, 0, 0);
-            DynamicGridCommands.Background = new SolidColorBrush(Colors.White);
 
             Grid.SetRow(DynamicGridCommands, 2);
             Grid.SetColumn(DynamicGridCommands, 0);
@@ -428,7 +427,6 @@ namespace Pizzeria
             TabCommande.VerticalAlignment = VerticalAlignment.Top;
             TabCommande.Height = 370;
             TabCommande.Width = 780;
-            TabCommande.Background = new SolidColorBrush(Colors.GreenYellow);
             Grid.SetRow(TabCommande, 0);
             DynamicGridCommands.Children.Add(TabCommande);
 
@@ -456,10 +454,27 @@ namespace Pizzeria
                     Grid.SetRow(Commande1, i);
                     TabCommande.Children.Add(Commande1);
 
-                    Label pizza1 = new Label();
-                    pizza1.Content = "Test Pizza "+i;
-                    Grid.SetColumn(pizza1, 0);
-                    Commande1.Children.Add(pizza1);
+                    Label pizzas = new Label();
+                    foreach(Pizza p in c.ListePizza)
+                    {
+                        pizzas.Content += p.AffichePizza();
+                    }
+                    Grid.SetColumn(pizzas, 0);
+                    Commande1.Children.Add(pizzas);
+
+                    Label extra = new Label();
+                    foreach (Boisson b in c.ProduitAnnexes)
+                    {
+                        extra.Content = b.AfficherBoisson();
+                    }
+                    Grid.SetColumn(extra, 1);
+                    Commande1.Children.Add(extra);
+
+                    Label Infos = new Label();
+                    Infos.Content +="Num commande :"+c.NumCommande +"\nClient : " + c.NomClient + "\nCommis : "+c.NomCommis+"\nHeure :"+c.Heure+"\nEtat : "+c.Etat;
+                    Grid.SetColumn(Infos, 2);
+                    Commande1.Children.Add(Infos);
+
                     i++;
                 }
             }

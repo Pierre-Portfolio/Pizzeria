@@ -46,5 +46,15 @@ namespace Pizzeria
         {
             get { return this.prix; }
         }
+
+        public string AffichePizza()
+        {
+            string s = this.Taille + " ";
+            foreach(Garniture g in this.garnitures)
+            {
+                s += g + " ";
+            }
+            return s +" "+this.prix+"€\n" ;
+        }
     }
 }
