@@ -219,14 +219,33 @@ namespace Pizzeria
             Grid.SetColumn(txtBlock1, 0);
             Grid.SetColumnSpan(txtBlock1, 4);
             DynamicGridClient.Children.Add(txtBlock1);
-            
+
             //Bouton add client
+            /*Image img = new Image();
+            img.Source = new BitmapImage(new Uri("./addbtn.png"));
+
+            StackPanel stackPnl = new StackPanel();
+            stackPnl.Orientation = Orientation.Horizontal;
+            stackPnl.Margin = new Thickness(10);
+            stackPnl.Children.Add(img);*/
+
+            //Btn ajouter
             Button btnAddClient = new Button();
+            btnAddClient.Content = "+";
+            btnAddClient.Background = Brushes.Green;
             btnAddClient.Height = 15;
             btnAddClient.Width = 15;
-            Grid.SetColumn(txtBlock1, 1);
-            Grid.SetColumnSpan(txtBlock1, 1);
+            btnAddClient.Margin = new Thickness(150,-10, 0, 0);
             DynamicGridClient.Children.Add(btnAddClient);
+
+            //Btn del
+            Button btnSuprClient = new Button();
+            btnSuprClient.Content = "-";
+            btnSuprClient.Background = Brushes.Red;
+            btnSuprClient.Height = 15;
+            btnSuprClient.Width = 15;
+            btnSuprClient.Margin = new Thickness(200, -10, 0, 0);
+            DynamicGridClient.Children.Add(btnSuprClient);
 
             // tableau des clients
             DataGrid myGridClient = new DataGrid();
@@ -236,7 +255,7 @@ namespace Pizzeria
             myGridClient.Foreground = new SolidColorBrush(Colors.Orange);
             Grid.SetRow(myGridClient, 1);
             Grid.SetColumn(myGridClient, 0);
-            //Grid.SetColumnSpan(myGridClient, 4);
+            Grid.SetColumnSpan(myGridClient, 4);
             DynamicGridClient.Children.Add(myGridClient);
 
             // titre 2
