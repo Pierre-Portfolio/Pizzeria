@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Pizzeria
 {
-    class Boisson
+    public class Boisson
     {
         // par défault le prix d'une boisson est de 1e + le volume
         private string nomBoisson;

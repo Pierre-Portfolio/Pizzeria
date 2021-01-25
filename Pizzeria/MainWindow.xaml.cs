@@ -157,6 +157,12 @@ namespace Pizzeria
             MainGrid.Children.Add(DynamicGridCommands);
         }
 
+        private void OpenCommandeWindow(object sender, RoutedEventArgs e)
+        {
+            var WindowCommandeOpen = new PasserCommande();
+            WindowCommandeOpen.Show();
+        }
+
         private List<Commande> ChargerCSVCommande()
         {
             string path = "..\\..\\..\\Commandes.csv" ;
@@ -476,7 +482,7 @@ namespace Pizzeria
             btnCommander.Width = 100;
             btnCommander.Background = new SolidColorBrush(Colors.Orange);
             Grid.SetRow(btnCommander, 1);
-            //btnCommander.Click += new RoutedEventHandler(OpenChercherClient);
+            btnCommander.Click += new RoutedEventHandler(OpenCommandeWindow);
             DynamicGridCommands.Children.Add(btnCommander);
             #endregion creation window Administration
 

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Pizzeria
 {
-    class Commande
+    public class Commande
     {
         public enum EtatCommande
         {
@@ -30,6 +30,19 @@ namespace Pizzeria
         public EtatCommande Etat { get => etat; set => etat = value; }
         public List<Pizza> ListePizza { get => listePizza;}
         public List<Boisson> ProduitAnnexes { get => produitAnnexes; }
+
+        public Commande()
+        {
+            this.numCommande = 0;
+            this.heure = null;
+            this.date = DateTime.Now;
+            this.numeroClient = 0;
+            this.nomClient = "";
+            this.nomCommis = "";
+            this.etat = EtatCommande.en_preparation;
+            this.listePizza = new List<Pizza>();
+            this.produitAnnexes = new List<Boisson>();
+        }
 
         public Commande(int numCommande, string heure, DateTime date, int numeroClient, string nomClient, string nomCommis, EtatCommande etat, List<Pizza> listePizza, List<Boisson> produitAnnexes)
         {

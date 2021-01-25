@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Pizzeria
 {
-    class Pizza
+    public class Pizza
     {
         // le prix de base d'une Pizza est de 10e
         public enum TaillePizza

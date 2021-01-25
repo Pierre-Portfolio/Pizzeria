@@ -5,12 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pizzeria"
         mc:Ignorable="d"
-        Title="Passer Commande" Height="450" Width="800">
+        Title="Passer Commande" Height="304" Width="550">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Pizza-Background.jpg"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="59*"/>
-            <ColumnDefinition Width="741*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        <Button Name ="btnExtra" Content="Ajouter un extra" Grid.Column="1" HorizontalAlignment="Center" Margin="0,230,0,0" VerticalAlignment="Top" Height="40" Width="150" Background="Orange" Click="Click_btnExtra"/>
+        <Button Name ="btnPizza"  Content="Ajouter une pizza" Grid.Column="1" HorizontalAlignment="Left" Margin="10,230,0,0" VerticalAlignment="Top" Height="40" Width="150" Background="Orange"  Click="Click_btnPizza"/>
+        <Button Name ="btnValider" Content="Valider" Grid.Column="1" HorizontalAlignment="Left" Margin="390,230,0,0" VerticalAlignment="Top" Height="40" Width="150"   Click="Click_btnValider" Background="#FF2D6A38"/>
+        <Canvas Name="AfficheCommande" Grid.ColumnSpan="2" Margin="10,14,301,75" Background="#3F9D9D9D" Width="250" Height="200">
+            <Rectangle Height="200" Stroke="Black" Width="250"/>
+        </Canvas>
+
+        <Canvas Name="CanvaPizza" Grid.ColumnSpan="2" Margin="289,14,0,75" Background="#FF9D9D9D" Width="250" Height="200" Visibility="Hidden">
+            <Rectangle Height="200" Stroke="Black" Width="250"/>
+            <Label Content="Pizza" Canvas.Left="106" Canvas.Top="10"/>
+            <StackPanel Height="50" Width="92" Canvas.Left="10" Canvas.Top="50">
+                <RadioButton Name="RadioPetit" Content="Petite" Canvas.Left="45" Canvas.Top="65"/>
+                <RadioButton Name="RadioMoy" Content="Moyenne" Canvas.Left="45" Canvas.Top="80"/>
+                <RadioButton Name="RadioGrand"  Content="Grande" Canvas.Left="45" Canvas.Top="65"/>
+            </StackPanel>
+            <StackPanel Height="110" Width="144" Canvas.Left="106" Canvas.Top="50">
+                <CheckBox Name="checkFromage" Content="Fromage" Canvas.Left="178" Canvas.Top="75"/>
+                <CheckBox Name="checkSauceT" Content="Sauce Tomate" Canvas.Left="178" Canvas.Top="75"/>
+                <CheckBox Name="checkVege" Content="Vegetarienne" Canvas.Left="178" Canvas.Top="75"/>
+                <CheckBox Name="checkTouteG" Content="Toute garniture"/>
+            </StackPanel>
+            <Button Content="Ajouter" Canvas.Left="95" Canvas.Top="170" Width="58" Click="Click_Ajouter_SelectPizza"/>
+        </Canvas>
 
     </Grid>
 </Window>
