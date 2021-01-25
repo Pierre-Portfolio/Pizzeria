@@ -951,7 +951,7 @@
 											"top": 143,
 											"width": 214,
 											"height": 13,
-											"text": "-adrClient: string",
+											"text": "-nomClient: string",
 											"horizontalAlignment": 0
 										},
 										{
@@ -968,7 +968,7 @@
 											"top": 158,
 											"width": 214,
 											"height": 13,
-											"text": "-nomClient: string",
+											"text": "-prenomClient: string",
 											"horizontalAlignment": 0
 										},
 										{
@@ -985,7 +985,7 @@
 											"top": 173,
 											"width": 214,
 											"height": 13,
-											"text": "-prenomClient: string",
+											"text": "-adrClient: string",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1019,7 +1019,24 @@
 											"top": 203,
 											"width": 214,
 											"height": 13,
-											"text": "-CumulCommande: int",
+											"text": "-telClient: int",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAF3OHbTOZyrbLA=",
+											"_parent": {
+												"$ref": "AAAAAAF2qBW5iGBXnjc="
+											},
+											"model": {
+												"$ref": "AAAAAAF3OHbTJZyo0sU="
+											},
+											"font": "Arial;13;0",
+											"left": 29,
+											"top": 218,
+											"width": 214,
+											"height": 13,
+											"text": "-cumulCommande: int",
 											"horizontalAlignment": 0
 										}
 									],
@@ -1027,7 +1044,7 @@
 									"left": 24,
 									"top": 121,
 									"width": 224,
-									"height": 100
+									"height": 115
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -1040,7 +1057,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 24,
-									"top": 221,
+									"top": 236,
 									"width": 224,
 									"height": 10
 								},
@@ -1082,7 +1099,7 @@
 							"left": 24,
 							"top": 96,
 							"width": 224,
-							"height": 148,
+							"height": 150,
 							"nameCompartment": {
 								"$ref": "AAAAAAF2qBW5h2BSqx0="
 							},
@@ -3983,7 +4000,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 118,
-									"top": 279,
+									"top": 280,
 									"width": 46.61083984375,
 									"height": 13,
 									"alpha": -1.4601389288800883,
@@ -4006,7 +4023,7 @@
 									"visible": null,
 									"font": "Arial;13;0",
 									"left": 85,
-									"top": 282,
+									"top": 283,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -4027,7 +4044,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 129,
-									"top": 283,
+									"top": 284,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -4112,7 +4129,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 100,
-									"top": 262,
+									"top": 264,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 30,
@@ -4132,7 +4149,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 86,
-									"top": 265,
+									"top": 267,
 									"height": 13,
 									"alpha": -0.7853981633974483,
 									"distance": 40,
@@ -4151,7 +4168,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 118,
-									"top": 258,
+									"top": 260,
 									"width": 19.5126953125,
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -4197,7 +4214,7 @@
 							"tail": {
 								"$ref": "AAAAAAF2qB4mNWDteQs="
 							},
-							"points": "115:336;115:243",
+							"points": "115:336;115:245",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAF2qGhFFHQdSA8="
@@ -7754,7 +7771,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF2qBW5h2BP4zM="
 							},
-							"name": "adrClient",
+							"name": "nomClient",
 							"visibility": "private",
 							"type": "string"
 						},
@@ -7764,7 +7781,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF2qBW5h2BP4zM="
 							},
-							"name": "nomClient",
+							"name": "prenomClient",
 							"visibility": "private",
 							"type": "string"
 						},
@@ -7774,7 +7791,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF2qBW5h2BP4zM="
 							},
-							"name": "prenomClient",
+							"name": "adrClient",
 							"visibility": "private",
 							"type": "string"
 						},
@@ -7794,7 +7811,17 @@
 							"_parent": {
 								"$ref": "AAAAAAF2qBW5h2BP4zM="
 							},
-							"name": "CumulCommande",
+							"name": "telClient",
+							"visibility": "private",
+							"type": "int"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAF3OHbTJZyo0sU=",
+							"_parent": {
+								"$ref": "AAAAAAF2qBW5h2BP4zM="
+							},
+							"name": "cumulCommande",
 							"visibility": "private",
 							"type": "int"
 						}
