@@ -294,7 +294,7 @@ namespace Pizzeria
             btnAddClient.Background = Brushes.Green;
             btnAddClient.Height = 15;
             btnAddClient.Width = 15;
-            btnAddClient.Margin = new Thickness(150,-10, 0, 0);
+            btnAddClient.Margin = new Thickness(150, -10, 0, 0);
             btnAddClient.Click += new RoutedEventHandler(OpenAddClient);
             DynamicGridClient.Children.Add(btnAddClient);
 
@@ -392,7 +392,6 @@ namespace Pizzeria
             DynamicGridCommands.Height = 400;
             DynamicGridCommands.Width = 780;
             DynamicGridCommands.Margin = new Thickness(100, 20, 0, 0);
-
             Grid.SetRow(DynamicGridCommands, 2);
             Grid.SetColumn(DynamicGridCommands, 0);
             Grid.SetColumnSpan(DynamicGridCommands, 4);
@@ -410,107 +409,65 @@ namespace Pizzeria
             DynamicGridCommands.RowDefinitions.Add(gridRowCommande1);
             DynamicGridCommands.RowDefinitions.Add(gridRowCommande2);
 
-            //Creation premier sous tableau (tab de commande)
-            ScrollViewer scrollCommande = new ScrollViewer();
-            scrollCommande.Height = 370;
-            scrollCommande.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
-            DynamicGridCommands.Children.Add(scrollCommande);
+            ListView ListeViewCommande = new ListView();
+            ListeViewCommande.Height = 370;
+            ListeViewCommande.Width = 780;
+            ScrollViewer.SetHorizontalScrollBarVisibility(ListeViewCommande, ScrollBarVisibility.Hidden);
+            ListeViewCommande.Background = new SolidColorBrush(Colors.White) { Opacity = 0};
+            ListeViewCommande.BorderThickness = new Thickness(0,0,0,0); 
+            DynamicGridCommands.Children.Add(ListeViewCommande);
 
-            Grid TabCommande = new Grid();
-            ColumnDefinition Col1Commande = new ColumnDefinition();
-            TabCommande.ColumnDefinitions.Add(Col1Commande);
-
-            TabCommande.HorizontalAlignment = HorizontalAlignment.Left;
-            TabCommande.VerticalAlignment = VerticalAlignment.Top;
-            TabCommande.Height = 370;
-            TabCommande.Width = 780;
-            Grid.SetRow(TabCommande, 0);
-            scrollCommande.Content = TabCommande;
 
             //Ajout des commandes
             List<Commande> listeCommandes = ChargerCSVCommande();
-            if(listeCommandes.Count != 0)
+            int i = 0;
+            foreach (Commande c in listeCommandes)
             {
-                int i = 0;
-                foreach(Commande c in listeCommandes)
+                Grid Commande1 = new Grid();
+                ColumnDefinition Test1commande1Colum = new ColumnDefinition();
+                ColumnDefinition Test2commande1Colum = new ColumnDefinition();
+                ColumnDefinition Test3commande1Colum = new ColumnDefinition();
+                Commande1.ColumnDefinitions.Add(Test1commande1Colum);
+                Commande1.ColumnDefinitions.Add(Test2commande1Colum);
+                Commande1.ColumnDefinitions.Add(Test3commande1Colum);
+
+                Commande1.HorizontalAlignment = HorizontalAlignment.Left;
+                Commande1.VerticalAlignment = VerticalAlignment.Top;
+                Commande1.Height = 100;
+                Commande1.Width = 750;
+                Commande1.Margin = new Thickness(0, 0, 0, 0);
+                Commande1.Background = new SolidColorBrush(Colors.DarkGray);
+                Grid.SetRow(Commande1, i);
+                ListeViewCommande.Items.Add(Commande1);
+
+                Label pizzas = new Label();
+                //pizzas.Foreground = new SolidColorBrush(Colors.White);
+                foreach (Pizza p in c.ListePizza)
                 {
-                    RowDefinition Row1Commande = new RowDefinition();
-                    Row1Commande.MinHeight = 100;
-                    TabCommande.RowDefinitions.Add(Row1Commande);
-
-                    Grid Commande1 = new Grid();
-                    ColumnDefinition Test1commande1Colum = new ColumnDefinition();
-                    ColumnDefinition Test2commande1Colum = new ColumnDefinition();
-                    ColumnDefinition Test3commande1Colum = new ColumnDefinition();
-                    Commande1.ColumnDefinitions.Add(Test1commande1Colum);
-                    Commande1.ColumnDefinitions.Add(Test2commande1Colum);
-                    Commande1.ColumnDefinitions.Add(Test3commande1Colum);
-
-                    Commande1.HorizontalAlignment = HorizontalAlignment.Left;
-                    Commande1.VerticalAlignment = VerticalAlignment.Top;
-                    Commande1.Height = 100;
-                    Commande1.Width = 780;
-                    Commande1.Margin = new Thickness(0, 0, 0, 0);
-                    Commande1.Background = new SolidColorBrush(Colors.Gray);
-                    Grid.SetRow(Commande1, i);
-                    TabCommande.Children.Add(Commande1);
-
-                    Label pizzas = new Label();
-                    foreach(Pizza p in c.ListePizza)
-                    {
-                        pizzas.Content += p.AffichePizza();
-                    }
-                    Grid.SetColumn(pizzas, 0);
-                    Commande1.Children.Add(pizzas);
-
-                    Label extra = new Label();
-                    foreach (Boisson b in c.ProduitAnnexes)
-                    {
-                        extra.Content = b.AfficherBoisson();
-                    }
-                    Grid.SetColumn(extra, 1);
-                    Commande1.Children.Add(extra);
-
-                    Label Infos = new Label();
-                    Infos.Content +="Num commande :"+c.NumCommande +"\nClient : " + c.NomClient + "\nCommis : "+c.NomCommis+"\nHeure :"+c.Heure+"\nEtat : "+c.Etat;
-                    Grid.SetColumn(Infos, 2);
-                    Commande1.Children.Add(Infos);
-
-                    i++;
+                    pizzas.Content += p.AffichePizza();
                 }
+                Grid.SetColumn(pizzas, 0);
+                Commande1.Children.Add(pizzas);
+
+                Label extra = new Label();
+                //extra.Foreground = new SolidColorBrush(Colors.White);
+
+                foreach (Boisson b in c.ProduitAnnexes)
+                {
+                    extra.Content = b.AfficherBoisson();
+                }
+                Grid.SetColumn(extra, 1);
+                Commande1.Children.Add(extra);
+
+                Label Infos = new Label();
+                //Infos.Foreground = new SolidColorBrush(Colors.White);
+
+                Infos.Content += "Num commande :" + c.NumCommande + "\nClient : " + c.NomClient + "\nCommis : " + c.NomCommis + "\nHeure :" + c.Heure + "\nEtat : " + c.Etat;
+                Grid.SetColumn(Infos, 2);
+                Commande1.Children.Add(Infos);
+
+                i++;
             }
-            /*
-            Grid Commande1 = new Grid();
-            ColumnDefinition Test1commande1Colum = new ColumnDefinition();
-            ColumnDefinition Test2commande1Colum = new ColumnDefinition();
-            ColumnDefinition Test3commande1Colum = new ColumnDefinition();
-            Commande1.ColumnDefinitions.Add(Test1commande1Colum);
-            Commande1.ColumnDefinitions.Add(Test2commande1Colum);
-            Commande1.ColumnDefinitions.Add(Test3commande1Colum);
-
-            Commande1.HorizontalAlignment = HorizontalAlignment.Left;
-            Commande1.VerticalAlignment = VerticalAlignment.Top;
-            Commande1.Height = 100;
-            Commande1.Width = 780;
-            Commande1.Margin = new Thickness(0, 0, 0, 0);
-            Commande1.Background = new SolidColorBrush(Colors.Gray);
-            Grid.SetRow(Commande1, 0);
-            TabCommande.Children.Add(Commande1);
-            
-            Label pizza1 = new Label();
-            pizza1.Content = "Test Pizza 1";
-            Grid.SetColumn(pizza1, 0);
-            Commande1.Children.Add(pizza1); 
-            Label pizza2 = new Label();
-            pizza2.Content = "Test Pizza 2";
-            Grid.SetColumn(pizza2, 1);
-            Commande1.Children.Add(pizza2);
-
-            Label pizza3 = new Label();
-            pizza3.Content = "Test Pizza 3";
-            Grid.SetColumn(pizza3, 2);
-            Commande1.Children.Add(pizza3);*/
-
 
             //Ajout des btns
             Button btnCommander = new Button();
@@ -521,23 +478,6 @@ namespace Pizzeria
             Grid.SetRow(btnCommander, 1);
             //btnCommander.Click += new RoutedEventHandler(OpenChercherClient);
             DynamicGridCommands.Children.Add(btnCommander);
-            #endregion creation window Commande
-
-            #region creation window Statistique
-            // création grid dynamic
-            DynamicGridStat.HorizontalAlignment = HorizontalAlignment.Left;
-            DynamicGridStat.Height = 324;
-            DynamicGridStat.Margin = new Thickness(27, 0, 0, 0);
-            DynamicGridStat.VerticalAlignment = VerticalAlignment.Center;
-            DynamicGridStat.Width = 743;
-            #endregion creation window Statistique
-
-            #region creation window Administration
-            DynamicGridAdmin.HorizontalAlignment = HorizontalAlignment.Left;
-            DynamicGridAdmin.Height = 324;
-            DynamicGridAdmin.Margin = new Thickness(27, 0, 0, 0);
-            DynamicGridAdmin.VerticalAlignment = VerticalAlignment.Center;
-            DynamicGridAdmin.Width = 743;
             #endregion creation window Administration
 
 
