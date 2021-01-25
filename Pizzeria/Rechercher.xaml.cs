@@ -85,7 +85,7 @@ namespace Pizzeria
         {
             if (client != null)
             {
-                var WindowPasserCommande = new PasserCommande();
+                var WindowPasserCommande = new PasserCommande(client);
                 WindowPasserCommande.Show();
             }
             this.Close();

@@ -17,7 +17,7 @@
         <Button Name ="btnExtra" Content="Ajouter un extra" Grid.Column="1" HorizontalAlignment="Center" Margin="0,230,0,0" VerticalAlignment="Top" Height="40" Width="150" Background="Orange" Click="Click_btnExtra"/>
         <Button Name ="btnPizza"  Content="Ajouter une pizza" Grid.Column="1" HorizontalAlignment="Left" Margin="10,230,0,0" VerticalAlignment="Top" Height="40" Width="150" Background="Orange"  Click="Click_btnPizza"/>
         <Button Name ="btnValider" Content="Valider" Grid.Column="1" HorizontalAlignment="Left" Margin="390,230,0,0" VerticalAlignment="Top" Height="40" Width="150"   Click="Click_btnValider" Background="#FF2D6A38"/>
-        <Canvas Name="AfficheCommande" Grid.ColumnSpan="2" Margin="10,14,301,75" Background="#3F9D9D9D" Width="250" Height="200">
+        <Canvas Name="CanvaAfficheCommande" Grid.ColumnSpan="2" Margin="10,14,301,75" Background="#3F9D9D9D" Width="250" Height="200">
             <Rectangle Height="200" Stroke="Black" Width="250"/>
         </Canvas>
 
@@ -36,6 +36,24 @@
                 <CheckBox Name="checkTouteG" Content="Toute garniture"/>
             </StackPanel>
             <Button Content="Ajouter" Canvas.Left="95" Canvas.Top="170" Width="58" Click="Click_Ajouter_SelectPizza"/>
+        </Canvas>
+
+        <Canvas Name="CanvaExtra" Grid.ColumnSpan="2" Margin="289,14,0,75" Background="#FF9D9D9D" Width="250" Height="200" Visibility="Hidden">
+            <Rectangle Height="200" Stroke="Black" Width="250"/>
+            <Label Content="Extra" Canvas.Left="106" Canvas.Top="10"/>
+            <StackPanel Height="110" Width="115" Canvas.Left="10" Canvas.Top="45">
+                <RadioButton Name="Coca" Content="Coca" Canvas.Left="178" Canvas.Top="75"/>
+                <RadioButton Name="Sprite" Content="Sprite" Canvas.Left="178" Canvas.Top="75"/>
+                <RadioButton Name="Fanta" Content="Fanta" Canvas.Left="178" Canvas.Top="75"/>
+                <RadioButton Name="RedBull" Content="RedBull"/>
+            </StackPanel>
+            <StackPanel Height="110" Width="115" Canvas.Left="124" Canvas.Top="45">
+                <RadioButton Name="DemiLitre" Content="0,5L" Canvas.Left="178" Canvas.Top="75"/>
+                <RadioButton Name="Litre" Content="1L" Canvas.Left="178" Canvas.Top="75"/>
+                <RadioButton Name="LitreDemi" Content="1,5L"/>
+                <RadioButton Name="Litre2" Content="2L"/>
+            </StackPanel>
+            <Button Content="Ajouter" Canvas.Left="95" Canvas.Top="170" Width="58" Click="Click_Ajouter_Extra"/>
         </Canvas>
 
     </Grid>

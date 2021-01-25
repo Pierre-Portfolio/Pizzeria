@@ -20,6 +20,7 @@ namespace Pizzeria
         private EtatCommande etat;
         private List<Pizza> listePizza;
         private List<Boisson> produitAnnexes;
+        public static int lastCommande = 0;
 
         public int NumCommande { get => numCommande;}
         public string Heure { get => heure;}
@@ -31,17 +32,18 @@ namespace Pizzeria
         public List<Pizza> ListePizza { get => listePizza;}
         public List<Boisson> ProduitAnnexes { get => produitAnnexes; }
 
-        public Commande()
+        public Commande(int numclient = 0,string nomclient = "", string nomcommis ="")
         {
-            this.numCommande = 0;
-            this.heure = null;
+            this.numCommande = lastCommande +1;
+            this.heure = (DateTime.Now.Hour+ 1) + "";
             this.date = DateTime.Now;
-            this.numeroClient = 0;
-            this.nomClient = "";
-            this.nomCommis = "";
+            this.numeroClient = numclient;
+            this.nomClient = nomclient;
+            this.nomCommis = nomcommis;
             this.etat = EtatCommande.en_preparation;
             this.listePizza = new List<Pizza>();
             this.produitAnnexes = new List<Boisson>();
+            lastCommande++;
         }
 
         public Commande(int numCommande, string heure, DateTime date, int numeroClient, string nomClient, string nomCommis, EtatCommande etat, List<Pizza> listePizza, List<Boisson> produitAnnexes)
@@ -55,6 +57,8 @@ namespace Pizzeria
             this.etat = etat;
             this.listePizza = listePizza;
             this.produitAnnexes = produitAnnexes;
+            lastCommande = numCommande;
+
         }
     }
 }
