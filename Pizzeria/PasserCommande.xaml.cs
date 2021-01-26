@@ -54,7 +54,7 @@ namespace Pizzeria
             {
                 string path = "..\\..\\..\\Commandes.csv";
                 string date = currentCommande.Date.Day + "/" + currentCommande.Date.Month + "/" + currentCommande.Date.Year;
-                string line = "\n"+currentCommande.NumCommande + ";" + currentCommande.Heure + "h;" +date + ";" + currentCommande.NumeroClient + ";"+currentClient.NomClient + ";" + "" + ";" + currentCommande.Etat.ToString() + ";";
+                string line = currentCommande.NumCommande + ";" + currentCommande.Heure + "h;" +date + ";" + currentCommande.NumeroClient + ";"+currentClient.NomClient + ";" + "chenal" + ";" + currentCommande.Etat.ToString() + ";";
                 for (int i = 0; i < currentCommande.ListePizza.Count; i++)
                 {
                     if (currentCommande.ListePizza[i].Garnitures.Count != 0)
@@ -62,10 +62,10 @@ namespace Pizzeria
                         line += currentCommande.ListePizza[i].Taille + ",";
                         for (int j = 0; j < currentCommande.ListePizza[i].Garnitures.Count; j++)
                         {
-                            if (j == currentCommande.ListePizza[i].Garnitures.Count - 1)
+                            if (j >= currentCommande.ListePizza[i].Garnitures.Count - 1)
                             {
-                                if (i == currentCommande.ListePizza[i].Garnitures.Count-1)
-                                    line += currentCommande.ListePizza[i].Garnitures[j].ToString()+";";
+                                if (i >= currentCommande.ListePizza.Count-1)
+                                    line += currentCommande.ListePizza[i].Garnitures[j].ToString();
                                 else
                                     line += currentCommande.ListePizza[i].Garnitures[j].ToString() + "/";
                             }
@@ -77,7 +77,7 @@ namespace Pizzeria
                     }
                     else
                     {
-                        if (i == currentCommande.ListePizza.Count - 1)
+                        if (i >= currentCommande.ListePizza.Count - 1)
                         {
                             line += currentCommande.ListePizza[i].Taille;
                         }
@@ -87,6 +87,7 @@ namespace Pizzeria
                         }
                     }
                 }
+                line += ";";
                 for(int i = 0; i < currentCommande.ProduitAnnexes.Count; i++)
                 {
                     if (i == currentCommande.ProduitAnnexes.Count - 1)
