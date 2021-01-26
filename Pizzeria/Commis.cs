@@ -6,15 +6,21 @@ namespace Pizzeria
 {
     public class Commis : Personelle
     {
-        private string etatCommis;
+        public enum etat_commis
+        {
+            surplace,
+            enconges,
+        }
+
+        private etat_commis etatCommis;
         private DateTime dateEmbauche;
 
-        public Commis(string nomEmploye, string prenomEmploye, string adrEmploye, string numEmploye, string etatCommis, DateTime dateEmbauche) : base(nomEmploye, prenomEmploye, adrEmploye, numEmploye)
+        public Commis(string nomEmploye, string prenomEmploye, string adrEmploye, string numEmploye, etat_commis etatCommis, DateTime dateEmbauche) : base(nomEmploye, prenomEmploye, adrEmploye, numEmploye)
         {
             this.etatCommis = etatCommis;
             this.dateEmbauche = dateEmbauche;
         }
-        public string EtatCommis
+        public etat_commis EtatCommis
         {
             get { return etatCommis; }
         }

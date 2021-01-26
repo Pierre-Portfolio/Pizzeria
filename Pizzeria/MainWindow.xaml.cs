@@ -105,7 +105,8 @@ namespace Pizzeria
                     if (ligne != null)
                     {
                         string[] tem = ligne.Split(';');
-                        c1.Add(new Commis(tem[0], tem[1], tem[2], tem[3],tem[4],Convert.ToDateTime(tem[5])));
+                        Commis.etat_commis en = Enum.Parse<Commis.etat_commis>(tem[4]);
+                        c1.Add(new Commis(tem[0], tem[1], tem[2], tem[3],en,Convert.ToDateTime(tem[5])));
                     }
                 }
                 lecteur.Close();
@@ -128,7 +129,8 @@ namespace Pizzeria
                     if (ligne != null)
                     {
                         string[] tem = ligne.Split(';');
-                        c1.Add(new Livreur(tem[0], tem[1], tem[2], tem[3],tem[4],tem[5]));
+                        Livreur.etat_livreur en = Enum.Parse<Livreur.etat_livreur>(tem[4]);
+                        c1.Add(new Livreur(tem[0], tem[1], tem[2], tem[3],en,tem[5]));
                     }
                 }
                 lecteur.Close();
@@ -147,6 +149,19 @@ namespace Pizzeria
         {
             var WindowChercher = new Rechercher(this.listeClient);
             WindowChercher.Show();
+        }
+
+        private void OpenAddCommis(object sender, RoutedEventArgs e)
+        {
+            var WindowAddComis = new addCommis();
+            WindowAddComis.Show();
+            this.Close();
+        }
+        private void OpenAddLivreur(object sender, RoutedEventArgs e)
+        {
+            var WindowAddLivreur = new AddLivreur();
+            WindowAddLivreur.Show();
+            this.Close();
         }
         #endregion
 
@@ -373,10 +388,10 @@ namespace Pizzeria
             btnAddCommis.Width = 15;
             btnAddCommis.BorderThickness = new Thickness(0, 0, 0, 0);
             btnAddCommis.Margin = new Thickness(154,-125, 0, 0);
+            btnAddCommis.Click += new RoutedEventHandler(OpenAddCommis);
+            btnAddCommis.Background = new ImageBrush(new BitmapImage(new Uri(@"https://cdn.pixabay.com/photo/2014/04/02/10/41/button-304224_640.png")));
             Grid.SetRow(btnAddCommis, 3);
             Grid.SetColumn(btnAddCommis, 0);
-            btnAddCommis.Background = new ImageBrush(new BitmapImage(new Uri(@"https://cdn.pixabay.com/photo/2014/04/02/10/41/button-304224_640.png")));
-            //btnAddClient.Click += new RoutedEventHandler(OpenAddClient);
             DynamicGridClient.Children.Add(btnAddCommis);
 
             //Btn del
@@ -386,10 +401,10 @@ namespace Pizzeria
             btnSuprCommis.Height = 15;
             btnSuprCommis.Width = 15;
             btnSuprCommis.BorderThickness = new Thickness(0, 0, 0, 0);
-            Grid.SetRow(btnSuprCommis, 3);
-            Grid.SetColumn(btnSuprCommis, 0);
             btnSuprCommis.Background = new ImageBrush(new BitmapImage(new Uri(@"https://cdn.pixabay.com/photo/2013/07/12/17/00/remove-151678_960_720.png")));
             btnSuprCommis.Margin = new Thickness(204, -125, 0, 0);
+            Grid.SetRow(btnSuprCommis, 3);
+            Grid.SetColumn(btnSuprCommis, 0);
             DynamicGridClient.Children.Add(btnSuprCommis);
 
             // tableau des commis
@@ -404,6 +419,7 @@ namespace Pizzeria
             Grid.SetRow(myGridCommis, 4);
             Grid.SetColumn(myGridCommis, 0);
             DynamicGridClient.Children.Add(myGridCommis);
+
             #endregion
 
             #region DynamicLivreur
@@ -436,6 +452,20 @@ namespace Pizzeria
             Grid.SetRow(myGridLivreur, 6);
             Grid.SetColumn(myGridLivreur, 0);
             DynamicGridClient.Children.Add(myGridLivreur);
+
+            //Btn ajouter
+            Button btnAddLivreur = new Button();
+            btnAddLivreur.Content = "";
+            btnAddLivreur.Background = Brushes.Green;
+            btnAddLivreur.Height = 15;
+            btnAddLivreur.Width = 15;
+            btnAddLivreur.BorderThickness = new Thickness(0, 0, 0, 0);
+            btnAddLivreur.Margin = new Thickness(154, -125, 0, 0);
+            btnAddLivreur.Click += new RoutedEventHandler(OpenAddLivreur);
+            btnAddLivreur.Background = new ImageBrush(new BitmapImage(new Uri(@"https://cdn.pixabay.com/photo/2014/04/02/10/41/button-304224_640.png")));
+            Grid.SetRow(btnAddLivreur, 5);
+            Grid.SetColumn(btnAddLivreur, 0);
+            DynamicGridClient.Children.Add(btnAddLivreur);
             #endregion
             #endregion creation window client
 

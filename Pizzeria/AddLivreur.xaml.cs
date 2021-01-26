@@ -11,27 +11,22 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
 
-
 namespace Pizzeria
 {
     /// <summary>
-    /// Logique d'interaction pour AddClient.xaml
+    /// Logique d'interaction pour AddLivreur.xaml
     /// </summary>
-    public partial class AddClient : Window
+    public partial class AddLivreur : Window
     {
-        public AddClient()
+        public AddLivreur()
         {
             InitializeComponent();
         }
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
 
-        }
-        
-        private void AddToCsv(Client c)
+        private void AddToCsv(Livreur l)
         {
-            string path = "..\\..\\..\\Clients.csv";
-            string line = c.NumClient + ";" + c.NomClient + ";" + c.PrenomClient + ";" + c.AdrClient + ";" + c.TelClient + ";" + c.DatePremiereCmd.Day+"/"+c.DatePremiereCmd.Month+"/"+c.DatePremiereCmd.Year + ";" + c.CumulCommande;
+            string path = "..\\..\\..\\Livreur.csv";
+            string line = l.NomEmploye + ";" + l.PrenomEmploye + ";" + l.AdrEmploye + ";" + l.NumEmploye + ";" + l.EtatLivreur.ToString() + ";" + l.MoyenLivraison;
             if (!File.Exists(path))
             {
                 // Creation du fichier.
@@ -46,29 +41,33 @@ namespace Pizzeria
                 sw.Close();
             }
         }
-        
-        private void AjouterClient(object sender, RoutedEventArgs e)
+        private void AjouterLivreur(object sender, RoutedEventArgs e)
         {
-            if(BoxNom.Text != "" && BoxPrenom.Text.Length != 0 && BoxAdresse.Text.Length != 0 && BoxTel.Text.Length != 0)
+            if (BoxNom.Text != "" && BoxPrenom.Text.Length != 0 && BoxAdresse.Text.Length != 0 && BoxTel.Text.Length != 0 && BoxLivraison.Text.Length != 0)
             {
-                Client c = new Client(Client.lastNum + 1,  BoxNom.Text, BoxPrenom.Text, BoxAdresse.Text, int.Parse(BoxTel.Text));
-                AddToCsv(c);
+                Livreur l = new Livreur(BoxNom.Text, BoxPrenom.Text, BoxAdresse.Text, BoxTel.Text, Livreur.etat_livreur.surplace,BoxLivraison.Text);
+                AddToCsv(l);
                 var WindowMain = new MainWindow();
-                WindowMain.Show(); 
+                WindowMain.Show();
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Champs manquant","Erreur d'ajout");
+                MessageBox.Show("Champs manquant", "Erreur d'ajout");
             }
         }
 
-        private void BoxNom_TextChanged(object sender, TextChangedEventArgs e)
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
 
         private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void BoxNom_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }

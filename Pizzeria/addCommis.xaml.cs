@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace Pizzeria
 {
@@ -20,6 +21,55 @@ namespace Pizzeria
         public addCommis()
         {
             InitializeComponent();
+        }
+
+        private void AddToCsv(Commis c)
+        {
+            string path = "..\\..\\..\\Commis.csv";
+            string line = c.NomEmploye + ";" + c.PrenomEmploye + ";" + c.AdrEmploye + ";" + c.NumEmploye + ";" + c.EtatCommis.ToString() + ";" + c.DateEmbauche.Day + "/" + c.DateEmbauche.Month + "/" + c.DateEmbauche.Year;
+            if (!File.Exists(path))
+            {
+                // Creation du fichier.
+                StreamWriter sw = File.CreateText(path);
+                sw.WriteLine(line);
+                sw.Close();
+            }
+            else
+            {
+                StreamWriter sw = File.AppendText(path);
+                sw.WriteLine(line);
+                sw.Close();
+            }
+        }
+        private void AjouterCommis(object sender, RoutedEventArgs e)
+        {
+            if (BoxNom.Text != "" && BoxPrenom.Text.Length != 0 && BoxAdresse.Text.Length != 0 && BoxTel.Text.Length != 0)
+            {
+                Commis c = new Commis(BoxNom.Text, BoxPrenom.Text, BoxAdresse.Text, BoxTel.Text, Commis.etat_commis.surplace,DateTime.Now);
+                AddToCsv(c);
+                var WindowMain = new MainWindow();
+                WindowMain.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Champs manquant", "Erreur d'ajout");
+            }
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void BoxNom_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
