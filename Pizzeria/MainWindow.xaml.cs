@@ -360,10 +360,37 @@ namespace Pizzeria
             txtBlock2.Foreground = new SolidColorBrush(Colors.Orange);
             txtBlock2.FontWeight = FontWeights.Bold;
             txtBlock2.TextAlignment = TextAlignment.Center;
-            txtBlock2.Margin = new Thickness(0, -20, 0, 0);
+            txtBlock2.Margin = new Thickness(0, -22, 0, 0);
             Grid.SetRow(txtBlock2, 3);
             Grid.SetColumn(txtBlock2, 0);
             DynamicGridClient.Children.Add(txtBlock2);
+
+            //Btn ajouter
+            Button btnAddCommis = new Button();
+            btnAddCommis.Content = "";
+            btnAddCommis.Background = Brushes.Green;
+            btnAddCommis.Height = 15;
+            btnAddCommis.Width = 15;
+            btnAddCommis.BorderThickness = new Thickness(0, 0, 0, 0);
+            btnAddCommis.Margin = new Thickness(154,-125, 0, 0);
+            Grid.SetRow(btnAddCommis, 3);
+            Grid.SetColumn(btnAddCommis, 0);
+            btnAddCommis.Background = new ImageBrush(new BitmapImage(new Uri(@"https://cdn.pixabay.com/photo/2014/04/02/10/41/button-304224_640.png")));
+            //btnAddClient.Click += new RoutedEventHandler(OpenAddClient);
+            DynamicGridClient.Children.Add(btnAddCommis);
+
+            //Btn del
+            Button btnSuprCommis = new Button();
+            btnSuprCommis.Content = "";
+            btnSuprCommis.Background = Brushes.Red;
+            btnSuprCommis.Height = 15;
+            btnSuprCommis.Width = 15;
+            btnSuprCommis.BorderThickness = new Thickness(0, 0, 0, 0);
+            Grid.SetRow(btnSuprCommis, 3);
+            Grid.SetColumn(btnSuprCommis, 0);
+            btnSuprCommis.Background = new ImageBrush(new BitmapImage(new Uri(@"https://cdn.pixabay.com/photo/2013/07/12/17/00/remove-151678_960_720.png")));
+            btnSuprCommis.Margin = new Thickness(204, -125, 0, 0);
+            DynamicGridClient.Children.Add(btnSuprCommis);
 
             // tableau des commis
             DataGrid myGridCommis = new DataGrid();
@@ -389,7 +416,7 @@ namespace Pizzeria
             txtBlock3.FontWeight = FontWeights.Bold;
             txtBlock3.Foreground = new SolidColorBrush(Colors.Orange);
             txtBlock3.VerticalAlignment = VerticalAlignment.Top;
-            txtBlock3.Margin = new Thickness(0, -13, 0, 0);
+            txtBlock3.Margin = new Thickness(0, -15, 0, 0);
             txtBlock3.HorizontalAlignment = HorizontalAlignment.Center;
             txtBlock3.TextAlignment = TextAlignment.Center;
             Grid.SetRow(txtBlock3, 5);
