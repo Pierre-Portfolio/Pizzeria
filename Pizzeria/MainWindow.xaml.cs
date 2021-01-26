@@ -298,32 +298,36 @@ namespace Pizzeria
 
             //Btn ajouter
             Button btnAddClient = new Button();
-            btnAddClient.Content = "+";
+            btnAddClient.Content = "";
             btnAddClient.Background = Brushes.Green;
             btnAddClient.Height = 15;
             btnAddClient.Width = 15;
+            btnAddClient.BorderThickness = new Thickness(0, 0, 0, 0);
             btnAddClient.Margin = new Thickness(150, -10, 0, 0);
-            //btnAddClient.Background = new ImageBrush(new BitmapImage(new Uri(@"..\\..\\..\\logoPizza.png")));
+            btnAddClient.Background = new ImageBrush(new BitmapImage(new Uri(@"https://cdn.pixabay.com/photo/2014/04/02/10/41/button-304224_640.png")));
             btnAddClient.Click += new RoutedEventHandler(OpenAddClient);
             DynamicGridClient.Children.Add(btnAddClient);
 
             //Btn del
             Button btnSuprClient = new Button();
-            btnSuprClient.Content = "-";
+            btnSuprClient.Content = "";
             btnSuprClient.Background = Brushes.Red;
             btnSuprClient.Height = 15;
             btnSuprClient.Width = 15;
+            btnSuprClient.BorderThickness = new Thickness(0, 0, 0, 0);
+            btnSuprClient.Background = new ImageBrush(new BitmapImage(new Uri(@"https://cdn.pixabay.com/photo/2013/07/12/17/00/remove-151678_960_720.png")));
             btnSuprClient.Margin = new Thickness(200, -10, 0, 0);
             DynamicGridClient.Children.Add(btnSuprClient);
 
             //Btn Rechercher
             Button btnChercher = new Button();
-            btnChercher.Content = "Chercher";
+            btnChercher.Content = "";
             btnChercher.BorderThickness = new Thickness(0, 0, 0, 0);
             btnChercher.Background = new SolidColorBrush(Colors.White);
+            btnChercher.Background = new ImageBrush(new BitmapImage(new Uri(@"https://www.icone-png.com/png/1/1402.png")));
             btnChercher.Height = 15;
-            btnChercher.Width = 68;
-            btnChercher.Margin = new Thickness(300, -11, 0, 0);
+            btnChercher.Width = 15;
+            btnChercher.Margin = new Thickness(250, -11, 0, 0);
             btnChercher.Click += new RoutedEventHandler(OpenChercherClient);
             DynamicGridClient.Children.Add(btnChercher);
 
