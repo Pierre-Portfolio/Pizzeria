@@ -284,11 +284,13 @@ namespace Pizzeria
             TextBlock txtBlock1 = new TextBlock();
             txtBlock1.Text = "Liste des Clients";
             txtBlock1.FontSize = 14;
-            txtBlock1.Background = new SolidColorBrush(Colors.Orange);
-            txtBlock1.FontWeight = FontWeights.Bold;
-            txtBlock1.Foreground = new SolidColorBrush(Colors.Green);
+            txtBlock1.Width = 700;
+            txtBlock1.TextAlignment = TextAlignment.Center;
+            txtBlock1.Background = new SolidColorBrush(Colors.Black);
+            txtBlock1.Foreground = new SolidColorBrush(Colors.Orange);
             txtBlock1.VerticalAlignment = VerticalAlignment.Top;
             txtBlock1.HorizontalAlignment = HorizontalAlignment.Center;
+            txtBlock1.FontWeight = FontWeights.Bold;
             Grid.SetRow(txtBlock1, 0);
             Grid.SetColumn(txtBlock1, 0);
             Grid.SetColumnSpan(txtBlock1, 4);
@@ -316,9 +318,11 @@ namespace Pizzeria
             //Btn Rechercher
             Button btnChercher = new Button();
             btnChercher.Content = "Chercher";
-            btnChercher.Height = 20;
-            btnChercher.Width = 70;
-            btnChercher.Margin = new Thickness(300, -10, 0, 0);
+            btnChercher.BorderThickness = new Thickness(0, 0, 0, 0);
+            btnChercher.Background = new SolidColorBrush(Colors.White);
+            btnChercher.Height = 15;
+            btnChercher.Width = 68;
+            btnChercher.Margin = new Thickness(300, -11, 0, 0);
             btnChercher.Click += new RoutedEventHandler(OpenChercherClient);
             DynamicGridClient.Children.Add(btnChercher);
 
@@ -330,6 +334,9 @@ namespace Pizzeria
             this.listeClient = l;
             myGridClient.ItemsSource = l;
             myGridClient.Foreground = new SolidColorBrush(Colors.Orange);
+            myGridClient.GridLinesVisibility = DataGridGridLinesVisibility.None;
+            myGridClient.Margin = new Thickness(0, -22, 0, 0);
+            myGridClient.BorderThickness = new Thickness(0, 0, 0, 0);
             Grid.SetRow(myGridClient, 1);
             Grid.SetColumn(myGridClient, 0);
             Grid.SetColumnSpan(myGridClient, 4);
@@ -341,11 +348,14 @@ namespace Pizzeria
             TextBlock txtBlock2 = new TextBlock();
             txtBlock2.Text = "Liste des Commis";
             txtBlock2.FontSize = 14;
+            txtBlock2.Width = 700;
             txtBlock2.HorizontalAlignment = HorizontalAlignment.Center;
-            txtBlock2.Background = new SolidColorBrush(Colors.Orange);
-            txtBlock2.FontWeight = FontWeights.Bold;
-            txtBlock2.Foreground = new SolidColorBrush(Colors.Green);
             txtBlock2.VerticalAlignment = VerticalAlignment.Top;
+            txtBlock2.Background = new SolidColorBrush(Colors.Black);
+            txtBlock2.Foreground = new SolidColorBrush(Colors.Orange);
+            txtBlock2.FontWeight = FontWeights.Bold;
+            txtBlock2.TextAlignment = TextAlignment.Center;
+            txtBlock2.Margin = new Thickness(0, -20, 0, 0);
             Grid.SetRow(txtBlock2, 3);
             Grid.SetColumn(txtBlock2, 0);
             DynamicGridClient.Children.Add(txtBlock2);
@@ -353,26 +363,30 @@ namespace Pizzeria
             // tableau des commis
             DataGrid myGridCommis = new DataGrid();
             myGridCommis.Width = 700;
-            myGridCommis.Height = 80;
-            myGridCommis.Margin = new Thickness(0, -45, 0, 0);
+            myGridCommis.Height = 100;
+            myGridCommis.Margin = new Thickness(0, -135, 0, 0);
+            myGridCommis.GridLinesVisibility = DataGridGridLinesVisibility.None;
             myGridCommis.ItemsSource = ChargerCSVCommis("..\\..\\..\\Commis.csv");
             myGridCommis.Foreground = new SolidColorBrush(Colors.Orange);
+            myGridCommis.BorderThickness = new Thickness(0, 0, 0, 0);
             Grid.SetRow(myGridCommis, 4);
             Grid.SetColumn(myGridCommis, 0);
-            //Grid.SetColumnSpan(myGridClient, 4);
             DynamicGridClient.Children.Add(myGridCommis);
             #endregion
+
             #region DynamicLivreur
             // titre 3
             TextBlock txtBlock3 = new TextBlock();
             txtBlock3.Text = "Liste des Livreur";
             txtBlock3.FontSize = 14;
-            txtBlock3.Background = new SolidColorBrush(Colors.Orange);
+            txtBlock3.Width = 700;
+            txtBlock3.Background = new SolidColorBrush(Colors.Black);
             txtBlock3.FontWeight = FontWeights.Bold;
-            txtBlock3.Foreground = new SolidColorBrush(Colors.Green);
+            txtBlock3.Foreground = new SolidColorBrush(Colors.Orange);
             txtBlock3.VerticalAlignment = VerticalAlignment.Top;
-            txtBlock3.Margin = new Thickness(0, 5, 0, 0);
+            txtBlock3.Margin = new Thickness(0, -13, 0, 0);
             txtBlock3.HorizontalAlignment = HorizontalAlignment.Center;
+            txtBlock3.TextAlignment = TextAlignment.Center;
             Grid.SetRow(txtBlock3, 5);
             Grid.SetColumn(txtBlock3, 0);
             DynamicGridClient.Children.Add(txtBlock3);
@@ -380,11 +394,13 @@ namespace Pizzeria
             // tableau des serveur
             DataGrid myGridLivreur = new DataGrid();
             myGridLivreur.Width = 700;
-            myGridLivreur.Height = 80;
-            myGridLivreur.Margin = new Thickness(0, 20, 0, 0);
+            myGridLivreur.Height = 100;
+            myGridLivreur.Margin = new Thickness(0, 5, 0, 0);
+            myGridLivreur.GridLinesVisibility = DataGridGridLinesVisibility.None;
             List<Livreur> livreur = new List<Livreur>();
             myGridLivreur.ItemsSource = ChargerCSVLivreur("..\\..\\..\\Livreur.csv");
             myGridLivreur.Foreground = new SolidColorBrush(Colors.Orange);
+            myGridLivreur.BorderThickness = new Thickness(0, 0, 0, 0);
             Grid.SetRow(myGridLivreur, 6);
             Grid.SetColumn(myGridLivreur, 0);
             DynamicGridClient.Children.Add(myGridLivreur);

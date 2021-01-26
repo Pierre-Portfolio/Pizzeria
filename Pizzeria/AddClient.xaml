@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pizzeria"
         mc:Ignorable="d"
-        Title="Ajouter un client" Height="450" Width="338">
+        Title="Ajouter un client" Height="450" Width="338" ScrollViewer.VerticalScrollBarVisibility="Disabled" ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="33*"/>
-            <ColumnDefinition Width="305*"/>
+            <ColumnDefinition Width="280*"/>
+            <ColumnDefinition Width="25*"/>
         </Grid.ColumnDefinitions>
-        <Canvas Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="434" VerticalAlignment="Center" Width="338">
+        <Canvas Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="434" VerticalAlignment="Center" Width="338">
             <Canvas.Background>
                 <ImageBrush ImageSource="/banner2.jpg" Stretch="UniformToFill"/>
             </Canvas.Background>
