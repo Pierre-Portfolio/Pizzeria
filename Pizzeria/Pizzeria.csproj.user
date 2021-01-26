@@ -10,6 +10,9 @@
     <Compile Update="AddClient.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="addCommis.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="PasserCommande.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -19,6 +22,9 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="AddClient.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="addCommis.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">

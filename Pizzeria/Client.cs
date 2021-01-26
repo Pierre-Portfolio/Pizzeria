@@ -69,6 +69,7 @@ namespace Pizzeria
         public int CumulCommande
         {
             get { return cumulCommande; }
+            set { this.cumulCommande = value; }
         }
         #endregion
     }
