@@ -303,6 +303,7 @@ namespace Pizzeria
             btnAddClient.Height = 15;
             btnAddClient.Width = 15;
             btnAddClient.Margin = new Thickness(150, -10, 0, 0);
+            //btnAddClient.Background = new ImageBrush(new BitmapImage(new Uri(@"..\\..\\..\\logoPizza.png")));
             btnAddClient.Click += new RoutedEventHandler(OpenAddClient);
             DynamicGridClient.Children.Add(btnAddClient);
 
