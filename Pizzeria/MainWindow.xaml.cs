@@ -256,7 +256,7 @@ namespace Pizzeria
         public MainWindow()
         {
             InitializeComponent();
-            Pizzerria p1 = new Pizzerria("Tom et Pierre", "Enface de l'ESILV", new List<Client>(), new List<Commis>(), new List<Livreur>());
+            Pizzerria p1 = new Pizzerria("Tom et Pierre", "En face de l'ESILV", new List<Client>(), new List<Commis>(), new List<Livreur>());
 
             #region creation window Client
             // création grid dynamic
@@ -488,18 +488,31 @@ namespace Pizzeria
 
             // Create Rows
             RowDefinition gridRowCommande1 = new RowDefinition();
-            gridRowCommande1.Height = new GridLength(370);
+            gridRowCommande1.Height = new GridLength(30);
             RowDefinition gridRowCommande2 = new RowDefinition();
-            gridRowCommande2.Height = new GridLength(30);
+            gridRowCommande2.Height = new GridLength(370);
             DynamicGridCommands.RowDefinitions.Add(gridRowCommande1);
             DynamicGridCommands.RowDefinitions.Add(gridRowCommande2);
 
+            //Ajout des btns
+            Image pictTextCmd = new Image();
+            pictTextCmd.Height = 30;
+            pictTextCmd.Width = 773;
+            pictTextCmd.Margin = new Thickness(5, 0, 0, 0);
+            Uri resourceUri = new Uri("..\\..\\..\\titrecmd.png", UriKind.Relative);
+            pictTextCmd.Source = new BitmapImage(resourceUri);
+            pictTextCmd.Stretch = Stretch.Fill;
+            Grid.SetRow(pictTextCmd, 0);
+            DynamicGridCommands.Children.Add(pictTextCmd);
+
+            //Création liste view
             ListView ListeViewCommande = new ListView();
             ListeViewCommande.Height = 370;
             ListeViewCommande.Width = 780;
             ScrollViewer.SetHorizontalScrollBarVisibility(ListeViewCommande, ScrollBarVisibility.Hidden);
             ListeViewCommande.Background = new SolidColorBrush(Colors.White) { Opacity = 0};
-            ListeViewCommande.BorderThickness = new Thickness(0,0,0,0); 
+            ListeViewCommande.BorderThickness = new Thickness(0,0,0,0);
+            Grid.SetRow(ListeViewCommande, 1);
             DynamicGridCommands.Children.Add(ListeViewCommande);
 
 
@@ -553,16 +566,6 @@ namespace Pizzeria
 
                 i++;
             }
-
-            //Ajout des btns
-            Button btnCommander = new Button();
-            btnCommander.Content = "Commander";
-            btnCommander.Height = 30;
-            btnCommander.Width = 100;
-            btnCommander.Background = new SolidColorBrush(Colors.Orange);
-            Grid.SetRow(btnCommander, 1);
-            btnCommander.Click += new RoutedEventHandler(OpenCommandeWindow);
-            DynamicGridCommands.Children.Add(btnCommander);
             #endregion creation window Administration
 
 

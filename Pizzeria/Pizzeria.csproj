@@ -13,6 +13,7 @@
     <None Remove="banner3.jpg" />
     <None Remove="logoPizza.png" />
     <None Remove="Pizza-Background.jpg" />
+    <None Remove="titrecmd.png" />
     <None Remove="Tittle.png" />
   </ItemGroup>
 
@@ -22,6 +23,7 @@
     <Resource Include="banner3.jpg" />
     <Resource Include="logoPizza.png" />
     <Resource Include="Pizza-Background.jpg" />
+    <Resource Include="titrecmd.png" />
     <Resource Include="Tittle.png" />
   </ItemGroup>
 
