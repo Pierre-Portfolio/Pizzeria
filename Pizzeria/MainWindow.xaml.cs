@@ -318,7 +318,7 @@ namespace Pizzeria
             btnAddClient.Height = 15;
             btnAddClient.Width = 15;
             btnAddClient.BorderThickness = new Thickness(0, 0, 0, 0);
-            btnAddClient.Margin = new Thickness(150, -10, 0, 0);
+            btnAddClient.Margin = new Thickness(150, -11, 0, 0);
             btnAddClient.Background = new ImageBrush(new BitmapImage(new Uri(@"https://cdn.pixabay.com/photo/2014/04/02/10/41/button-304224_640.png")));
             btnAddClient.Click += new RoutedEventHandler(OpenAddClient);
             DynamicGridClient.Children.Add(btnAddClient);
@@ -331,7 +331,7 @@ namespace Pizzeria
             btnSuprClient.Width = 15;
             btnSuprClient.BorderThickness = new Thickness(0, 0, 0, 0);
             btnSuprClient.Background = new ImageBrush(new BitmapImage(new Uri(@"https://cdn.pixabay.com/photo/2013/07/12/17/00/remove-151678_960_720.png")));
-            btnSuprClient.Margin = new Thickness(200, -10, 0, 0);
+            btnSuprClient.Margin = new Thickness(200, -11, 0, 0);
             DynamicGridClient.Children.Add(btnSuprClient);
 
             //Btn Rechercher
@@ -357,6 +357,7 @@ namespace Pizzeria
             myGridClient.GridLinesVisibility = DataGridGridLinesVisibility.None;
             myGridClient.Margin = new Thickness(0, -22, 0, 0);
             myGridClient.BorderThickness = new Thickness(0, 0, 0, 0);
+            myGridClient.HorizontalScrollBarVisibility = ScrollBarVisibility.Hidden;
             Grid.SetRow(myGridClient, 1);
             Grid.SetColumn(myGridClient, 0);
             Grid.SetColumnSpan(myGridClient, 4);
@@ -425,7 +426,7 @@ namespace Pizzeria
             #region DynamicLivreur
             // titre 3
             TextBlock txtBlock3 = new TextBlock();
-            txtBlock3.Text = "Liste des Livreur";
+            txtBlock3.Text = "Liste des Livreurs";
             txtBlock3.FontSize = 14;
             txtBlock3.Width = 700;
             txtBlock3.Background = new SolidColorBrush(Colors.Black);
@@ -460,7 +461,7 @@ namespace Pizzeria
             btnAddLivreur.Height = 15;
             btnAddLivreur.Width = 15;
             btnAddLivreur.BorderThickness = new Thickness(0, 0, 0, 0);
-            btnAddLivreur.Margin = new Thickness(154, -125, 0, 0);
+            btnAddLivreur.Margin = new Thickness(154, -110, 0, 0);
             btnAddLivreur.Click += new RoutedEventHandler(OpenAddLivreur);
             btnAddLivreur.Background = new ImageBrush(new BitmapImage(new Uri(@"https://cdn.pixabay.com/photo/2014/04/02/10/41/button-304224_640.png")));
             Grid.SetRow(btnAddLivreur, 5);

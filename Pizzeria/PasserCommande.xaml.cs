@@ -76,9 +76,9 @@ namespace Pizzeria
             {
                 if(c.TelClient == currentClient.TelClient)
                 {
-                    c.CumulCommande++;
+                    c.CmlCmd++;
                 }
-                string line = c.NumClient + ";" + c.NomClient + ";" + c.PrenomClient + ";" + c.AdrClient + ";" + c.TelClient + ";" + c.DatePremiereCmd.Day + "/" + c.DatePremiereCmd.Month + "/" + c.DatePremiereCmd.Year + ";" + c.CumulCommande;
+                string line = c.NumClient + ";" + c.NomClient + ";" + c.PrenomClient + ";" + c.AdrClient + ";" + c.TelClient + ";" + c.DatePremiereCmd.Day + "/" + c.DatePremiereCmd.Month + "/" + c.DatePremiereCmd.Year + ";" + c.CmlCmd;
                 writer.WriteLine(line);
             }
             writer.Close();

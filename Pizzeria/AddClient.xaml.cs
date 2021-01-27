@@ -31,7 +31,7 @@ namespace Pizzeria
         private void AddToCsv(Client c)
         {
             string path = "..\\..\\..\\Clients.csv";
-            string line = c.NumClient + ";" + c.NomClient + ";" + c.PrenomClient + ";" + c.AdrClient + ";" + c.TelClient + ";" + c.DatePremiereCmd.Day+"/"+c.DatePremiereCmd.Month+"/"+c.DatePremiereCmd.Year + ";" + c.CumulCommande;
+            string line = c.NumClient + ";" + c.NomClient + ";" + c.PrenomClient + ";" + c.AdrClient + ";" + c.TelClient + ";" + c.DatePremiereCmd.Day+"/"+c.DatePremiereCmd.Month+"/"+c.DatePremiereCmd.Year + ";" + c.CmlCmd;
             if (!File.Exists(path))
             {
                 // Creation du fichier.

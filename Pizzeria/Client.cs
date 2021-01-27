@@ -66,7 +66,7 @@ namespace Pizzeria
             get { return datePremiereCmd; }
         }
 
-        public int CumulCommande
+        public int CmlCmd
         {
             get { return cumulCommande; }
             set { this.cumulCommande = value; }
