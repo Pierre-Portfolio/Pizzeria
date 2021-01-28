@@ -17,23 +17,25 @@ namespace Pizzeria
     /// </summary>
     public partial class Rechercher : Window
     {
-        public List<Client> listeClient;
+        public Pizzerria p;
         public Client client;
         public Rechercher()
         {
             InitializeComponent();
         }
 
-        public Rechercher(List<Client> listeClient)
+        public Rechercher(Pizzerria p)
         {
-            this.listeClient = listeClient;
+            this.p = p;
+            this.client = null;
+            //this.listeClient = listeClient;
             InitializeComponent();
             
         }
 
         private Client FindClient(int num)
         {
-            foreach(Client c in listeClient)
+            foreach(Client c in p.Clients)
             {
                 if(c.TelClient == num)
                 {
