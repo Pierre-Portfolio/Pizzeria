@@ -117,12 +117,30 @@ namespace Pizzeria
         #endregion
 
         #region Parti Main
-        public MainWindow()
+        public void BlockBtnBase()
         {
-            InitializeComponent();
-            this.p1 = new Pizzerria("Tom et Pierre", "En face de l'ESILV");
-
-            #region creation window Client
+            if(p1.CurrentUser is Commis)
+            {
+                ClientsBtn.IsEnabled = true;
+                CommandesBtn.IsEnabled = true;
+                StatistiqueBtn.IsEnabled = true;
+                AdminitrationBtn.IsEnabled = true;
+            }
+            else if(p1.CurrentUser is Livreur)
+            {
+                CommandesBtn.IsEnabled = true;
+            }
+            else
+            {   
+                ClientsBtn.IsEnabled = false;
+                CommandesBtn.IsEnabled = false;
+                StatistiqueBtn.IsEnabled = false;
+                AdminitrationBtn.IsEnabled = false;
+            }
+        }
+        public void GenerationPageClient()
+        {
+            /* ==== Creation partie client ====*/
             // création grid dynamic
             DynamicGridClient.HorizontalAlignment = HorizontalAlignment.Left;
             DynamicGridClient.Height = 400;
@@ -214,7 +232,7 @@ namespace Pizzeria
             DataGrid myGridClient = new DataGrid();
             myGridClient.Width = 700;
             myGridClient.Height = 100;
-            Dictionary<int,Client> l = p1.Clients;
+            Dictionary<int, Client> l = p1.Clients;
             myGridClient.ItemsSource = l.Values;
             myGridClient.Foreground = new SolidColorBrush(Colors.Orange);
             myGridClient.GridLinesVisibility = DataGridGridLinesVisibility.None;
@@ -226,7 +244,9 @@ namespace Pizzeria
             Grid.SetColumnSpan(myGridClient, 4);
             DynamicGridClient.Children.Add(myGridClient);
             #endregion
+            /* ==== Fin creation partie client ====*/
 
+            /* ==== Debut creation partie commis ====*/
             #region DynamicCommis
             // titre 2
             TextBlock txtBlock2 = new TextBlock();
@@ -251,7 +271,7 @@ namespace Pizzeria
             btnAddCommis.Height = 15;
             btnAddCommis.Width = 15;
             btnAddCommis.BorderThickness = new Thickness(0, 0, 0, 0);
-            btnAddCommis.Margin = new Thickness(154,-125, 0, 0);
+            btnAddCommis.Margin = new Thickness(154, -125, 0, 0);
             btnAddCommis.Click += new RoutedEventHandler(OpenAddCommis);
             btnAddCommis.Background = new ImageBrush(new BitmapImage(new Uri(@"https://cdn.pixabay.com/photo/2014/04/02/10/41/button-304224_640.png")));
             Grid.SetRow(btnAddCommis, 3);
@@ -285,7 +305,9 @@ namespace Pizzeria
             DynamicGridClient.Children.Add(myGridCommis);
 
             #endregion
+            /* ==== Fin creation partie commis ====*/
 
+            /* ==== Debut creation partie Livreur ====*/
             #region DynamicLivreur
             // titre 3
             TextBlock txtBlock3 = new TextBlock();
@@ -309,7 +331,6 @@ namespace Pizzeria
             myGridLivreur.Height = 100;
             myGridLivreur.Margin = new Thickness(0, 5, 0, 0);
             myGridLivreur.GridLinesVisibility = DataGridGridLinesVisibility.None;
-            List<Livreur> livreur = new List<Livreur>();
             myGridLivreur.ItemsSource = p1.Livreur;
             myGridLivreur.Foreground = new SolidColorBrush(Colors.Orange);
             myGridLivreur.BorderThickness = new Thickness(0, 0, 0, 0);
@@ -331,9 +352,13 @@ namespace Pizzeria
             Grid.SetColumn(btnAddLivreur, 0);
             DynamicGridClient.Children.Add(btnAddLivreur);
             #endregion
-            #endregion creation window client
+            /* ==== Debut creation partie Livreur ====*/
 
-            #region creation window Commande
+
+        }
+
+        public void GenerationPageCommande()
+        {
             /*=== Creation du GridGlobal ===*/
             DynamicGridCommands.HorizontalAlignment = HorizontalAlignment.Left;
             DynamicGridCommands.VerticalAlignment = VerticalAlignment.Center;
@@ -373,24 +398,26 @@ namespace Pizzeria
             ListeViewCommande.Height = 370;
             ListeViewCommande.Width = 780;
             ScrollViewer.SetHorizontalScrollBarVisibility(ListeViewCommande, ScrollBarVisibility.Hidden);
-            ListeViewCommande.Background = new SolidColorBrush(Colors.White) { Opacity = 0};
-            ListeViewCommande.BorderThickness = new Thickness(0,0,0,0);
+            ListeViewCommande.Background = new SolidColorBrush(Colors.White) { Opacity = 0 };
+            ListeViewCommande.BorderThickness = new Thickness(0, 0, 0, 0);
             Grid.SetRow(ListeViewCommande, 1);
             DynamicGridCommands.Children.Add(ListeViewCommande);
 
 
             //Ajout des commandes
-            List<Commande> listeCommandes = p1.Commandes;
             int i = 0;
-            listeCommandes.ForEach(c =>
+            p1.Commandes.ForEach(c =>
             {
                 Grid Commande1 = new Grid();
                 ColumnDefinition Test1commande1Colum = new ColumnDefinition();
                 ColumnDefinition Test2commande1Colum = new ColumnDefinition();
                 ColumnDefinition Test3commande1Colum = new ColumnDefinition();
+                ColumnDefinition Test4commande1Colum = new ColumnDefinition();
+
                 Commande1.ColumnDefinitions.Add(Test1commande1Colum);
                 Commande1.ColumnDefinitions.Add(Test2commande1Colum);
                 Commande1.ColumnDefinitions.Add(Test3commande1Colum);
+                Commande1.ColumnDefinitions.Add(Test4commande1Colum);
 
                 Commande1.HorizontalAlignment = HorizontalAlignment.Left;
                 Commande1.VerticalAlignment = VerticalAlignment.Top;
@@ -411,7 +438,6 @@ namespace Pizzeria
 
                 Label extra = new Label();
                 //extra.Foreground = new SolidColorBrush(Colors.White);
-
                 c.ProduitAnnexes.ForEach(b =>
                     extra.Content = b.AfficherBoisson()
                 );
@@ -427,10 +453,61 @@ namespace Pizzeria
 
                 i++;
             });
-            #endregion creation window Administration
+        }
+        public MainWindow()
+        {
+            InitializeComponent();
+            this.p1 = new Pizzerria("Tom et Pierre", "En face de l'ESILV");
+
+            BlockBtnBase();
+            
+            GenerationPageClient();
+            GenerationPageCommande();
 
 
         }
         #endregion
+
+        private void Click_Connection(object sender, RoutedEventArgs e)
+        {
+            if(BoxNom.Text.Length != 0 && PasseWordBox.Password.Length != 0)
+            {
+                Commis c = null;
+                foreach(Commis current in p1.Commis)
+                {
+                    if (current.NomEmploye.Equals(BoxNom.Text))
+                    {
+                        c = current;
+                    }
+                }
+                if (c != null && c.MdpEmploye.Equals(PasseWordBox.Password)) 
+                {
+                    p1.CurrentUser = c;
+                    BlockBtnBase();
+                    CanvaConnexion.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    Livreur l = null;
+                    foreach(Livreur current in p1.Livreur)
+                    {
+                        if (current.NomEmploye.Equals(BoxNom.Text))
+                        {
+                            l = current;
+                        }
+                    }
+                    if (l != null && l.MdpEmploye.Equals(PasseWordBox.Password))
+                    {
+                        p1.CurrentUser = l;
+                        BlockBtnBase();
+                        CanvaConnexion.Visibility = Visibility.Hidden;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erreur", "Erreur");
+                    }
+                }
+            }
+        }
     }
 }

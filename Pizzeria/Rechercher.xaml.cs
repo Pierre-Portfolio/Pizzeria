@@ -32,20 +32,11 @@ namespace Pizzeria
             InitializeComponent();
             
         }
-
         private Client FindClient(int num)
         {
             Client c = null;
             p.Clients.TryGetValue(num, out c);
             return c;
-           /* foreach(Client c in p.Clients)
-            {
-                if(c.TelClient == num)
-                {
-                    return c;
-                }
-            }
-            return null;*/
         }
         private void ChercherClient(object sender, RoutedEventArgs e)
         {
@@ -90,7 +81,7 @@ namespace Pizzeria
         {
             if (client != null)
             {
-                var WindowPasserCommande = new PasserCommande(client);
+                var WindowPasserCommande = new PasserCommande(this.p,client);
                 WindowPasserCommande.Show();
             }
             this.Close();

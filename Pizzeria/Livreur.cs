@@ -15,7 +15,7 @@ namespace Pizzeria
         private etat_livreur etatLivreur;
         private string moyenLivraison;
 
-        public Livreur(string nomEmploye, string prenomEmploye, string adrEmploye, string numEmploye, etat_livreur etatLivreur, string moyenLivraison) : base(nomEmploye, prenomEmploye, adrEmploye, numEmploye)
+        public Livreur(string nomEmploye, string prenomEmploye, string adrEmploye, string mdpEmploye, string numEmploye, etat_livreur etatLivreur, string moyenLivraison) : base(nomEmploye, prenomEmploye, adrEmploye, mdpEmploye, numEmploye)
         {
             this.etatLivreur = etatLivreur;
             this.moyenLivraison = moyenLivraison;

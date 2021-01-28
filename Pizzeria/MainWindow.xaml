@@ -38,9 +38,24 @@
         <Button x:Name="AdminitrationBtn" Content="Administrations" Grid.Row="1" Grid.Column="3" Background="Orange"  BorderThickness="0" Click="AdminitrationBtn_Click" Grid.ColumnSpan="2"/>
 
         <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" Margin="0,0,0,-13" >
+
             <Grid.Background>
                 <ImageBrush ImageSource="/Pizza-Background.jpg"/>
             </Grid.Background>
+            <Canvas Name="CanvaConnexion">
+                <Canvas  Margin="500,50,58,50">
+                    <TextBox Name="BoxNom" Canvas.Left="80" Canvas.Top="139" Text="" TextWrapping="Wrap" Width="244" Height="30"/>
+                    <Label Content="Nom :" Canvas.Left="80" Canvas.Top="100" Width="84" Foreground="White" FontSize="22"/>
+                    <Label Content="Mot de passe :" Canvas.Left="80" Canvas.Top="213" Width="162" Foreground="White" FontSize="22"/>
+                    <PasswordBox Name="PasseWordBox" Canvas.Left="80" Canvas.Top="252" Width="244" Height="30"/>
+                    <Label Content="Connexion" Canvas.Left="119" Canvas.Top="26" Width="166" Foreground="White" FontSize="30" FontWeight="Bold" FontStretch="Normal"/>
+                    <Button Content="Connexion" Canvas.Left="128" Canvas.Top="351" Height="36" Width="148" Click="Click_Connection"/>
+                </Canvas>
+                <Canvas Margin="58,50,500,50">
+                    <Label Content="Salut à toi &#xD;&#xA;jeune commis" Canvas.Left="20" Canvas.Top="102" FontSize="60" Height="184" Width="422" Foreground="White" FontWeight="Bold"/>
+                </Canvas>
+            </Canvas>
+
         </Grid>
     </Grid>
 </Window>

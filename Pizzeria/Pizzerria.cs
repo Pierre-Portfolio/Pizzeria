@@ -12,6 +12,8 @@ namespace Pizzeria
         private List<Commis> commis;
         private List<Livreur> livreur;
         private List<Commande> commandes;
+
+        private Personelle currentUser;
         public Pizzerria(string nom, string adresse)
         {
             this.nom = nom;
@@ -20,6 +22,7 @@ namespace Pizzeria
             this.commis = ChargerCSVCommis();
             this.livreur = ChargerCSVLivreur();
             this.commandes = ChargerCSVCommande();
+            this.currentUser = null;
         }
 
         public string Nom
@@ -48,6 +51,12 @@ namespace Pizzeria
         public List<Commande> Commandes
         {
             get { return commandes; }
+        }
+
+        public Personelle CurrentUser
+        {
+            get { return this.currentUser; }
+            set { this.currentUser = value; }
         }
 
         public void addClient(Client c)
@@ -86,7 +95,6 @@ namespace Pizzeria
                     ligne = lecteur.ReadLine();
                     if (ligne != null)
                     {
-
                         string[] tem = ligne.Split(';');
                         string[] date = tem[5].Split('/');
                         if(!c1.ContainsKey(int.Parse(tem[4])))
@@ -114,8 +122,8 @@ namespace Pizzeria
                     if (ligne != null)
                     {
                         string[] tem = ligne.Split(';');
-                        Commis.etat_commis en = Enum.Parse<Commis.etat_commis>(tem[4]);
-                        c1.Add(new Commis(tem[0], tem[1], tem[2], tem[3], en, Convert.ToDateTime(tem[5])));
+                        Commis.etat_commis en = Enum.Parse<Commis.etat_commis>(tem[5]);
+                        c1.Add(new Commis(tem[0], tem[1], tem[3], tem[2],tem[4], en, Convert.ToDateTime(tem[6])));
                     }
                 }
                 lecteur.Close();
@@ -139,8 +147,8 @@ namespace Pizzeria
                     if (ligne != null)
                     {
                         string[] tem = ligne.Split(';');
-                        Livreur.etat_livreur en = Enum.Parse<Livreur.etat_livreur>(tem[4]);
-                        c1.Add(new Livreur(tem[0], tem[1], tem[2], tem[3], en, tem[5]));
+                        Livreur.etat_livreur en = Enum.Parse<Livreur.etat_livreur>(tem[5]);
+                        c1.Add(new Livreur(tem[0], tem[1], tem[3],tem[2], tem[4], en, tem[6]));
                     }
                 }
                 lecteur.Close();

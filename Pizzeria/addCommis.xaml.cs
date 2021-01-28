@@ -26,7 +26,7 @@ namespace Pizzeria
         private void AddToCsv(Commis c)
         {
             string path = "..\\..\\..\\Commis.csv";
-            string line = c.NomEmploye + ";" + c.PrenomEmploye + ";" + c.AdrEmploye + ";" + c.NumEmploye + ";" + c.EtatCommis.ToString() + ";" + c.DateEmbauche.Day + "/" + c.DateEmbauche.Month + "/" + c.DateEmbauche.Year;
+            string line = c.NomEmploye + ";" + c.PrenomEmploye+";"+c.MdpEmploye + ";" + c.AdrEmploye + ";" + c.NumEmploye + ";" + c.EtatCommis.ToString() + ";" + c.DateEmbauche.Day + "/" + c.DateEmbauche.Month + "/" + c.DateEmbauche.Year;
             if (!File.Exists(path))
             {
                 // Creation du fichier.
@@ -45,7 +45,7 @@ namespace Pizzeria
         {
             if (BoxNom.Text != "" && BoxPrenom.Text.Length != 0 && BoxAdresse.Text.Length != 0 && BoxTel.Text.Length != 0)
             {
-                Commis c = new Commis(BoxNom.Text, BoxPrenom.Text, BoxAdresse.Text, BoxTel.Text, Commis.etat_commis.surplace,DateTime.Now);
+                Commis c = new Commis(BoxNom.Text, BoxPrenom.Text, BoxAdresse.Text,"", BoxTel.Text, Commis.etat_commis.surplace,DateTime.Now);
                 AddToCsv(c);
                 var WindowMain = new MainWindow();
                 WindowMain.Show();

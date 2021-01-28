@@ -18,6 +18,7 @@ namespace Pizzeria
     /// </summary>
     public partial class PasserCommande : Window
     {
+        public Pizzerria p;
         public Commande currentCommande;
         public Client currentClient;
         public PasserCommande()
@@ -27,8 +28,9 @@ namespace Pizzeria
             InitializeComponent();
         }
 
-        public PasserCommande(Client c)
+        public PasserCommande(Pizzerria p,Client c)
         {
+            this.p = p;
             currentClient = c;
             currentCommande = new Commande(currentClient.TelClient, currentClient.NomClient);
             InitializeComponent();
@@ -85,6 +87,7 @@ namespace Pizzeria
         }
         private void Click_btnValider(object sender, RoutedEventArgs e) //Ajout de la commande au csv
         {
+            p.Commandes.Add(this.currentCommande);
             if (currentCommande.ListePizza != null && currentCommande.ListePizza.Count != 0)
             {
                 string path = "..\\..\\..\\Commandes.csv";

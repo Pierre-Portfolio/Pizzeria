@@ -9,13 +9,15 @@ namespace Pizzeria
         protected string nomEmploye;
         protected string prenomEmploye;
         protected string adrEmploye;
+        protected string mdpEmploye;
         protected string numEmploye;
 
-        public Personelle(string nomEmploye, string prenomEmploye, string adrEmploye, string numEmploye = null)
+        public Personelle(string nomEmploye, string prenomEmploye, string adrEmploye, string mdpEmploye, string numEmploye = null)
         {
             this.nomEmploye = nomEmploye;
             this.prenomEmploye = prenomEmploye;
             this.adrEmploye = adrEmploye;
+            this.mdpEmploye = mdpEmploye;
             this.numEmploye = numEmploye;
         }
         public string NomEmploye
@@ -33,6 +35,10 @@ namespace Pizzeria
             get { return adrEmploye; }
         }
 
+        public string MdpEmploye
+        {
+            get { return this.mdpEmploye; }
+        }
         public string NumEmploye
         {
             get { return numEmploye; }
