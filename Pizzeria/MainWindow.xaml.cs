@@ -382,7 +382,7 @@ namespace Pizzeria
             //Ajout des commandes
             List<Commande> listeCommandes = p1.Commandes;
             int i = 0;
-            foreach (Commande c in listeCommandes)
+            listeCommandes.ForEach(c =>
             {
                 Grid Commande1 = new Grid();
                 ColumnDefinition Test1commande1Colum = new ColumnDefinition();
@@ -403,20 +403,18 @@ namespace Pizzeria
 
                 Label pizzas = new Label();
                 //pizzas.Foreground = new SolidColorBrush(Colors.White);
-                foreach (Pizza p in c.ListePizza)
-                {
-                    pizzas.Content += p.AffichePizza();
-                }
+                c.ListePizza.ForEach(p =>
+                    pizzas.Content += p.AffichePizza()
+                );
                 Grid.SetColumn(pizzas, 0);
                 Commande1.Children.Add(pizzas);
 
                 Label extra = new Label();
                 //extra.Foreground = new SolidColorBrush(Colors.White);
 
-                foreach (Boisson b in c.ProduitAnnexes)
-                {
-                    extra.Content = b.AfficherBoisson();
-                }
+                c.ProduitAnnexes.ForEach(b =>
+                    extra.Content = b.AfficherBoisson()
+                );
                 Grid.SetColumn(extra, 1);
                 Commande1.Children.Add(extra);
 
@@ -428,7 +426,7 @@ namespace Pizzeria
                 Commande1.Children.Add(Infos);
 
                 i++;
-            }
+            });
             #endregion creation window Administration
 
 
