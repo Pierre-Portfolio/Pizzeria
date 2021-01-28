@@ -8,7 +8,7 @@ namespace Pizzeria
     {
         private string nom;
         private string adresse;
-        private List<Client> clients;
+        private Dictionary<int,Client> clients;
         private List<Commis> commis;
         private List<Livreur> livreur;
         private List<Commande> commandes;
@@ -32,7 +32,7 @@ namespace Pizzeria
             get { return adresse; }
         }
 
-        public List<Client> Clients
+        public Dictionary<int,Client> Clients
         {
             get { return clients; }
         }
@@ -52,7 +52,7 @@ namespace Pizzeria
 
         public void addClient(Client c)
         {
-            this.clients.Add(c);
+            this.clients.Add(c.TelClient,c);
         }
 
         public void addCommis(Commis c)
@@ -71,10 +71,10 @@ namespace Pizzeria
         }
 
         #region Fonctions pour charger les CSV
-        public List<Client> ChargerCSVClient()
+        public Dictionary<int,Client> ChargerCSVClient()
         {
             string path = "..\\..\\..\\Clients.csv";
-            List<Client> c1 = new List<Client>();
+            Dictionary<int,Client> c1 = new Dictionary<int, Client>();
             if (File.Exists(path))
             {
                 StreamReader lecteur = new StreamReader(path);
@@ -89,7 +89,8 @@ namespace Pizzeria
 
                         string[] tem = ligne.Split(';');
                         string[] date = tem[5].Split('/');
-                        c1.Add(new Client(Convert.ToInt32(tem[0]), tem[1], tem[2], tem[3], int.Parse(tem[4]), new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0])), int.Parse(tem[6])));
+                        if(!c1.ContainsKey(int.Parse(tem[4])))
+                            c1.Add(int.Parse(tem[4]),new Client(Convert.ToInt32(tem[0]), tem[1], tem[2], tem[3], int.Parse(tem[4]), new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0])), int.Parse(tem[6])));
                     }
                 }
                 lecteur.Close();

@@ -31,10 +31,7 @@ namespace Pizzeria
         Grid DynamicGridStat= new Grid();
         Grid DynamicGridAdmin = new Grid();
 
-
-        //Test
         public Pizzerria p1;
-        //public List<Client> listeClient;
         #endregion
 
         #region fonction refresh
@@ -217,8 +214,8 @@ namespace Pizzeria
             DataGrid myGridClient = new DataGrid();
             myGridClient.Width = 700;
             myGridClient.Height = 100;
-            List<Client> l = p1.ChargerCSVClient();
-            myGridClient.ItemsSource = l;
+            Dictionary<int,Client> l = p1.Clients;
+            myGridClient.ItemsSource = l.Values;
             myGridClient.Foreground = new SolidColorBrush(Colors.Orange);
             myGridClient.GridLinesVisibility = DataGridGridLinesVisibility.None;
             myGridClient.Margin = new Thickness(0, -22, 0, 0);
