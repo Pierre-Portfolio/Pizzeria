@@ -2334,23 +2334,6 @@
 										},
 										{
 											"_type": "UMLAttributeView",
-											"_id": "AAAAAAF3BBRpOQzEcf0=",
-											"_parent": {
-												"$ref": "AAAAAAF2qGKIwWL1UKs="
-											},
-											"model": {
-												"$ref": "AAAAAAF3BBRpMAzBu5Q="
-											},
-											"font": "Arial;13;0",
-											"left": 701,
-											"top": 203,
-											"width": 246,
-											"height": 13,
-											"text": "#numEmployé: string",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLAttributeView",
 											"_id": "AAAAAAF3SS6RnvpQ3l0=",
 											"_parent": {
 												"$ref": "AAAAAAF2qGKIwWL1UKs="
@@ -2360,10 +2343,27 @@
 											},
 											"font": "Arial;13;0",
 											"left": 701,
+											"top": 203,
+											"width": 246,
+											"height": 13,
+											"text": "#mdpEmployé: string",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAF3BBRpOQzEcf0=",
+											"_parent": {
+												"$ref": "AAAAAAF2qGKIwWL1UKs="
+											},
+											"model": {
+												"$ref": "AAAAAAF3BBRpMAzBu5Q="
+											},
+											"font": "Arial;13;0",
+											"left": 701,
 											"top": 218,
 											"width": 246,
 											"height": 13,
-											"text": "#mdpEmployé",
+											"text": "#numEmployé: string",
 											"horizontalAlignment": 0
 										}
 									],
@@ -8365,6 +8365,16 @@
 						},
 						{
 							"_type": "UMLAttribute",
+							"_id": "AAAAAAF3SS6Rb/pNCJ4=",
+							"_parent": {
+								"$ref": "AAAAAAF2qGKIwGLtu38="
+							},
+							"name": "mdpEmployé",
+							"visibility": "protected",
+							"type": "string"
+						},
+						{
+							"_type": "UMLAttribute",
 							"_id": "AAAAAAF3BBRpMAzBu5Q=",
 							"_parent": {
 								"$ref": "AAAAAAF2qGKIwGLtu38="
@@ -8372,15 +8382,6 @@
 							"name": "numEmployé",
 							"visibility": "protected",
 							"type": "string"
-						},
-						{
-							"_type": "UMLAttribute",
-							"_id": "AAAAAAF3SS6Rb/pNCJ4=",
-							"_parent": {
-								"$ref": "AAAAAAF2qGKIwGLtu38="
-							},
-							"name": "mdpEmployé",
-							"visibility": "protected"
 						}
 					]
 				},
