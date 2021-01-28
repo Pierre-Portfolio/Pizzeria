@@ -30,6 +30,7 @@ namespace Pizzeria
         Grid DynamicGridCommands = new Grid();
         Grid DynamicGridStat= new Grid();
         Grid DynamicGridAdmin = new Grid();
+        ListView ListeViewCommande = new ListView();
 
         public Pizzerria p1;
         #endregion
@@ -96,6 +97,7 @@ namespace Pizzeria
         private void CommandesBtn_Click(object sender, RoutedEventArgs e)
         {
             RefreshPasOpti();
+            AjoutCommande();
             MainGrid.Children.Add(DynamicGridCommands);
         }
         #endregion
@@ -378,9 +380,12 @@ namespace Pizzeria
             RowDefinition gridRowCommande1 = new RowDefinition();
             gridRowCommande1.Height = new GridLength(30);
             RowDefinition gridRowCommande2 = new RowDefinition();
-            gridRowCommande2.Height = new GridLength(370);
+            gridRowCommande2.Height = new GridLength(300); 
+            RowDefinition gridRowCommande3 = new RowDefinition();
+            gridRowCommande3.Height = new GridLength(40);
             DynamicGridCommands.RowDefinitions.Add(gridRowCommande1);
             DynamicGridCommands.RowDefinitions.Add(gridRowCommande2);
+            DynamicGridCommands.RowDefinitions.Add(gridRowCommande3);
 
             //Ajout des btns
             Image pictTextCmd = new Image();
@@ -392,9 +397,14 @@ namespace Pizzeria
             pictTextCmd.Stretch = Stretch.Fill;
             Grid.SetRow(pictTextCmd, 0);
             DynamicGridCommands.Children.Add(pictTextCmd);
+        }
 
+        public void AjoutCommande()
+        {
             //Création liste view
-            ListView ListeViewCommande = new ListView();
+            DynamicGridCommands.Children.Remove(ListeViewCommande);
+            ListeViewCommande.Items.Clear();
+
             ListeViewCommande.Height = 370;
             ListeViewCommande.Width = 780;
             ScrollViewer.SetHorizontalScrollBarVisibility(ListeViewCommande, ScrollBarVisibility.Hidden);
@@ -402,57 +412,82 @@ namespace Pizzeria
             ListeViewCommande.BorderThickness = new Thickness(0, 0, 0, 0);
             Grid.SetRow(ListeViewCommande, 1);
             DynamicGridCommands.Children.Add(ListeViewCommande);
-
-
             //Ajout des commandes
             int i = 0;
             p1.Commandes.ForEach(c =>
             {
-                Grid Commande1 = new Grid();
-                ColumnDefinition Test1commande1Colum = new ColumnDefinition();
-                ColumnDefinition Test2commande1Colum = new ColumnDefinition();
-                ColumnDefinition Test3commande1Colum = new ColumnDefinition();
-                ColumnDefinition Test4commande1Colum = new ColumnDefinition();
+                if (p1.CurrentUser is Commis || (p1.CurrentUser is Livreur && (c.Etat == Commande.EtatCommande.en_preparation || (c.Etat == Commande.EtatCommande.en_livraison && c.LivreurCharge == p1.CurrentUser))))
+                {
+                    Grid Commande1 = new Grid();
+                    ColumnDefinition Test1commande1Colum = new ColumnDefinition();
+                    ColumnDefinition Test2commande1Colum = new ColumnDefinition();
+                    ColumnDefinition Test3commande1Colum = new ColumnDefinition();
 
-                Commande1.ColumnDefinitions.Add(Test1commande1Colum);
-                Commande1.ColumnDefinitions.Add(Test2commande1Colum);
-                Commande1.ColumnDefinitions.Add(Test3commande1Colum);
-                Commande1.ColumnDefinitions.Add(Test4commande1Colum);
+                    Commande1.ColumnDefinitions.Add(Test1commande1Colum);
+                    Commande1.ColumnDefinitions.Add(Test2commande1Colum);
+                    Commande1.ColumnDefinitions.Add(Test3commande1Colum);
 
-                Commande1.HorizontalAlignment = HorizontalAlignment.Left;
-                Commande1.VerticalAlignment = VerticalAlignment.Top;
-                Commande1.Height = 100;
-                Commande1.Width = 750;
-                Commande1.Margin = new Thickness(0, 0, 0, 0);
-                Commande1.Background = new SolidColorBrush(Colors.DarkGray);
-                Grid.SetRow(Commande1, i);
-                ListeViewCommande.Items.Add(Commande1);
+                    Commande1.HorizontalAlignment = HorizontalAlignment.Left;
+                    Commande1.VerticalAlignment = VerticalAlignment.Top;
+                    Commande1.Height = 100;
+                    Commande1.Width = 750;
+                    Commande1.Margin = new Thickness(0, 0, 0, 0);
+                    Commande1.Background = new SolidColorBrush(Colors.DarkGray);
+                    Grid.SetRow(Commande1, i);
+                    ListeViewCommande.Items.Add(Commande1);
 
-                Label pizzas = new Label();
-                //pizzas.Foreground = new SolidColorBrush(Colors.White);
-                c.ListePizza.ForEach(p =>
-                    pizzas.Content += p.AffichePizza()
-                );
-                Grid.SetColumn(pizzas, 0);
-                Commande1.Children.Add(pizzas);
+                    Label pizzas = new Label();
+                    //pizzas.Foreground = new SolidColorBrush(Colors.White);
+                    c.ListePizza.ForEach(p =>
+                        pizzas.Content += p.AffichePizza()
+                    );
+                    Grid.SetColumn(pizzas, 0);
+                    Commande1.Children.Add(pizzas);
 
-                Label extra = new Label();
-                //extra.Foreground = new SolidColorBrush(Colors.White);
-                c.ProduitAnnexes.ForEach(b =>
-                    extra.Content = b.AfficherBoisson()
-                );
-                Grid.SetColumn(extra, 1);
-                Commande1.Children.Add(extra);
+                    Label extra = new Label();
+                    //extra.Foreground = new SolidColorBrush(Colors.White);
+                    c.ProduitAnnexes.ForEach(b =>
+                        extra.Content = b.AfficherBoisson()
+                    );
+                    Grid.SetColumn(extra, 1);
+                    Commande1.Children.Add(extra);
 
-                Label Infos = new Label();
-                //Infos.Foreground = new SolidColorBrush(Colors.White);
+                    Label Infos = new Label();
+                    //Infos.Foreground = new SolidColorBrush(Colors.White);
 
-                Infos.Content += "Num commande :" + c.NumCommande + "\nClient : " + c.NomClient + "\nCommis : " + c.NomCommis + "\nHeure :" + c.Heure + "\nEtat : " + c.Etat;
-                Grid.SetColumn(Infos, 2);
-                Commande1.Children.Add(Infos);
+                    Infos.Content += "Num commande :" + c.NumCommande + "\nClient : " + c.NomClient + "\nCommis : " + c.NomCommis + "\nHeure :" + c.Heure + "\nEtat : " + c.Etat;
+                    Grid.SetColumn(Infos, 2);
+                    Commande1.Children.Add(Infos);
 
-                i++;
+                    i++;
+                }
             });
+
+            //Ajout bouton prise en charge commande
+            Button priseEncharge = new Button();
+            priseEncharge.Width = 780;
+            priseEncharge.Height = 30;
+            priseEncharge.Background = new SolidColorBrush(Colors.Green);
+            priseEncharge.BorderThickness = new Thickness(0, 0, 0, 0);
+            priseEncharge.Margin = new Thickness(0, 10, 0,0);
+            priseEncharge.Click += new RoutedEventHandler(PriseEnChargeCommande);
+            if (p1.CurrentUser is Livreur)
+            {
+                priseEncharge.Content = "Prendre une commande en charge";
+            }
+            else
+            {
+                priseEncharge.Content = "Encaisser une commande";
+            }
+            Grid.SetRow(priseEncharge, 2);
+            DynamicGridCommands.Children.Add(priseEncharge);
+        }
+        
+        public void PriseEnChargeCommande(object sender, RoutedEventArgs e)
+        {
+            var WindowPriseEnCharge = new PagePriseEnCharge(this.p1);
+            WindowPriseEnCharge.Show();
+
         }
         public MainWindow()
         {
@@ -460,7 +495,6 @@ namespace Pizzeria
             this.p1 = new Pizzerria("Tom et Pierre", "En face de l'ESILV");
 
             BlockBtnBase();
-            
             GenerationPageClient();
             GenerationPageCommande();
 

@@ -20,6 +20,7 @@ namespace Pizzeria
         private EtatCommande etat;
         private List<Pizza> listePizza;
         private List<Boisson> produitAnnexes;
+        private Livreur livreurCharge;
         public static int lastCommande = 0;
 
         public int NumCommande { get => numCommande;}
@@ -31,6 +32,7 @@ namespace Pizzeria
         public EtatCommande Etat { get => etat; set => etat = value; }
         public List<Pizza> ListePizza { get => listePizza;}
         public List<Boisson> ProduitAnnexes { get => produitAnnexes; }
+        public Livreur LivreurCharge { get => livreurCharge; set => livreurCharge = value; }
 
         public Commande(int numclient = 0,string nomclient = "", string nomcommis ="")
         {
@@ -43,6 +45,7 @@ namespace Pizzeria
             this.etat = EtatCommande.en_preparation;
             this.listePizza = new List<Pizza>();
             this.produitAnnexes = new List<Boisson>();
+            this.livreurCharge = null;
             lastCommande++;
         }
 

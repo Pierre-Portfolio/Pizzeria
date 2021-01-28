@@ -24,6 +24,7 @@ namespace Pizzeria
         public etat_livreur EtatLivreur
         {
             get { return etatLivreur; }
+            set { this.etatLivreur = value; }
         }
         public string MoyenLivraison
         {
