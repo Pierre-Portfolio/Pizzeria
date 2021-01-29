@@ -21,18 +21,38 @@ namespace Pizzeria
         public string currentLName;
         public PagePriseEnCharge(Pizzerria p)
         {
-            this.p = p;
             InitializeComponent();
-            InitPriseEnCharge();
+            this.p = p;
+            //InitListeCommande();
+            if(p.CurrentUser is Commis)
+            {
+                SelectLivreur.Visibility = Visibility.Visible;
+                InitListeLivreur();
+            }
+            else
+            {
+                SelectLivreur.Visibility = Visibility.Hidden;
+                InitListeCommande();
+            }
         }
 
-        private void InitPriseEnCharge()
+    
+        private void InitListeLivreur()
         {
-            ComboxBoxLivreur.Items.Clear();
+            foreach (Livreur l in p.Livreur)
+            {
+                if (l.EtatLivreur != Livreur.etat_livreur.enconges)
+                {
+                    ComboxBoxLivreur.Items.Add(l.NumEmploye);
+                }
+            }
+        }
+
+        private void InitListeCommande()
+        {
             ComboxBoxIdCommande.Items.Clear();
             if (p.CurrentUser is Livreur)
             {
-                SelectLivreur.Visibility = Visibility.Hidden;
                 foreach (Commande c in p.Commandes)
                 {
                     if (c.Etat == Commande.EtatCommande.en_preparation)
@@ -43,15 +63,6 @@ namespace Pizzeria
             }
             else
             {
-                SelectLivreur.Visibility = Visibility.Visible;
-                foreach (Livreur l in p.Livreur)
-                {
-                    if (l.EtatLivreur != Livreur.etat_livreur.enconges)
-                    {
-                        ComboxBoxLivreur.Items.Add(l.NumEmploye);
-                    }
-                }
-
                 foreach (Commande c in p.Commandes)
                 {
                     if (c.Etat == Commande.EtatCommande.en_livraison && c.LivreurCharge.NumEmploye == currentLName)
@@ -93,7 +104,7 @@ namespace Pizzeria
         private void ComboxBoxLivreur_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             currentLName = ComboxBoxLivreur.Text;
-            InitPriseEnCharge();
+            InitListeCommande();
         }
     }
 }

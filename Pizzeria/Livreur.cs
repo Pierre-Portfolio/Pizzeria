@@ -29,6 +29,7 @@ namespace Pizzeria
         public string MoyenLivraison
         {
             get { return moyenLivraison; }
+            set { this.moyenLivraison = value; }
         }
     }
 }

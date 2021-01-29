@@ -60,25 +60,26 @@ namespace Pizzeria
         #endregion
 
         #region Parti Client
+        private void SaveCommis(object sender, RoutedEventArgs e)
+        {
+            p1.SaveCommis();
+        }
         private void ClientsBtn_Click(object sender, RoutedEventArgs e)
         {
             RefreshPasOpti();
             MainGrid.Children.Add(DynamicGridClient);
         }
-
         private void OpenAddClient(object sender, RoutedEventArgs e)
         {
             var WindowAddClient = new AddClient();
             WindowAddClient.Show();
             this.Close();
         }
-
         private void OpenChercherClient(object sender, RoutedEventArgs e)
         {
             var WindowChercher = new Rechercher(this.p1);
             WindowChercher.Show();
         }
-
         private void OpenAddCommis(object sender, RoutedEventArgs e)
         {
             var WindowAddComis = new addCommis();
@@ -293,6 +294,19 @@ namespace Pizzeria
             Grid.SetColumn(btnSuprCommis, 0);
             DynamicGridClient.Children.Add(btnSuprCommis);
 
+            //Btn save
+            /*Button btnSaveCommis = new Button();
+            btnSaveCommis.Content = "Modifier";
+            btnSaveCommis.Background = Brushes.Yellow;
+            btnSaveCommis.Height = 15;
+            btnSaveCommis.Width = 50;
+            btnSaveCommis.BorderThickness = new Thickness(0, 0, 0, 0);
+            btnSaveCommis.Margin = new Thickness(284, -125, 0, 0);
+            btnSaveCommis.Click += new RoutedEventHandler(SaveCommis);
+            Grid.SetRow(btnSaveCommis, 3);
+            Grid.SetColumn(btnSaveCommis, 0);
+            DynamicGridClient.Children.Add(btnSaveCommis);*/
+
             // tableau des commis
             DataGrid myGridCommis = new DataGrid();
             myGridCommis.Width = 700;
@@ -487,7 +501,6 @@ namespace Pizzeria
         {
             var WindowPriseEnCharge = new PagePriseEnCharge(this.p1);
             WindowPriseEnCharge.Show();
-
         }
         public MainWindow()
         {
@@ -497,8 +510,6 @@ namespace Pizzeria
             BlockBtnBase();
             GenerationPageClient();
             GenerationPageCommande();
-
-
         }
         #endregion
 

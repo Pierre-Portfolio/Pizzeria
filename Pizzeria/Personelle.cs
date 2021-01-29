@@ -33,6 +33,7 @@ namespace Pizzeria
         public string AdrEmploye
         {
             get { return adrEmploye; }
+            set { this.adrEmploye = value; }
         }
 
         public string MdpEmploye
@@ -42,6 +43,7 @@ namespace Pizzeria
         public string NumEmploye
         {
             get { return numEmploye; }
+            set { this.numEmploye = value; }
         }
     }
 }

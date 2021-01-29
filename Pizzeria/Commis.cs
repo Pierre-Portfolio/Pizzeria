@@ -23,6 +23,7 @@ namespace Pizzeria
         public etat_commis EtatCommis
         {
             get { return etatCommis; }
+            set { this.etatCommis = value; }
         }
         public DateTime DateEmbauche
         {

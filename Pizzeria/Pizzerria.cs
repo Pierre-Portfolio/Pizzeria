@@ -24,7 +24,7 @@ namespace Pizzeria
             this.commandes = ChargerCSVCommande();
             this.currentUser = null;
         }
-
+        #region Propietes
         public string Nom
         {
             get { return nom; }
@@ -58,6 +58,7 @@ namespace Pizzeria
             get { return this.currentUser; }
             set { this.currentUser = value; }
         }
+        #endregion
 
         public void addClient(Client c)
         {
@@ -211,6 +212,25 @@ namespace Pizzeria
                 lecteur.Close();
             }
             return c1;
+        }
+        #endregion
+
+        #region AddToCsv
+        public void SaveCommis()
+        {
+            string path = "..\\..\\..\\Commis.csv";
+            StreamWriter writer = new StreamWriter(path);
+            string line = "";
+            int i = 0;
+            foreach (Commis c in commis)
+            {
+                line += c.NomEmploye + ";" + c.PrenomEmploye + ";" + c.MdpEmploye + ";" + c.AdrEmploye + ";" + c.NumEmploye + ";" + c.EtatCommis.ToString() + ";" + c.DateEmbauche.Day + "/" + c.DateEmbauche.Month + "/" + c.DateEmbauche.Year;
+                i++;
+                if (i != commis.Count)
+                    line += "\n";
+            }
+            writer.Write(line);
+            writer.Close();
         }
         #endregion
 
