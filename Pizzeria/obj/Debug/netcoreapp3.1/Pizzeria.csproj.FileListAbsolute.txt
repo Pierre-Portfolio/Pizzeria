@@ -58,3 +58,5 @@ C:\Users\petil\source\repos\Pizzeria\Pizzeria\obj\Debug\netcoreapp3.1\addCommis.
 C:\Users\petil\source\repos\Pizzeria\Pizzeria\obj\Debug\netcoreapp3.1\AddLivreur.baml
 C:\Users\tompa\OneDrive\Documents\ESILV\POO\Pizzeria\Pizzeria\Pizzeria\obj\Debug\netcoreapp3.1\PagePriseEnCharge.g.cs
 C:\Users\tompa\OneDrive\Documents\ESILV\POO\Pizzeria\Pizzeria\Pizzeria\obj\Debug\netcoreapp3.1\PagePriseEnCharge.baml
+C:\Users\petil\source\repos\Pizzeria\Pizzeria\obj\Debug\netcoreapp3.1\PagePriseEnCharge.g.cs
+C:\Users\petil\source\repos\Pizzeria\Pizzeria\obj\Debug\netcoreapp3.1\PagePriseEnCharge.baml
