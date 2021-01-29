@@ -204,6 +204,7 @@ namespace Pizzeria
             btnAddClient.Width = 15;
             btnAddClient.BorderThickness = new Thickness(0, 0, 0, 0);
             btnAddClient.Margin = new Thickness(150, -11, 0, 0);
+            btnAddClient.ToolTip = "Ajouter un client";
             btnAddClient.Background = new ImageBrush(new BitmapImage(new Uri(@"https://cdn.pixabay.com/photo/2014/04/02/10/41/button-304224_640.png")));
             btnAddClient.Click += new RoutedEventHandler(OpenAddClient);
             DynamicGridClient.Children.Add(btnAddClient);
@@ -215,6 +216,7 @@ namespace Pizzeria
             btnSuprClient.Height = 15;
             btnSuprClient.Width = 15;
             btnSuprClient.BorderThickness = new Thickness(0, 0, 0, 0);
+            btnSuprClient.ToolTip = "Supprimer un client";
             btnSuprClient.Background = new ImageBrush(new BitmapImage(new Uri(@"https://cdn.pixabay.com/photo/2013/07/12/17/00/remove-151678_960_720.png")));
             btnSuprClient.Margin = new Thickness(200, -11, 0, 0);
             DynamicGridClient.Children.Add(btnSuprClient);
@@ -227,6 +229,7 @@ namespace Pizzeria
             btnChercher.Background = new ImageBrush(new BitmapImage(new Uri(@"https://www.icone-png.com/png/1/1402.png")));
             btnChercher.Height = 15;
             btnChercher.Width = 15;
+            btnChercher.ToolTip = "Rechercher un client";
             btnChercher.Margin = new Thickness(250, -11, 0, 0);
             btnChercher.Click += new RoutedEventHandler(OpenChercherClient);
             DynamicGridClient.Children.Add(btnChercher);
@@ -276,6 +279,7 @@ namespace Pizzeria
             btnAddCommis.BorderThickness = new Thickness(0, 0, 0, 0);
             btnAddCommis.Margin = new Thickness(154, -125, 0, 0);
             btnAddCommis.Click += new RoutedEventHandler(OpenAddCommis);
+            btnAddCommis.ToolTip = "Ajouter un commis";
             btnAddCommis.Background = new ImageBrush(new BitmapImage(new Uri(@"https://cdn.pixabay.com/photo/2014/04/02/10/41/button-304224_640.png")));
             Grid.SetRow(btnAddCommis, 3);
             Grid.SetColumn(btnAddCommis, 0);
@@ -290,22 +294,10 @@ namespace Pizzeria
             btnSuprCommis.BorderThickness = new Thickness(0, 0, 0, 0);
             btnSuprCommis.Background = new ImageBrush(new BitmapImage(new Uri(@"https://cdn.pixabay.com/photo/2013/07/12/17/00/remove-151678_960_720.png")));
             btnSuprCommis.Margin = new Thickness(204, -125, 0, 0);
+            btnSuprCommis.ToolTip = "Supprimer un commis";
             Grid.SetRow(btnSuprCommis, 3);
             Grid.SetColumn(btnSuprCommis, 0);
             DynamicGridClient.Children.Add(btnSuprCommis);
-
-            //Btn save
-            /*Button btnSaveCommis = new Button();
-            btnSaveCommis.Content = "Modifier";
-            btnSaveCommis.Background = Brushes.Yellow;
-            btnSaveCommis.Height = 15;
-            btnSaveCommis.Width = 50;
-            btnSaveCommis.BorderThickness = new Thickness(0, 0, 0, 0);
-            btnSaveCommis.Margin = new Thickness(284, -125, 0, 0);
-            btnSaveCommis.Click += new RoutedEventHandler(SaveCommis);
-            Grid.SetRow(btnSaveCommis, 3);
-            Grid.SetColumn(btnSaveCommis, 0);
-            DynamicGridClient.Children.Add(btnSaveCommis);*/
 
             // tableau des commis
             DataGrid myGridCommis = new DataGrid();
@@ -362,6 +354,7 @@ namespace Pizzeria
             btnAddLivreur.Width = 15;
             btnAddLivreur.BorderThickness = new Thickness(0, 0, 0, 0);
             btnAddLivreur.Margin = new Thickness(154, -110, 0, 0);
+            btnAddLivreur.ToolTip = "Ajouter un livreur";
             btnAddLivreur.Click += new RoutedEventHandler(OpenAddLivreur);
             btnAddLivreur.Background = new ImageBrush(new BitmapImage(new Uri(@"https://cdn.pixabay.com/photo/2014/04/02/10/41/button-304224_640.png")));
             Grid.SetRow(btnAddLivreur, 5);
