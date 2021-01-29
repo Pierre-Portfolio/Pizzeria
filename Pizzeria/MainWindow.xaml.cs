@@ -102,7 +102,7 @@ namespace Pizzeria
             {
                 foreach (Object o in myGridClient.SelectedItems)
                 {
-                    ModifClient w = new ModifClient((Client)o);
+                    ModifClient w = new ModifClient((Client)o,p1);
                     w.Show();
                     w.BoxNom.Text = ((Client)o).NomClient;
                     w.BoxPrenom.Text = ((Client)o).PrenomClient;

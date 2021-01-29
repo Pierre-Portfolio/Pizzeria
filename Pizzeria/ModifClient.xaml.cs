@@ -17,16 +17,18 @@ namespace Pizzeria
     /// </summary>
     public partial class ModifClient : Window
     {
-        public ModifClient()
+        public Pizzerria p;
+        Client c;
+        public ModifClient(Pizzerria p)
         {
             InitializeComponent();
+            this.p = p;
         }
-
-        Client c;
-        public ModifClient(Client c)
+        public ModifClient(Client c, Pizzerria p)
         {
             InitializeComponent();
             this.c = c;
+            this.p = p;
         }
 
         private void Change(object sender, RoutedEventArgs e)
@@ -35,6 +37,13 @@ namespace Pizzeria
             c.PrenomClient = BoxPrenom.Text;
             c.AdrClient = BoxAdresse.Text;
             c.TelClient = Convert.ToInt32(BoxTel.Text);
+            Client cl = null;
+            p.Clients.TryGetValue(c.TelClient,out cl);
+            cl.NomClient = BoxNom.Text;
+            cl.PrenomClient = BoxPrenom.Text;
+            cl.AdrClient = BoxAdresse.Text;
+            cl.TelClient = Convert.ToInt32(BoxTel.Text);
+            p.ReWriteCsvClient();
             this.Close();
         }
 

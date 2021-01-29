@@ -218,7 +218,7 @@ namespace Pizzeria
         #region AddToCsv
         public void ReWriteCsvClient()
         {
-            string path = "..\\..\\..\\Commis.csv";
+            string path = "..\\..\\..\\Clients.csv";
             if (Clients != null && Clients.Count != 0)
             {
                 StreamWriter wr = new StreamWriter(path);
@@ -229,7 +229,7 @@ namespace Pizzeria
                     i++;
                     line += val.Value.GetLineForCSV();
                     if (i != Clients.Count)
-                        line += "/n";
+                        line += "\n";
                 }
                 wr.Write(line);
                 wr.Close();
