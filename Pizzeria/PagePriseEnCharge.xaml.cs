@@ -19,6 +19,7 @@ namespace Pizzeria
     {
         public Pizzerria p;
         public string currentLName;
+        public string currentIdCommande = "";
         public PagePriseEnCharge(Pizzerria p)
         {
             InitializeComponent();
@@ -65,7 +66,7 @@ namespace Pizzeria
             {
                 foreach (Commande c in p.Commandes)
                 {
-                    if (c.Etat == Commande.EtatCommande.en_livraison && c.LivreurCharge.NumEmploye == currentLName)
+                    if (c.Etat == Commande.EtatCommande.en_livraison && c.LivreurCharge.NumEmploye.Equals(currentLName))
                     {
                         ComboxBoxIdCommande.Items.Add(c.NumCommande);
                     }
@@ -74,21 +75,20 @@ namespace Pizzeria
         }
         private void ComboxBoxIdCommande_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            currentIdCommande = ComboxBoxIdCommande.SelectedItem.ToString();
         }
 
         private void ValiderLivreur(object sender, RoutedEventArgs e)
         {
             if (p.CurrentUser is Livreur)
             {
-                if (ComboxBoxIdCommande.SelectedIndex != -1)
+                if(currentIdCommande != "")
                 {
-                    string s = ComboxBoxIdCommande.Text;
-                    p.Commandes.Find(x => x.NumCommande == Int32.Parse(s)).LivreurCharge = p.CurrentUser as Livreur;
-                    p.Commandes.Find(x => x.NumCommande == Int32.Parse(s)).Etat = Commande.EtatCommande.en_livraison;
-                    Livreur l = p.CurrentUser as Livreur;
-                    l.EtatLivreur = Livreur.etat_livreur.enlivraison;
-                    p.CurrentUser = l;
+                    Commande c = p.Commandes.Find(x => x.NumCommande == Int32.Parse(currentIdCommande));
+                    c.LivreurCharge = (Livreur) p.CurrentUser;
+                    c.Etat = Commande.EtatCommande.en_livraison;
+                    p.ReWriteCsvCommande();
+                    this.Close();
                 }
                 else
                 {
@@ -97,14 +97,38 @@ namespace Pizzeria
             }
             else
             {
-
+                if(currentIdCommande != "")
+                {
+                    Commande c = p.Commandes.Find(x => x.NumCommande == Int32.Parse(currentIdCommande));
+                    c.Etat = Commande.EtatCommande.fermer;
+                    p.ReWriteCsvCommande();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Erreur, choissez une commande");
+                }
             }
         }
 
         private void ComboxBoxLivreur_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            currentLName = ComboxBoxLivreur.Text;
+            currentLName = ComboxBoxLivreur.SelectedItem.ToString();
             InitListeCommande();
+        }
+        private void CommandePerdu(object sender, RoutedEventArgs e)
+        {
+            if (currentIdCommande != "")
+            {
+                Commande c = p.Commandes.Find(x => x.NumCommande == Int32.Parse(currentIdCommande));
+                c.Etat = Commande.EtatCommande.perdue;
+                p.ReWriteCsvCommande();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Erreur, choissez une commande");
+            }
         }
     }
 }

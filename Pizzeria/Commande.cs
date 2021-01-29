@@ -49,7 +49,7 @@ namespace Pizzeria
             lastCommande++;
         }
 
-        public Commande(int numCommande, string heure, DateTime date, int numeroClient, string nomClient, string nomCommis, EtatCommande etat, List<Pizza> listePizza, List<Boisson> produitAnnexes)
+        public Commande(int numCommande, string heure, DateTime date, int numeroClient, string nomClient, string nomCommis, EtatCommande etat, Livreur l, List<Pizza> listePizza, List<Boisson> produitAnnexes)
         {
             this.numCommande = numCommande;
             this.heure = heure;
@@ -58,6 +58,7 @@ namespace Pizzeria
             this.nomClient = nomClient;
             this.nomCommis = nomCommis;
             this.etat = etat;
+            this.LivreurCharge = l;
             this.listePizza = listePizza;
             this.produitAnnexes = produitAnnexes;
             lastCommande = numCommande;
@@ -67,9 +68,13 @@ namespace Pizzeria
         public string GetLineForCSV()
         {
             string ndate = date.Day + "/" +date.Month +"/"+date.Year;
-            string line = numCommande + ";" + heure + ";" + ndate + ";" + numeroClient + ";" + nomClient + ";" + nomCommis + ";"+etat+";";
-            //Ici => Add le nom du livreur si != null
-
+            string line = numCommande + ";" + heure + ";" + ndate + ";" + numeroClient + ";" + nomClient + ";" + nomCommis + ";"+etat +";";
+            if(LivreurCharge != null)
+            {
+                line += LivreurCharge.NumEmploye;
+            }
+            line += ";";
+              
             for (int i = 0; i < ListePizza.Count; i++)
             {
                 if (ListePizza[i].Garnitures.Count != 0)

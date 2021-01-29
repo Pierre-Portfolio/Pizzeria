@@ -182,8 +182,12 @@ namespace Pizzeria
                         }
 
                         Commande.EtatCommande en = Enum.Parse<Commande.EtatCommande>(tem[6]);
+
+                        Livreur l = null; 
+                        l = Livreur.Find(x => x.NumEmploye.Equals(tem[7]));
+
                         List<Pizza> p = new List<Pizza>();
-                        string[] pizzas = tem[7].Split('/');
+                        string[] pizzas = tem[8].Split('/');
                         foreach (string s in pizzas)
                         {
                             string[] elem = s.Split(',');
@@ -197,7 +201,7 @@ namespace Pizzeria
                             p.Add(piz);
                         }
                         List<Boisson> b = new List<Boisson>();
-                        string[] boisson = tem[8].Split('/');
+                        string[] boisson = tem[9].Split('/');
                         foreach (string s in boisson)
                         {
                             string[] elem = s.Split('-');
@@ -206,7 +210,7 @@ namespace Pizzeria
                                 b.Add(new Boisson(elem[0], double.Parse(elem[1])));
                             }
                         }
-                        c1.Add(new Commande(int.Parse(tem[0]), tem[1], newDate, int.Parse(tem[3]), tem[4], tem[5], en, p, b));
+                        c1.Add(new Commande(int.Parse(tem[0]), tem[1], newDate, int.Parse(tem[3]), tem[4], tem[5], en,l, p, b));
                     }
                 }
                 lecteur.Close();
