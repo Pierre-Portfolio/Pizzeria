@@ -67,7 +67,7 @@ namespace Pizzeria
         public string GetLineForCSV()
         {
             string ndate = date.Day + "/" +date.Month +"/"+date.Year;
-            string line = numCommande + ";" + heure + ";" + ndate + ";" + numeroClient + ";" + nomClient + ";" + nomCommis + ";";
+            string line = numCommande + ";" + heure + ";" + ndate + ";" + numeroClient + ";" + nomClient + ";" + nomCommis + ";"+etat+";";
             //Ici => Add le nom du livreur si != null
 
             for (int i = 0; i < ListePizza.Count; i++)

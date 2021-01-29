@@ -47,7 +47,6 @@ namespace Pizzeria
         {
             CanvaPizza.Visibility = Visibility.Hidden;
             CanvaExtra.Visibility = Visibility.Visible;
-
         }
 
         private void AddCumulClient()
@@ -87,69 +86,10 @@ namespace Pizzeria
         }
         private void Click_btnValider(object sender, RoutedEventArgs e) //Ajout de la commande au csv
         {
-            p.Commandes.Add(this.currentCommande);
             if (currentCommande.ListePizza != null && currentCommande.ListePizza.Count != 0)
             {
-                string path = "..\\..\\..\\Commandes.csv";
-                string date = currentCommande.Date.Day + "/" + currentCommande.Date.Month + "/" + currentCommande.Date.Year;
-                string line = currentCommande.NumCommande + ";" + currentCommande.Heure + "h;" +date + ";" + currentCommande.NumeroClient + ";"+currentClient.NomClient + ";" + "chenal" + ";" + currentCommande.Etat.ToString() + ";";
-                for (int i = 0; i < currentCommande.ListePizza.Count; i++)
-                {
-                    if (currentCommande.ListePizza[i].Garnitures.Count != 0)
-                    {
-                        line += currentCommande.ListePizza[i].Taille + ",";
-                        for (int j = 0; j < currentCommande.ListePizza[i].Garnitures.Count; j++)
-                        {
-                            if (j >= currentCommande.ListePizza[i].Garnitures.Count - 1)
-                            {
-                                if (i >= currentCommande.ListePizza.Count-1)
-                                    line += currentCommande.ListePizza[i].Garnitures[j].ToString();
-                                else
-                                    line += currentCommande.ListePizza[i].Garnitures[j].ToString() + "/";
-                            }
-                            else
-                            {
-                                line += currentCommande.ListePizza[i].Garnitures[j].ToString() + ",";
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if (i >= currentCommande.ListePizza.Count - 1)
-                        {
-                            line += currentCommande.ListePizza[i].Taille;
-                        }
-                        else
-                        {
-                            line += currentCommande.ListePizza[i].Taille + "/";
-                        }
-                    }
-                }
-                line += ";";
-                for(int i = 0; i < currentCommande.ProduitAnnexes.Count; i++)
-                {
-                    if (i == currentCommande.ProduitAnnexes.Count - 1)
-                    {
-                        line += currentCommande.ProduitAnnexes[i].NomBoisson+"-"+ currentCommande.ProduitAnnexes[i].Volume;
-                    }
-                    else
-                    {
-                        line += currentCommande.ProduitAnnexes[i].NomBoisson + "-" + currentCommande.ProduitAnnexes[i].Volume+"/";
-                    }
-                }
-                if (!File.Exists(path))
-                {
-                    // Creation du fichier.
-                    StreamWriter sw = File.CreateText(path);
-                    sw.WriteLine(line);
-                    sw.Close();
-                }
-                else
-                {
-                    StreamWriter sw = File.AppendText(path);
-                    sw.WriteLine(line);
-                    sw.Close();
-                }
+                p.Commandes.Add(this.currentCommande);
+                p.ReWriteCsvCommande();
                 AddCumulClient();
                 MessageBox.Show("Commande envoyé en cuisine !", "Commande");
                 this.Close();

@@ -278,7 +278,7 @@ namespace Pizzeria
         
         public void ReWriteCsvCommande()
         {
-            string path = "..\\..\\..\\Livreur.csv";
+            string path = "..\\..\\..\\Commandes.csv";
             if (Commandes != null && Commandes.Count != 0)
             {
                 StreamWriter wr = new StreamWriter(path);
@@ -294,23 +294,6 @@ namespace Pizzeria
                 wr.Write(line);
                 wr.Close();
             }
-        }
-        
-        public void SaveCommis()
-        {
-            string path = "..\\..\\..\\Commis.csv";
-            StreamWriter writer = new StreamWriter(path);
-            string line = "";
-            int i = 0;
-            foreach (Commis c in commis)
-            {
-                line += c.NomEmploye + ";" + c.PrenomEmploye + ";" + c.MdpEmploye + ";" + c.AdrEmploye + ";" + c.NumEmploye + ";" + c.EtatCommis.ToString() + ";" + c.DateEmbauche.Day + "/" + c.DateEmbauche.Month + "/" + c.DateEmbauche.Year;
-                i++;
-                if (i != commis.Count)
-                    line += "\n";
-            }
-            writer.Write(line);
-            writer.Close();
         }
         #endregion
 
