@@ -31,5 +31,10 @@ namespace Pizzeria
             get { return moyenLivraison; }
             set { this.moyenLivraison = value; }
         }
+
+        public string GetLineCSV()
+        {
+            return nomEmploye + ";" + prenomEmploye + ";" + mdpEmploye + ";" + adrEmploye + ";" + numEmploye + ";" + etatLivreur.ToString() + ";" + moyenLivraison;
+        }
     }
 }
