@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pizzeria"
         mc:Ignorable="d"
-        Title="Passer Commande" Height="304" Width="550" ResizeMode="NoResize" SizeToContent="WidthAndHeight">
+        Title="Passer Commande" Height="304" Width="550" ResizeMode="NoResize" SizeToContent="WidthAndHeight" Icon="/logoPizza.png">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/Pizza-Background.jpg"/>

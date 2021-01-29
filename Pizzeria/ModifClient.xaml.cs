@@ -30,8 +30,7 @@ namespace Pizzeria
         }
 
         private void Change(object sender, RoutedEventArgs e)
-        {
-            
+        {           
             c.NomClient = BoxNom.Text;
             c.PrenomClient = BoxPrenom.Text;
             c.AdrClient = BoxAdresse.Text;

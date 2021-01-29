@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pizzeria"
         mc:Ignorable="d"
-        Title="PagePriseEnCharge" Height="450" Width="338" ResizeMode="NoResize" SizeToContent="WidthAndHeight">
+        Title="PagePriseEnCharge" Height="450" Width="338" ResizeMode="NoResize" SizeToContent="WidthAndHeight" Icon="/logoPizza.png">
     <Window.Background>
         <ImageBrush ImageSource="/Pizza-Background.jpg" Stretch="None"/>
     </Window.Background>

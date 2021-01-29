@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Pizzeria"
         mc:Ignorable="d"
         Title="Rechercher" Height="450" Width="330
-        ">
+        " Icon="/logoPizza.png">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="33*"/>
