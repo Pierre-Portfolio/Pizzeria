@@ -71,9 +71,8 @@ namespace Pizzeria
         }
         private void OpenAddClient(object sender, RoutedEventArgs e)
         {
-            var WindowAddClient = new AddClient();
+            var WindowAddClient = new AddClient(p1);
             WindowAddClient.Show();
-            this.Close();
         }
         private void OpenChercherClient(object sender, RoutedEventArgs e)
         {
@@ -486,7 +485,7 @@ namespace Pizzeria
             int i = 0;
             p1.Commandes.ForEach(c =>
             {
-                if (p1.CurrentUser is Commis || (p1.CurrentUser is Livreur && (c.Etat == Commande.EtatCommande.en_preparation || (c.Etat == Commande.EtatCommande.en_livraison && c.LivreurCharge == p1.CurrentUser))))
+                if (p1.CurrentUser is Commis || (p1.CurrentUser is Livreur && (c.Etat == Commande.EtatCommande.en_preparation || (c.Etat == Commande.EtatCommande.en_livraison && c.LivreurCharge.NumEmploye.Equals(p1.CurrentUser.NumEmploye)))))
                 {
                     Grid Commande1 = new Grid();
                     ColumnDefinition Test1commande1Colum = new ColumnDefinition();

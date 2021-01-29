@@ -19,32 +19,11 @@ namespace Pizzeria
     /// </summary>
     public partial class AddClient : Window
     {
-        public AddClient()
+        public Pizzerria p;
+        public AddClient(Pizzerria p)
         {
             InitializeComponent();
-        }
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-        
-        private void AddToCsv(Client c)
-        {
-            string path = "..\\..\\..\\Clients.csv";
-            string line = c.NumClient + ";" + c.NomClient + ";" + c.PrenomClient + ";" + c.AdrClient + ";" + c.TelClient + ";" + c.DatePremiereCmd.Day+"/"+c.DatePremiereCmd.Month+"/"+c.DatePremiereCmd.Year + ";" + c.CmlCmd;
-            if (!File.Exists(path))
-            {
-                // Creation du fichier.
-                StreamWriter sw = File.CreateText(path);
-                sw.WriteLine(line);
-                sw.Close();
-            }
-            else
-            {
-                StreamWriter sw = File.AppendText(path);
-                sw.WriteLine(line);
-                sw.Close();
-            }
+            this.p = p;
         }
         
         private void AjouterClient(object sender, RoutedEventArgs e)
@@ -52,9 +31,10 @@ namespace Pizzeria
             if(BoxNom.Text != "" && BoxPrenom.Text.Length != 0 && BoxAdresse.Text.Length != 0 && BoxTel.Text.Length != 0)
             {
                 Client c = new Client(Client.lastNum + 1,  BoxNom.Text, BoxPrenom.Text, BoxAdresse.Text, int.Parse(BoxTel.Text));
-                AddToCsv(c);
-                var WindowMain = new MainWindow();
-                WindowMain.Show(); 
+                p.AjouterClientFinCSV(c);
+                p.Clients.Add(c.TelClient, c);
+                var WindowCommande = new PasserCommande(p,c);
+                WindowCommande.Show();
                 this.Close();
             }
             else
@@ -63,14 +43,21 @@ namespace Pizzeria
             }
         }
 
+
+        #region Fonction Useless
         private void BoxNom_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
 
+        }
         private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
         {
 
         }
+        #endregion
+
     }
 }

@@ -32,7 +32,7 @@ namespace Pizzeria
         {
             this.p = p;
             currentClient = c;
-            currentCommande = new Commande(currentClient.TelClient, currentClient.NomClient);
+            currentCommande = new Commande(currentClient.TelClient, currentClient.NomClient, p.CurrentUser.NomEmploye);
             InitializeComponent();
         }
 
@@ -88,6 +88,7 @@ namespace Pizzeria
         {
             if (currentCommande.ListePizza != null && currentCommande.ListePizza.Count != 0)
             {
+
                 p.Commandes.Add(this.currentCommande);
                 p.ReWriteCsvCommande();
                 AddCumulClient();

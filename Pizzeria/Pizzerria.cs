@@ -220,6 +220,24 @@ namespace Pizzeria
         #endregion
 
         #region AddToCsv
+        public void AjouterClientFinCSV(Client c)
+        {
+            string path = "..\\..\\..\\Clients.csv";
+            string line = c.NumClient + ";" + c.NomClient + ";" + c.PrenomClient + ";" + c.AdrClient + ";" + c.TelClient + ";" + c.DatePremiereCmd.Day + "/" + c.DatePremiereCmd.Month + "/" + c.DatePremiereCmd.Year + ";" + c.CmlCmd;
+            if (!File.Exists(path))
+            {
+                // Creation du fichier.
+                StreamWriter sw = File.CreateText(path);
+                sw.WriteLine(line);
+                sw.Close();
+            }
+            else
+            {
+                StreamWriter sw = File.AppendText(path);
+                sw.WriteLine(line);
+                sw.Close();
+            }
+        }
         public void ReWriteCsvClient()
         {
             string path = "..\\..\\..\\Clients.csv";
