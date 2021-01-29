@@ -29,5 +29,12 @@ namespace Pizzeria
         {
             get { return dateEmbauche; }
         }
+
+        public string GetLineCSV()
+        {
+            string date = dateEmbauche.Day + "/" + dateEmbauche.Month+"/" + dateEmbauche.Year;
+            return nomEmploye + ";" + prenomEmploye + ";" + adrEmploye + ";" + numEmploye + ";" + etatCommis.ToString()+";"+date ;
+
+        }
     }
 }

@@ -94,7 +94,7 @@ namespace Pizzeria
         public string GetLineForCSV()
         {
             string date = datePremiereCmd.Day + "/" + datePremiereCmd.Month + "/" + datePremiereCmd.Year;
-            return numClient + ";" + nomClient + ";" + prenomClient + ";" + adrClient + ";" + telClient + ";" + datePremiereCmd + ";" + cumulCommande;
+            return numClient + ";" + nomClient + ";" + prenomClient + ";" + adrClient + ";" + telClient + ";" + date + ";" + cumulCommande;
         }
     }
 }
