@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace Pizzeria
 {
-    public class Client
+    public class Client : INotifyPropertyChanged
     {
         private int numClient;
         private string nomClient;
@@ -14,6 +15,8 @@ namespace Pizzeria
         private int telClient;
         private int cumulCommande;
         public static int lastNum = 1;
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public Client(int numClient, string nomClient, string prenomClient, string adrClient, int telClient, int cumulCommande = 0)
         {
             this.numClient = numClient;
@@ -41,36 +44,51 @@ namespace Pizzeria
         public int NumClient
         {
             get { return numClient; }
+            set { this.numClient = value; OnPropertyChanged("NumClient"); }
         }
 
         public string NomClient
         {
             get { return nomClient; }
+            set { this.nomClient = value; OnPropertyChanged("NomClient"); }
         }
 
         public string PrenomClient
         {
             get { return prenomClient; }
+            set { this.prenomClient = value; OnPropertyChanged("PrenomClient"); }
         }
         public string AdrClient
         {
             get { return adrClient; }
+            set { this.adrClient = value; OnPropertyChanged("AdrClient"); }
         }
         public int TelClient
         {
             get{ return this.telClient; }
+            set { this.telClient = value; OnPropertyChanged("telClient"); }
         }
 
         public DateTime DatePremiereCmd
         {
             get { return datePremiereCmd; }
+            set { this.datePremiereCmd = value; OnPropertyChanged("DatePremiereCmd"); }
         }
 
         public int CmlCmd
         {
             get { return cumulCommande; }
-            set { this.cumulCommande = value; }
+            set { this.cumulCommande = value; OnPropertyChanged("CmlCmd"); }
         }
         #endregion
+
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(name));
+            }
+        }
     }
 }

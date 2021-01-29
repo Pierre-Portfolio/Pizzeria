@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 using System.Net.NetworkInformation;
+using System.ComponentModel;
 
 namespace Pizzeria
 {
@@ -27,10 +28,13 @@ namespace Pizzeria
         // permet de savoir la fenetre actuel
         // On crée toutes les pages dynamique
         Grid DynamicGridClient = new Grid();
+        DataGrid myGridClient = new DataGrid();
+
         Grid DynamicGridCommands = new Grid();
+        ListView ListeViewCommande = new ListView();
+
         Grid DynamicGridStat= new Grid();
         Grid DynamicGridAdmin = new Grid();
-        ListView ListeViewCommande = new ListView();
 
         public Pizzerria p1;
         #endregion
@@ -92,6 +96,26 @@ namespace Pizzeria
             WindowAddLivreur.Show();
             this.Close();
         }
+        private void ButtonModifClient(object sender, RoutedEventArgs e)
+        {
+            if (myGridClient.SelectedItems.Count == 1)
+            {
+                foreach (Object o in myGridClient.SelectedItems)
+                {
+                    ModifClient w = new ModifClient((Client)o);
+                    w.Show();
+                    w.BoxNom.Text = ((Client)o).NomClient;
+                    w.BoxPrenom.Text = ((Client)o).PrenomClient;
+                    w.BoxAdresse.Text = ((Client)o).AdrClient;
+                    w.BoxTel.Text = Convert.ToString(((Client)o).TelClient);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Le nombre de ligne selectionné est incorrect ! ");
+            }
+        }
+
         #endregion
 
         #region Parti Commande
@@ -209,6 +233,19 @@ namespace Pizzeria
             btnAddClient.Click += new RoutedEventHandler(OpenAddClient);
             DynamicGridClient.Children.Add(btnAddClient);
 
+            //Btn modifier
+            Button btnModifClient = new Button();
+            btnModifClient.Content = "";
+            btnModifClient.Background = Brushes.Green;
+            btnModifClient.Height = 15;
+            btnModifClient.Width = 15;
+            btnModifClient.BorderThickness = new Thickness(0, 0, 0, 0);
+            btnModifClient.Margin = new Thickness(200, -11, 0, 0);
+            btnModifClient.ToolTip = "Modifier un client";
+            btnModifClient.Background = new ImageBrush(new BitmapImage(new Uri(@"https://cdn.pixabay.com/photo/2016/03/29/06/22/edit-1287617_1280.png")));
+            btnModifClient.Click += new RoutedEventHandler(ButtonModifClient);
+            DynamicGridClient.Children.Add(btnModifClient);
+
             //Btn del
             Button btnSuprClient = new Button();
             btnSuprClient.Content = "";
@@ -218,7 +255,7 @@ namespace Pizzeria
             btnSuprClient.BorderThickness = new Thickness(0, 0, 0, 0);
             btnSuprClient.ToolTip = "Supprimer un client";
             btnSuprClient.Background = new ImageBrush(new BitmapImage(new Uri(@"https://cdn.pixabay.com/photo/2013/07/12/17/00/remove-151678_960_720.png")));
-            btnSuprClient.Margin = new Thickness(200, -11, 0, 0);
+            btnSuprClient.Margin = new Thickness(250, -11, 0, 0);
             DynamicGridClient.Children.Add(btnSuprClient);
 
             //Btn Rechercher
@@ -230,12 +267,11 @@ namespace Pizzeria
             btnChercher.Height = 15;
             btnChercher.Width = 15;
             btnChercher.ToolTip = "Rechercher un client";
-            btnChercher.Margin = new Thickness(250, -11, 0, 0);
+            btnChercher.Margin = new Thickness(300, -11, 0, 0);
             btnChercher.Click += new RoutedEventHandler(OpenChercherClient);
             DynamicGridClient.Children.Add(btnChercher);
 
             // tableau des clients
-            DataGrid myGridClient = new DataGrid();
             myGridClient.Width = 700;
             myGridClient.Height = 100;
             Dictionary<int, Client> l = p1.Clients;
@@ -506,6 +542,7 @@ namespace Pizzeria
         }
         #endregion
 
+        #region Connexion application
         private void Click_Connection(object sender, RoutedEventArgs e)
         {
             if(BoxNom.Text.Length != 0 && PasseWordBox.Password.Length != 0)
@@ -547,5 +584,6 @@ namespace Pizzeria
                 }
             }
         }
+        #endregion connection application
     }
 }

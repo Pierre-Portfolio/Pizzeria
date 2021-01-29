@@ -16,6 +16,9 @@
     <Compile Update="AddLivreur.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="ModifClient.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="PagePriseEnCharge.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -37,6 +40,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ModifClient.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="PagePriseEnCharge.xaml">
