@@ -64,10 +64,6 @@ namespace Pizzeria
         #endregion
 
         #region Parti Client
-        private void SaveCommis(object sender, RoutedEventArgs e)
-        {
-            p1.SaveCommis();
-        }
         private void ClientsBtn_Click(object sender, RoutedEventArgs e)
         {
             RefreshPasOpti();
@@ -321,6 +317,21 @@ namespace Pizzeria
             Grid.SetColumn(btnAddCommis, 0);
             DynamicGridClient.Children.Add(btnAddCommis);
 
+            //Btn modifier
+            Button btnModifCommis = new Button();
+            btnModifCommis.Content = "";
+            btnModifCommis.Background = Brushes.Green;
+            btnModifCommis.Height = 15;
+            btnModifCommis.Width = 15;
+            btnModifCommis.BorderThickness = new Thickness(0, 0, 0, 0);
+            btnModifClient.Margin = new Thickness(204, -125, 0, 0);
+            btnModifClient.ToolTip = "Modifier un commis";
+            btnModifClient.Background = new ImageBrush(new BitmapImage(new Uri(@"https://cdn.pixabay.com/photo/2016/03/29/06/22/edit-1287617_1280.png")));
+            //btnModifClient.Click += new RoutedEventHandler(ButtonModifClient);
+            Grid.SetRow(btnModifCommis, 3);
+            Grid.SetColumn(btnModifCommis, 0);
+            DynamicGridClient.Children.Add(btnModifCommis);
+
             //Btn del
             Button btnSuprCommis = new Button();
             btnSuprCommis.Content = "";
@@ -329,7 +340,7 @@ namespace Pizzeria
             btnSuprCommis.Width = 15;
             btnSuprCommis.BorderThickness = new Thickness(0, 0, 0, 0);
             btnSuprCommis.Background = new ImageBrush(new BitmapImage(new Uri(@"https://cdn.pixabay.com/photo/2013/07/12/17/00/remove-151678_960_720.png")));
-            btnSuprCommis.Margin = new Thickness(204, -125, 0, 0);
+            btnSuprCommis.Margin = new Thickness(254, -125, 0, 0);
             btnSuprCommis.ToolTip = "Supprimer un commis";
             Grid.SetRow(btnSuprCommis, 3);
             Grid.SetColumn(btnSuprCommis, 0);
@@ -396,6 +407,22 @@ namespace Pizzeria
             Grid.SetRow(btnAddLivreur, 5);
             Grid.SetColumn(btnAddLivreur, 0);
             DynamicGridClient.Children.Add(btnAddLivreur);
+
+            //Btn modifier
+            Button btnModifLivreur = new Button();
+            btnModifLivreur.Content = "";
+            btnModifLivreur.Background = Brushes.Green;
+            btnModifLivreur.Height = 15;
+            btnModifLivreur.Width = 15;
+            btnModifLivreur.BorderThickness = new Thickness(0, 0, 0, 0);
+            btnModifLivreur.Margin = new Thickness(204, -110, 0, 0);
+            btnModifLivreur.ToolTip = "Modifier un commis";
+            btnModifLivreur.Background = new ImageBrush(new BitmapImage(new Uri(@"https://cdn.pixabay.com/photo/2016/03/29/06/22/edit-1287617_1280.png")));
+            //btnModifLivreur.Click += new RoutedEventHandler(btnModifLivreur);
+            Grid.SetRow(btnModifLivreur, 5);
+            Grid.SetColumn(btnModifLivreur, 0);
+            DynamicGridClient.Children.Add(btnModifLivreur);
+
             #endregion
             /* ==== Debut creation partie Livreur ====*/
 
