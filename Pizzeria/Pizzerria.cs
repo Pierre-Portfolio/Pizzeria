@@ -268,13 +268,34 @@ namespace Pizzeria
                 {
                     i++;
                     line += l.GetLineCSV();
-                    if (i != Commis.Count)
+                    if (i != Livreur.Count)
                         line += "\n";
                 }
                 wr.Write(line);
                 wr.Close();
             }
         }
+        
+        public void ReWriteCsvCommande()
+        {
+            string path = "..\\..\\..\\Livreur.csv";
+            if (Commandes != null && Commandes.Count != 0)
+            {
+                StreamWriter wr = new StreamWriter(path);
+                string line = "";
+                int i = 0;
+                foreach (Commande c in Commandes)
+                {
+                    i++;
+                    line += c.GetLineForCSV();
+                    if (i != Commandes.Count)
+                        line += "\n";
+                }
+                wr.Write(line);
+                wr.Close();
+            }
+        }
+        
         public void SaveCommis()
         {
             string path = "..\\..\\..\\Commis.csv";

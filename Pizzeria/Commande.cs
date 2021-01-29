@@ -63,5 +63,58 @@ namespace Pizzeria
             lastCommande = numCommande;
 
         }
+
+        public string GetLineForCSV()
+        {
+            string ndate = date.Day + "/" +date.Month +"/"+date.Year;
+            string line = numCommande + ";" + heure + ";" + ndate + ";" + numeroClient + ";" + nomClient + ";" + nomCommis + ";";
+            //Ici => Add le nom du livreur si != null
+
+            for (int i = 0; i < ListePizza.Count; i++)
+            {
+                if (ListePizza[i].Garnitures.Count != 0)
+                {
+                    line += ListePizza[i].Taille + ",";
+                    for (int j = 0; j < ListePizza[i].Garnitures.Count; j++)
+                    {
+                        if (j >= ListePizza[i].Garnitures.Count - 1)
+                        {
+                            if (i >= ListePizza.Count - 1)
+                                line += ListePizza[i].Garnitures[j].ToString();
+                            else
+                                line += ListePizza[i].Garnitures[j].ToString() + "/";
+                        }
+                        else
+                        {
+                            line += ListePizza[i].Garnitures[j].ToString() + ",";
+                        }
+                    }
+                }
+                else
+                {
+                    if (i >= ListePizza.Count - 1)
+                    {
+                        line += ListePizza[i].Taille;
+                    }
+                    else
+                    {
+                        line += ListePizza[i].Taille + "/";
+                    }
+                }
+            }
+            line += ";";
+            for (int i = 0; i < ProduitAnnexes.Count; i++)
+            {
+                if (i == ProduitAnnexes.Count - 1)
+                {
+                    line += ProduitAnnexes[i].NomBoisson + "-" + ProduitAnnexes[i].Volume;
+                }
+                else
+                {
+                    line += ProduitAnnexes[i].NomBoisson + "-" + ProduitAnnexes[i].Volume + "/";
+                }
+            }
+            return line;
+        }
     }
 }
