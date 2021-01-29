@@ -216,6 +216,25 @@ namespace Pizzeria
         #endregion
 
         #region AddToCsv
+        public void ReWriteCsvClient()
+        {
+            string path = "..\\..\\..\\Commis.csv";
+            if (Clients != null && Clients.Count != 0)
+            {
+                StreamWriter wr = new StreamWriter(path);
+                string line = "";
+                int i = 0;
+                foreach (KeyValuePair<int, Client> val in Clients)
+                {
+                    i++;
+                    line += val.Value.GetLineForCSV();
+                    if (i != Clients.Count)
+                        line += "/n";
+                }
+                wr.Write(line);
+                wr.Close();
+            }
+        }
         public void SaveCommis()
         {
             string path = "..\\..\\..\\Commis.csv";

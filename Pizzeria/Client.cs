@@ -90,5 +90,11 @@ namespace Pizzeria
                 handler(this, new PropertyChangedEventArgs(name));
             }
         }
+
+        public string GetLineForCSV()
+        {
+            string date = datePremiereCmd.Day + "/" + datePremiereCmd.Month + "/" + datePremiereCmd.Year;
+            return numClient + ";" + nomClient + ";" + prenomClient + ";" + adrClient + ";" + telClient + ";" + datePremiereCmd + ";" + cumulCommande;
+        }
     }
 }
