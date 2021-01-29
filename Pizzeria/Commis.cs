@@ -33,7 +33,7 @@ namespace Pizzeria
         public string GetLineCSV()
         {
             string date = dateEmbauche.Day + "/" + dateEmbauche.Month+"/" + dateEmbauche.Year;
-            return nomEmploye + ";" + prenomEmploye + ";" + adrEmploye + ";" + numEmploye + ";" + etatCommis.ToString()+";"+date ;
+            return nomEmploye + ";" + prenomEmploye+";"+mdpEmploye + ";" + adrEmploye + ";" + numEmploye + ";" + etatCommis.ToString()+";"+date ;
 
         }
     }
