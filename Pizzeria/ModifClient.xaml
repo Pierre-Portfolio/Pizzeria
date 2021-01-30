@@ -11,7 +11,7 @@
     </Window.Background>
     <Grid Margin="0,0,514,0">
         <Button Content="Button" HorizontalAlignment="Left" Margin="124,377,0,0" VerticalAlignment="Top" Width="0"/>
-        <Canvas HorizontalAlignment="Left" Height="434" VerticalAlignment="Center" Width="338">
+        <Canvas HorizontalAlignment="Left" Height="466" VerticalAlignment="Center" Width="325">
             <Canvas.Background>
                 <ImageBrush/>
             </Canvas.Background>
