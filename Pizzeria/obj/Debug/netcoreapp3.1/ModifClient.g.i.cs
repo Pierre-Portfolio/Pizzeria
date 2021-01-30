@@ -86,7 +86,7 @@ namespace Pizzeria {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Pizzeria;component/modifclient.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Pizzeria;V1.0.0.0;component/modifclient.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\ModifClient.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

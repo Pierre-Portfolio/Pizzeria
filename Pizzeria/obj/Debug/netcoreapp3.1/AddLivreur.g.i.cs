@@ -94,7 +94,7 @@ namespace Pizzeria {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Pizzeria;component/addlivreur.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Pizzeria;V1.0.0.0;component/addlivreur.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\AddLivreur.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
