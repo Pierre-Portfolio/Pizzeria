@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\tompa\OneDrive\Documents\ESILV\POO\Pizzeria\Pizzeria\Pizzeria\obj\Debug\netcoreapp3.1\
+C:\Users\petil\source\repos\Pizzeria\Pizzeria\obj\Debug\netcoreapp3.1\
 Pizzeria
 none
 false
-TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
-C:\Users\tompa\OneDrive\Documents\ESILV\POO\Pizzeria\Pizzeria\Pizzeria\App.xaml
-81805144681
+TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
+C:\Users\petil\source\repos\Pizzeria\Pizzeria\App.xaml
+9-205791945
 
-211999909490
+22340874194
 1991363247284
-AddClient.xaml;addCommis.xaml;AddLivreur.xaml;MainWindow.xaml;ModifClient.xaml;PagePriseEnCharge.xaml;PasserCommande.xaml;Rechercher.xaml;
+AddClient.xaml;addCommis.xaml;AddLivreur.xaml;MainWindow.xaml;ModifClient.xaml;ModifCommis.xaml;PagePriseEnCharge.xaml;PasserCommande.xaml;Rechercher.xaml;
 
 False
 
