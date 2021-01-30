@@ -198,7 +198,7 @@ namespace Pizzeria {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Pizzeria;V1.0.0.0;component/statistiques.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Pizzeria;component/statistiques.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\Statistiques.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

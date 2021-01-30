@@ -100,7 +100,9 @@ namespace Pizzeria
                 {
                     Commande c = p.Commandes.Find(x => x.NumCommande == Int32.Parse(currentIdCommande));
                     c.Etat = Commande.EtatCommande.fermer;
+                    c.LivreurCharge.CumulTache++;
                     p.ReWriteCsvCommande();
+                    p.ReWriteCsvLivreur();
                     if (c.Facture == null)
                     {
                         c.Facture = new Facture(c);

@@ -45,7 +45,10 @@ namespace Pizzeria
             Commande1.VerticalAlignment = VerticalAlignment.Top;
             Commande1.Width = ListViewCommandes.Width;
             Commande1.Margin = new Thickness(0, 0, 0, 0);
-            Commande1.Background = new SolidColorBrush(Colors.DarkGray);
+            if (c.Etat == Commande.EtatCommande.fermer)
+                Commande1.Background = new SolidColorBrush(Colors.Green);
+            else
+                Commande1.Background = new SolidColorBrush(Colors.DarkGray);
             Grid.SetRow(Commande1, i);
             ListViewCommandes.Items.Add(Commande1);
 
@@ -112,27 +115,49 @@ namespace Pizzeria
                 RecordClientTel.Text = bestClient.TelClient+"";
                 RecordClientCumul.Text = bestClient.CmlCmd+" Commandes";
             }
-            /*
+
             if (p.Commis != null && p.Commis.Count != 0)
             {
                 Commis bestCommis = null;
-                foreach (Commis val in p.Clients)
+                foreach (Commis val in p.Commis)
                 {
                     //S'occuper de la liste view
                     if (bestCommis == null)
                     {
                         bestCommis = val;
                     }
-                    else if (val. > bestCommis.CmlCmd)
+                    else if (val.CumulTache > bestCommis.CumulTache)
                     {
-                        bestCommis = val.Value;
+                        bestCommis = val;
                     }
                 }
-                RecordClientNom.Text = bestClient.NomClient;
-                RecordClientPrenom.Text = bestClient.PrenomClient;
-                RecordClientTel.Text = bestClient.TelClient + "";
-                RecordClientCumul.Text = bestClient.CmlCmd + "";
-            }*/
+                RecordCommisNom.Text = bestCommis.NomEmploye;
+                RecordCommisPrenom.Text = bestCommis.PrenomEmploye;
+                RecordCommisTel.Text = bestCommis.NumEmploye;
+                RecordCommisCumul.Text = bestCommis.CumulTache + "";
+            }
+            
+            if (p.Livreur != null && p.Livreur.Count != 0)
+            {
+                Livreur bestLivreur = null;
+                foreach (Livreur val in p.Livreur)
+                {
+                    //S'occuper de la liste view
+                    if (bestLivreur == null)
+                    {
+                        bestLivreur = val;
+                    }
+                    else if (val.CumulTache > bestLivreur.CumulTache)
+                    {
+                        bestLivreur = val;
+                    }
+                }
+                RecordLivreurNom.Text = bestLivreur.NomEmploye;
+                RecordLivreurPrenom.Text = bestLivreur.PrenomEmploye;
+                RecordLivreurTel.Text = bestLivreur.NumEmploye;
+                RecordLivreurCumul.Text = bestLivreur.CumulTache + "";
+            }
+            
         }
 
         public void calendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)

@@ -16,7 +16,7 @@ namespace Pizzeria
         private etat_commis etatCommis;
         private DateTime dateEmbauche;
 
-        public Commis(string nomEmploye, string prenomEmploye, string adrEmploye,string mdpEmploye, string numEmploye, etat_commis etatCommis, DateTime dateEmbauche) : base(nomEmploye, prenomEmploye, adrEmploye, mdpEmploye, numEmploye)
+        public Commis(string nomEmploye, string prenomEmploye, string adrEmploye,string mdpEmploye, string numEmploye, etat_commis etatCommis, DateTime dateEmbauche, int cumul=0) : base(nomEmploye, prenomEmploye, adrEmploye, mdpEmploye, numEmploye, cumul)
         {
             this.etatCommis = etatCommis;
             this.dateEmbauche = dateEmbauche;
@@ -36,7 +36,7 @@ namespace Pizzeria
         public string GetLineCSV()
         {
             string date = dateEmbauche.Day + "/" + dateEmbauche.Month+"/" + dateEmbauche.Year;
-            return nomEmploye + ";" + prenomEmploye+";"+mdpEmploye + ";" + adrEmploye + ";" + numEmploye + ";" + etatCommis.ToString()+";"+date ;
+            return nomEmploye + ";" + prenomEmploye+";"+mdpEmploye + ";" + adrEmploye + ";" + numEmploye + ";" + etatCommis.ToString()+";"+date+";"+cumulTache ;
 
         }
     }

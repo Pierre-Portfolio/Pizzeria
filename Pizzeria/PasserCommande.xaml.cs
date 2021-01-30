@@ -51,38 +51,14 @@ namespace Pizzeria
 
         private void AddCumulClient()
         {
-            List<Client> c1 = new List<Client>();
-            string path = "..\\..\\..\\Clients.csv";
-            if (File.Exists(path))
-            {
-                StreamReader lecteur = new StreamReader(path);
-                string ligne = "";
-                while (lecteur.Peek() > 0)
-                {
-                    //Peek() est une fonction qui retourne -1 s'il n'y a
-                    //plus de caractère à lire
-                    ligne = lecteur.ReadLine();
-                    if (ligne != null)
-                    {
+            Client c = null;
+            p.Clients.TryGetValue(currentClient.TelClient, out c);
+            c.CmlCmd++;
+            p.ReWriteCsvClient();
 
-                        string[] tem = ligne.Split(';');
-                        string[] date = tem[5].Split('/');
-                        c1.Add(new Client(Convert.ToInt32(tem[0]), tem[1], tem[2], tem[3], int.Parse(tem[4]), new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0])), int.Parse(tem[6])));
-                    }
-                }
-                lecteur.Close();
-            }
-            StreamWriter writer = new StreamWriter(path);
-            foreach(Client c in c1)
-            {
-                if(c.TelClient == currentClient.TelClient)
-                {
-                    c.CmlCmd++;
-                }
-                string line = c.NumClient + ";" + c.NomClient + ";" + c.PrenomClient + ";" + c.AdrClient + ";" + c.TelClient + ";" + c.DatePremiereCmd.Day + "/" + c.DatePremiereCmd.Month + "/" + c.DatePremiereCmd.Year + ";" + c.CmlCmd;
-                writer.WriteLine(line);
-            }
-            writer.Close();
+            Commis com = p.Commis.Find(x=>x.NumEmploye == p.CurrentUser.NumEmploye);
+            com.CumulTache++;
+            p.ReWriteCsvCommis();
         }
         private void Click_btnValider(object sender, RoutedEventArgs e) //Ajout de la commande au csv
         {

@@ -24,7 +24,7 @@ namespace Pizzeria
         }
         private moyen_Livraison moyenLivraison;
 
-        public Livreur(string nomEmploye, string prenomEmploye, string adrEmploye, string mdpEmploye, string numEmploye, etat_livreur etatLivreur, moyen_Livraison moyenLivraison) : base(nomEmploye, prenomEmploye, adrEmploye, mdpEmploye, numEmploye)
+        public Livreur(string nomEmploye, string prenomEmploye, string adrEmploye, string mdpEmploye, string numEmploye, etat_livreur etatLivreur, moyen_Livraison moyenLivraison, int cumul = 0) : base(nomEmploye, prenomEmploye, adrEmploye, mdpEmploye, numEmploye, cumul)
         {
             this.etatLivreur = etatLivreur;
             this.moyenLivraison = moyenLivraison;
@@ -43,7 +43,7 @@ namespace Pizzeria
 
         public string GetLineCSV()
         {
-            return nomEmploye + ";" + prenomEmploye + ";" + mdpEmploye + ";" + adrEmploye + ";" + numEmploye + ";" + etatLivreur.ToString() + ";" + moyenLivraison;
+            return nomEmploye + ";" + prenomEmploye + ";" + mdpEmploye + ";" + adrEmploye + ";" + numEmploye + ";" + etatLivreur.ToString() + ";" + moyenLivraison+";"+cumulTache;
         }
     }
 }

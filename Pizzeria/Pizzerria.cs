@@ -133,7 +133,7 @@ namespace Pizzeria
                     {
                         string[] tem = ligne.Split(';');
                         Commis.etat_commis en = Enum.Parse<Commis.etat_commis>(tem[5]);
-                        c1.Add(new Commis(tem[0], tem[1], tem[3], tem[2],tem[4], en, Convert.ToDateTime(tem[6])));
+                        c1.Add(new Commis(tem[0], tem[1], tem[3], tem[2],tem[4], en, Convert.ToDateTime(tem[6]), Int32.Parse(tem[7])));
                     }
                 }
                 lecteur.Close();
@@ -158,7 +158,7 @@ namespace Pizzeria
                     {
                         string[] tem = ligne.Split(';');
                         Livreur.etat_livreur en = Enum.Parse<Livreur.etat_livreur>(tem[5]);
-                        c1.Add(new Livreur(tem[0], tem[1], tem[3],tem[2], tem[4], en, Enum.Parse<Livreur.moyen_Livraison>(tem[6])));
+                        c1.Add(new Livreur(tem[0], tem[1], tem[3],tem[2], tem[4], en, Enum.Parse<Livreur.moyen_Livraison>(tem[6]),Int32.Parse(tem[7])));
                     }
                 }
                 lecteur.Close();

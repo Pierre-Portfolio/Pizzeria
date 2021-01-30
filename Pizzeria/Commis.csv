@@ -1,8 +1,9 @@
-Chen;Alain;test;23 rue des Louviers 75002 Paris;613424305;surplace;10/10/2020
-Ormal;Stephanie;test;10 impasse des Lauriers 75002 Paris;102030405;enconges;10/1/1990
-Valiou;Marie;test;15 route du Sud 78000 Versailles;607135455;surplace;10/3/2005
-Petillion;Pierre;test;12 rue je sais pas ;1234567;surplace;26/1/2021
-Payet;Tom;test;12 Rue test;603454661;surplace;26/1/2021
-Test;Test;test;123;9123131;surplace;26/1/2021
-testmdp;testmpd;adr;testmdp;0603454661;surplace;28/1/2021
-c;c;c;adresse;06123456789;surplace;28/1/2021
+Chen;Alain;test;23 rue des Louviers 75002 Paris;613424305;surplace;10/10/2020;0
+Ormal;Stephanie;test;10 impasse des Lauriers 75002 Paris;102030405;enconges;10/1/1990;0
+Valiou;Marie;test;15 route du Sud 78000 Versailles;607135455;surplace;10/3/2005;0
+Petillion;Pierre;test;12 rue je sais pas ;1234567;surplace;26/1/2021;0
+Payet;Tom;test;12 Rue test;603454661;surplace;26/1/2021;0
+Test;Test;test;123;9123131;surplace;26/1/2021;0
+testmdp;testmpd;adr;testmdp;0603454661;surplace;28/1/2021;0
+c;c;c;adresse;06123456789;surplace;28/1/2021;1
+c1;c1;;c1;0101010101;surplace;30/1/2021;0
