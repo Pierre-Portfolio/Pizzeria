@@ -88,7 +88,7 @@ namespace Pizzeria
         {
             if (currentCommande.ListePizza != null && currentCommande.ListePizza.Count != 0)
             {
-
+                p.ModifCumule();
                 p.Commandes.Add(this.currentCommande);
                 p.ReWriteCsvCommande();
                 AddCumulClient();

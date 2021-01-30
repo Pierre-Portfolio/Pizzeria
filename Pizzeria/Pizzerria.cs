@@ -84,6 +84,11 @@ namespace Pizzeria
             this.commandes.Add(c);
         }
 
+        public void ModifCumule()
+        {
+            this.currentUser.CumulTache++;
+        }
+
         #region Fonctions pour charger les CSV
         public Dictionary<int,Client> ChargerCSVClient()
         {

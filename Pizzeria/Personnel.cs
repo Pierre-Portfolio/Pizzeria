@@ -12,15 +12,17 @@ namespace Pizzeria
         protected string adrEmploye;
         protected string mdpEmploye;
         protected string numEmploye;
+        protected int cumulTache;
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public Personel(string nomEmploye, string prenomEmploye, string adrEmploye, string mdpEmploye, string numEmploye = null)
+        public Personel(string nomEmploye, string prenomEmploye, string adrEmploye, string mdpEmploye, string numEmploye = null, int cumulTache = 0)
         {
             this.nomEmploye = nomEmploye;
             this.prenomEmploye = prenomEmploye;
             this.adrEmploye = adrEmploye;
             this.mdpEmploye = mdpEmploye;
             this.numEmploye = numEmploye;
+            this.cumulTache = cumulTache;
         }
 
         public string NomEmploye
@@ -44,13 +46,19 @@ namespace Pizzeria
         public string MdpEmploye
         {
             get { return this.mdpEmploye; }
-            set { this.mdpEmploye = value; OnPropertyChanged("MdpEmploye"); }
+            set { this.mdpEmploye = value;}
         }
 
         public string NumEmploye
         {
             get { return numEmploye; }
             set { this.numEmploye = value; OnPropertyChanged("NumEmploye"); }
+        }
+
+        public int CumulTache
+        {
+            get { return cumulTache; }
+            set { this.cumulTache = value;}
         }
 
         protected void OnPropertyChanged(string name)
