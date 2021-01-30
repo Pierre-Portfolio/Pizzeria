@@ -2223,7 +2223,7 @@
 											"top": 135,
 											"width": 246,
 											"height": 13,
-											"text": "Effectifs"
+											"text": "Personnel"
 										},
 										{
 											"_type": "LabelView",
@@ -8331,7 +8331,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Effectifs",
+					"name": "Personnel",
 					"attributes": [
 						{
 							"_type": "UMLAttribute",

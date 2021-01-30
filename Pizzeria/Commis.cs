@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Pizzeria
 {
-    public class Commis : Personelle
+    public class Commis : Personel
     {
         public enum etat_commis
         {
@@ -20,6 +20,7 @@ namespace Pizzeria
             this.etatCommis = etatCommis;
             this.dateEmbauche = dateEmbauche;
         }
+
         public etat_commis EtatCommis
         {
             get { return etatCommis; }
@@ -28,6 +29,7 @@ namespace Pizzeria
         public DateTime DateEmbauche
         {
             get { return dateEmbauche; }
+            set { this.dateEmbauche = value; }
         }
 
         public string GetLineCSV()

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Pizzeria
 {
-    public class Livreur : Personelle
+    public class Livreur : Personel
     {
         public enum etat_livreur
         {
