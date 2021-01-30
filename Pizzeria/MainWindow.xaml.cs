@@ -398,6 +398,7 @@ namespace Pizzeria
             myGridCommis.ItemsSource = p1.Commis;
             myGridCommis.Foreground = new SolidColorBrush(Colors.Orange);
             myGridCommis.BorderThickness = new Thickness(0, 0, 0, 0);
+            myGridCommis.IsReadOnly = true;
             Grid.SetRow(myGridCommis, 4);
             Grid.SetColumn(myGridCommis, 0);
             DynamicGridClient.Children.Add(myGridCommis);
