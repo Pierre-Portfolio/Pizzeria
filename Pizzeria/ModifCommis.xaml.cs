@@ -40,16 +40,18 @@ namespace Pizzeria
             c.PrenomEmploye = BoxPrenom.Text;
             c.AdrEmploye = BoxAdresse.Text;
             c.NumEmploye = BoxTel.Text;
-            c.EtatCommis = c.EtatCommis;
-            
-            cl.NomEmploye = BoxNom.Text;
-            cl.PrenomEmploye = BoxPrenom.Text;
-            cl.AdrEmploye = BoxAdresse.Text;
-            cl.EtatCommis = c.EtatCommis;
-            cl.NumEmploye = BoxTel.Text;
+            c.EtatCommis = Enum.Parse<Commis.etat_commis>(ComboBoxEtat.Text);
 
-            p.ReWriteCsvCommis();
-            
+            if(cl != null)
+            {
+                cl.NomEmploye = BoxNom.Text;
+                cl.PrenomEmploye = BoxPrenom.Text;
+                cl.AdrEmploye = BoxAdresse.Text;
+                cl.EtatCommis = Enum.Parse<Commis.etat_commis>(ComboBoxEtat.Text);
+                cl.NumEmploye = BoxTel.Text;
+
+                p.ReWriteCsvCommis();
+            }            
             this.Close();
             
         }

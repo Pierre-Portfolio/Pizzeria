@@ -127,7 +127,9 @@ namespace Pizzeria
                     w.BoxPrenom.Text = ((Commis)o).PrenomEmploye;
                     w.BoxAdresse.Text = ((Commis)o).AdrEmploye;
                     w.BoxTel.Text = Convert.ToString(((Commis)o).NumEmploye);
-                    w.BoxEtat.Text = ((Commis)o).EtatCommis.ToString();
+
+                    w.ComboBoxEtat.ItemsSource = Enum.GetValues(typeof(Commis.etat_commis)).Cast<Commis.etat_commis>();
+                    w.ComboBoxEtat.Text = ((Commis)o).EtatCommis.ToString();
                     
                 }
             }

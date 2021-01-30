@@ -20,7 +20,7 @@
         <TextBlock Height="20" Canvas.Left="102" Canvas.Top="269" TextWrapping="Wrap" Width="75" IsEnabled="False" FontWeight="Bold" Background="#FFFFFF"><Run Language="fr-fr" Text="Telephone"/><Run Text=" : "/></TextBlock>
         <TextBox x:Name="BoxTel" Height="22" Canvas.Left="102" Canvas.Top="289" TextWrapping="Wrap" Width="150" AutomationProperties.Name="Tel"/>
         <TextBlock Height="20" Canvas.Left="102" Canvas.Top="325" TextWrapping="Wrap" Width="75" IsEnabled="False" FontWeight="Bold" Background="#FFFFFF"><Run Language="fr-fr" Text="Etat :"/></TextBlock>
-        <TextBox x:Name="BoxEtat" Height="22" Canvas.Left="102" Canvas.Top="343" TextWrapping="Wrap" Width="150"  AutomationProperties.Name="Etat"/>
+        <ComboBox x:Name="ComboBoxEtat" Canvas.Left="102" Canvas.Top="345" Width="150"/>
     </Canvas>
 
 </Window>
