@@ -21,6 +21,7 @@ namespace Pizzeria
         private List<Pizza> listePizza;
         private List<Boisson> produitAnnexes;
         private Livreur livreurCharge;
+        private Facture facture;
         public static int lastCommande = 0;
 
         public int NumCommande { get => numCommande;}
@@ -33,6 +34,7 @@ namespace Pizzeria
         public List<Pizza> ListePizza { get => listePizza;}
         public List<Boisson> ProduitAnnexes { get => produitAnnexes; }
         public Livreur LivreurCharge { get => livreurCharge; set => livreurCharge = value; }
+        internal Facture Facture { get => facture; set => facture = value; }
 
         public Commande(int numclient = 0,string nomclient = "", string nomcommis ="")
         {

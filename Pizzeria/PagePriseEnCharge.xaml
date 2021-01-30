@@ -24,7 +24,7 @@
                 <ComboBox Name="ComboxBoxIdCommande" Margin="0,99,0,0" Width="120" Canvas.Left="109" Canvas.Top="113" SelectionChanged="ComboxBoxIdCommande_SelectionChanged"/>
                 <Label Content="Selectionner une commande" Canvas.Left="49" Canvas.Top="173" Height="34" Width="240" FontWeight="Bold" FontSize="17" Foreground="White"/>
             </Canvas>
-            <Button Content="Valider" Canvas.Left="116" Canvas.Top="392" Height="32" Width="106" Background="Green" BorderBrush="{x:Null}" Click="ValiderLivreur"/>
+            <Button Content="Valider" Canvas.Left="116" Canvas.Top="392" Height="32" Width="106" Background="Green" BorderBrush="{x:Null}" Click="Valider"/>
         </Canvas>
 
     </Grid>

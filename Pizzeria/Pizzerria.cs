@@ -12,6 +12,7 @@ namespace Pizzeria
         private List<Commis> commis;
         private List<Livreur> livreur;
         private List<Commande> commandes;
+        private List<Facture> factures;
 
         private Personelle currentUser;
         public Pizzerria(string nom, string adresse)
@@ -22,6 +23,7 @@ namespace Pizzeria
             this.commis = ChargerCSVCommis();
             this.livreur = ChargerCSVLivreur();
             this.commandes = ChargerCSVCommande();
+            this.factures = ChargerCSVFacture();
             this.currentUser = null;
         }
         #region Propietes
@@ -29,12 +31,10 @@ namespace Pizzeria
         {
             get { return nom; }
         }
-
         public string Adresse
         {
             get { return adresse; }
         }
-
         public Dictionary<int,Client> Clients
         {
             get { return clients; }
@@ -43,7 +43,6 @@ namespace Pizzeria
         {
             get { return commis; }
         }
-
         public List<Livreur> Livreur
         {
             get { return livreur; }
@@ -52,7 +51,10 @@ namespace Pizzeria
         {
             get { return commandes; }
         }
-
+        public List<Facture> Factures
+        {
+            get { return this.factures; }
+        }
         public Personelle CurrentUser
         {
             get { return this.currentUser; }
@@ -217,6 +219,29 @@ namespace Pizzeria
             }
             return c1;
         }
+        
+        private List<Facture> ChargerCSVFacture()
+        {
+            string path = "..\\..\\..\\Factures.csv";
+            List<Facture> c1 = new List<Facture>();
+            if (File.Exists(path))
+            {
+                StreamReader reader = new StreamReader(path);
+                string line = "";
+                while(reader.Peek() > 0)
+                {
+                    line = reader.ReadLine();
+                    if(line != null)
+                    {
+                        string[] tem = line.Split(';');
+                        Commande c = Commandes.Find(x => x.NumCommande == Int32.Parse(tem[1]));
+                        Facture f = new Facture(Int32.Parse(tem[0]),c,Double.Parse(tem[2]));
+                        factures.Add(f);
+                    }
+                }
+            }
+            return c1;
+        }
         #endregion
 
         #region AddToCsv
@@ -311,6 +336,26 @@ namespace Pizzeria
                     i++;
                     line += c.GetLineForCSV();
                     if (i != Commandes.Count)
+                        line += "\n";
+                }
+                wr.Write(line);
+                wr.Close();
+            }
+        }
+        
+        public void ReWriteCsvFacture()
+        {
+            string path = "..\\..\\..\\Factures.csv";
+            if (factures != null && factures.Count != 0)
+            {
+                StreamWriter wr = new StreamWriter(path);
+                string line = "";
+                int i = 0;
+                foreach (Facture f in factures)
+                {
+                    i++;
+                    line += f.GetLineForCSV();
+                    if (i != factures.Count)
                         line += "\n";
                 }
                 wr.Write(line);
