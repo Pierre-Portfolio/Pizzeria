@@ -8,25 +8,20 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\petil\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\tompa\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\petil\\source\\repos\\Pizzeria\\Pizzeria\\Pizzeria.csproj",
+      "projectUniqueName": "C:\\Users\\tompa\\OneDrive\\Documents\\ESILV\\POO\\Pizzeria\\Pizzeria\\Pizzeria\\Pizzeria.csproj",
       "projectName": "Pizzeria",
-      "projectPath": "C:\\Users\\petil\\source\\repos\\Pizzeria\\Pizzeria\\Pizzeria.csproj",
-      "packagesPath": "C:\\Users\\petil\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\petil\\source\\repos\\Pizzeria\\Pizzeria\\obj\\",
+      "projectPath": "C:\\Users\\tompa\\OneDrive\\Documents\\ESILV\\POO\\Pizzeria\\Pizzeria\\Pizzeria\\Pizzeria.csproj",
+      "packagesPath": "C:\\Users\\tompa\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\tompa\\OneDrive\\Documents\\ESILV\\POO\\Pizzeria\\Pizzeria\\Pizzeria\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\petil\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\tompa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -37,7 +32,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -49,7 +43,6 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "imports": [
           "net461",
           "net462",
@@ -68,7 +61,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

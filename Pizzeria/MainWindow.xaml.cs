@@ -57,6 +57,7 @@ namespace Pizzeria
             }
             else if (MainGrid.Children.Contains(DynamicGridStat))
             {
+                DynamicGridStat.Children.Clear();
                 MainGrid.Children.Remove(DynamicGridStat);
             }
             else if (MainGrid.Children.Contains(DynamicGridAdmin)){
@@ -154,7 +155,7 @@ namespace Pizzeria
         {
             RefreshPasOpti();
             Frame frame = new Frame();
-            frame.Content = new Statistiques();
+            frame.Content = new Statistiques(p1);
             DynamicGridStat.Children.Add(frame);
             MainGrid.Children.Add(DynamicGridStat);
         }
@@ -567,7 +568,7 @@ namespace Pizzeria
                     Label Infos = new Label();
                     //Infos.Foreground = new SolidColorBrush(Colors.White);
 
-                    Infos.Content += "Num commande :" + c.NumCommande + "\nClient : " + c.NomClient + "\nCommis : " + c.NomCommis + "\nHeure :" + c.Heure + "\nEtat : " + c.Etat;
+                    Infos.Content += "Num commande :" + c.NumCommande + "\nClient : " + c.NomClient + "\nCommis : " + c.NomCommis + "\nHeure :" + c.Heure + "h\nEtat : " + c.Etat;
                     Grid.SetColumn(Infos, 2);
                     Commande1.Children.Add(Infos);
 

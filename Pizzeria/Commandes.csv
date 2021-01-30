@@ -1,3 +1,6 @@
 1;19;29/1/2021;603454661;Payet;Chenal;perdue;06123456;Petite,Fromage;
-2;19;29/1/2021;335031674;Benjamin;;en_livraison;06123456;Moyenne,Fromage,Fromage/Grande,Fromage,Vegetarienne;Coca-0,5
-3;11;30/1/2021;601020304;Dura;Test;en_preparation;;Moyenne,Vegetarienne;Fanta-1
+2;19;29/1/2021;335031674;Benjamin;;fermer;06123456;Moyenne,Fromage,Fromage/Grande,Fromage,Vegetarienne;Coca-0,5
+3;11;30/1/2021;601020304;Dura;Test;fermer;06123456;Moyenne,Vegetarienne;Fanta-1
+4;13;30/1/2021;603454661;Payet;c;fermer;06123456;Grande,Fromage;Sprite-1
+5;13;30/1/2021;603454661;Payet;c;fermer;06123456;Petite,Fromage;Fanta-1
+6;14;30/1/2021;603454661;Payet;c;fermer;06123456;Moyenne,Fromage;
