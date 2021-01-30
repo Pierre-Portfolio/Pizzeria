@@ -28,6 +28,9 @@
     <Compile Update="Rechercher.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Statistiques.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="AddClient.xaml">
@@ -52,6 +55,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Rechercher.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Statistiques.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

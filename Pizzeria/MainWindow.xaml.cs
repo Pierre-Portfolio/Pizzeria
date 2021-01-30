@@ -126,7 +126,24 @@ namespace Pizzeria
         private void StatistiqueBtn_Click(object sender, RoutedEventArgs e)
         {
             RefreshPasOpti();
+            Frame frame = new Frame();
+            frame.Content = new Statistiques();
+            DynamicGridStat.Children.Add(frame);
             MainGrid.Children.Add(DynamicGridStat);
+        }
+
+        private void GenerationPageStatistiques()
+        {
+            /* ==== Creation partie client ====*/
+            // création grid dynamic
+            DynamicGridStat.HorizontalAlignment = HorizontalAlignment.Left;
+            DynamicGridStat.VerticalAlignment = VerticalAlignment.Center;
+            DynamicGridStat.Height = 400;
+            DynamicGridStat.Width = 780;
+            DynamicGridStat.Margin = new Thickness(0, 0, 0, 0);
+            Grid.SetRow(DynamicGridStat, 2);
+            Grid.SetColumn(DynamicGridStat, 0);
+            Grid.SetColumnSpan(DynamicGridStat, 4);
         }
         #endregion
 
@@ -566,6 +583,7 @@ namespace Pizzeria
             BlockBtnBase();
             GenerationPageClient();
             GenerationPageCommande();
+            GenerationPageStatistiques();
         }
         #endregion
 

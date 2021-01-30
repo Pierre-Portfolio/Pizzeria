@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 C:\Users\tompa\OneDrive\Documents\ESILV\POO\Pizzeria\Pizzeria\Pizzeria\App.xaml
-81805144681
+9-518427088
 
-21447166962
+221784321790
 1991363247284
-AddClient.xaml;addCommis.xaml;AddLivreur.xaml;MainWindow.xaml;ModifClient.xaml;PagePriseEnCharge.xaml;PasserCommande.xaml;Rechercher.xaml;
+AddClient.xaml;addCommis.xaml;AddLivreur.xaml;MainWindow.xaml;ModifClient.xaml;PagePriseEnCharge.xaml;PasserCommande.xaml;Rechercher.xaml;Statistiques.xaml;
 
-False
+True
 
