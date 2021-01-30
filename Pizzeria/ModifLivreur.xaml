@@ -5,16 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pizzeria"
         mc:Ignorable="d"
-        Title="ModifLivreur" Height="456" Width="335" Icon="/logoPizza.png" ResizeMode="NoResize">
+        Title="ModifLivreur" Height="492" Width="365" Icon="/logoPizza.png" ResizeMode="NoResize">
     <Window.Background>
         <ImageBrush ImageSource="/Pizza-Background.jpg" Stretch="None"/>
     </Window.Background>
-    <Grid>
+    <Grid Margin="0,0,0,23">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="285*"/>
-            <ColumnDefinition Width="43*"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Canvas Grid.ColumnSpan="2">
+        <Canvas Margin="0,10,0,-10">
             <Button Content="Valider" Height="25" Canvas.Left="104" Canvas.Top="405" Width="126" Cursor="Hand" Background="#FF34B104" Click="Change"/>
             <TextBox x:Name="BoxNom" Height="22" Canvas.Left="92" Canvas.Top="49" TextWrapping="Wrap" Width="150" AutomationProperties.Name="Nom"/>
             <TextBlock Height="20" Canvas.Left="92" Canvas.Top="103" Text="Prenom :" TextWrapping="Wrap" Width="59" IsEnabled="False" FontWeight="Bold" Background="#FFFFFF"/>
