@@ -208,7 +208,24 @@ namespace Pizzeria
         private void AdminitrationBtn_Click(object sender, RoutedEventArgs e)
         {
             RefreshPasOpti();
+            Frame frame = new Frame();
+            frame.Content = new Settings(p1,this);
+            DynamicGridAdmin.Children.Add(frame);
             MainGrid.Children.Add(DynamicGridAdmin);
+        }
+
+        private void GenerationPageAdministration()
+        {
+            /* ==== Creation partie client ====*/
+            // création grid dynamic
+            DynamicGridAdmin.HorizontalAlignment = HorizontalAlignment.Left;
+            DynamicGridAdmin.VerticalAlignment = VerticalAlignment.Center;
+            DynamicGridAdmin.Height = 400;
+            DynamicGridAdmin.Width = 780;
+            DynamicGridAdmin.Margin = new Thickness(100, 20, 0, 0);
+            Grid.SetRow(DynamicGridAdmin, 2);
+            Grid.SetColumn(DynamicGridAdmin, 0);
+            Grid.SetColumnSpan(DynamicGridAdmin, 4);
         }
         #endregion
 
@@ -562,9 +579,6 @@ namespace Pizzeria
             DynamicGridClient.Children.Add(myGridLivreur);
 
             #endregion
-            /* ==== Debut creation partie Livreur ====*/
-
-
         }
         public void GenerationPageCommande()
         {
@@ -702,6 +716,7 @@ namespace Pizzeria
             GenerationPageClient();
             GenerationPageCommande();
             GenerationPageStatistiques();
+            GenerationPageAdministration();
         }
         #endregion
 
