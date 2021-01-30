@@ -323,10 +323,10 @@ namespace Pizzeria
             btnModifCommis.Height = 15;
             btnModifCommis.Width = 15;
             btnModifCommis.BorderThickness = new Thickness(0, 0, 0, 0);
-            btnModifClient.Margin = new Thickness(204, -125, 0, 0);
-            btnModifClient.ToolTip = "Modifier un commis";
-            btnModifClient.Background = new ImageBrush(new BitmapImage(new Uri(@"https://cdn.pixabay.com/photo/2016/03/29/06/22/edit-1287617_1280.png")));
-            //btnModifClient.Click += new RoutedEventHandler(ButtonModifClient);
+            btnModifCommis.Margin = new Thickness(204, -125, 0, 0);
+            btnModifCommis.ToolTip = "Modifier un commis";
+            btnModifCommis.Background = new ImageBrush(new BitmapImage(new Uri(@"https://cdn.pixabay.com/photo/2016/03/29/06/22/edit-1287617_1280.png")));
+            //btnModifClient.Click += new RoutedEventHandler(btnModifCommis);
             Grid.SetRow(btnModifCommis, 3);
             Grid.SetColumn(btnModifCommis, 0);
             DynamicGridClient.Children.Add(btnModifCommis);
@@ -406,7 +406,7 @@ namespace Pizzeria
             Grid.SetRow(btnAddLivreur, 5);
             Grid.SetColumn(btnAddLivreur, 0);
             DynamicGridClient.Children.Add(btnAddLivreur);
-
+            
             //Btn modifier
             Button btnModifLivreur = new Button();
             btnModifLivreur.Content = "";
