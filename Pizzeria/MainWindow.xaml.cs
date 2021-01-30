@@ -138,6 +138,35 @@ namespace Pizzeria
                 MessageBox.Show("Le nombre de ligne selectionné est incorrect ! ");
             }
         }
+
+        private void BtnModifLivreur(object sender, RoutedEventArgs e)
+        {
+            if (myGridLivreur.SelectedItems.Count == 1)
+            {
+                foreach (Object o in myGridLivreur.SelectedItems)
+                {
+
+                    ModifLivreur w = new ModifLivreur((Livreur)o, p1);
+                    w.Show();
+
+                    w.BoxNom.Text = ((Livreur)o).NomEmploye;
+                    w.BoxPrenom.Text = ((Livreur)o).PrenomEmploye;
+                    w.BoxAdresse.Text = ((Livreur)o).AdrEmploye;
+                    w.BoxTel.Text = Convert.ToString(((Livreur)o).NumEmploye);
+
+                    w.ComboBoxEtat.ItemsSource = Enum.GetValues(typeof(Livreur.etat_livreur)).Cast<Livreur.etat_livreur>();
+                    w.ComboBoxEtat.Text = ((Livreur)o).EtatLivreur.ToString();
+
+                    w.ComboBoxTransport.ItemsSource = Enum.GetValues(typeof(Livreur.moyen_Livraison)).Cast<Livreur.moyen_Livraison>();
+                    w.ComboBoxTransport.Text = ((Livreur)o).MoyenLivraison.ToString();
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Le nombre de ligne selectionné est incorrect ! ");
+            }
+        }
         #endregion
 
         #region Parti Commande
@@ -424,18 +453,6 @@ namespace Pizzeria
             Grid.SetColumn(txtBlock3, 0);
             DynamicGridClient.Children.Add(txtBlock3);
 
-            // tableau des serveur
-            myGridLivreur.Width = 700;
-            myGridLivreur.Height = 100;
-            myGridLivreur.Margin = new Thickness(0, 5, 0, 0);
-            myGridLivreur.GridLinesVisibility = DataGridGridLinesVisibility.None;
-            myGridLivreur.ItemsSource = p1.Livreur;
-            myGridLivreur.Foreground = new SolidColorBrush(Colors.Orange);
-            myGridLivreur.BorderThickness = new Thickness(0, 0, 0, 0);
-            Grid.SetRow(myGridLivreur, 6);
-            Grid.SetColumn(myGridLivreur, 0);
-            DynamicGridClient.Children.Add(myGridLivreur);
-
             //Btn ajouter
             Button btnAddLivreur = new Button();
             btnAddLivreur.Content = "";
@@ -459,12 +476,24 @@ namespace Pizzeria
             btnModifLivreur.Width = 15;
             btnModifLivreur.BorderThickness = new Thickness(0, 0, 0, 0);
             btnModifLivreur.Margin = new Thickness(204, -110, 0, 0);
-            btnModifLivreur.ToolTip = "Modifier un commis";
+            btnModifLivreur.ToolTip = "Modifier un livreur";
             btnModifLivreur.Background = new ImageBrush(new BitmapImage(new Uri(@"https://cdn.pixabay.com/photo/2016/03/29/06/22/edit-1287617_1280.png")));
-            //btnModifLivreur.Click += new RoutedEventHandler(btnModifLivreur);
+            btnModifLivreur.Click += new RoutedEventHandler(BtnModifLivreur);
             Grid.SetRow(btnModifLivreur, 5);
             Grid.SetColumn(btnModifLivreur, 0);
             DynamicGridClient.Children.Add(btnModifLivreur);
+
+            // tableau des serveur
+            myGridLivreur.Width = 700;
+            myGridLivreur.Height = 100;
+            myGridLivreur.Margin = new Thickness(0, 5, 0, 0);
+            myGridLivreur.GridLinesVisibility = DataGridGridLinesVisibility.None;
+            myGridLivreur.ItemsSource = p1.Livreur;
+            myGridLivreur.Foreground = new SolidColorBrush(Colors.Orange);
+            myGridLivreur.BorderThickness = new Thickness(0, 0, 0, 0);
+            Grid.SetRow(myGridLivreur, 6);
+            Grid.SetColumn(myGridLivreur, 0);
+            DynamicGridClient.Children.Add(myGridLivreur);
 
             #endregion
             /* ==== Debut creation partie Livreur ====*/

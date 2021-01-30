@@ -153,7 +153,7 @@ namespace Pizzeria
                     {
                         string[] tem = ligne.Split(';');
                         Livreur.etat_livreur en = Enum.Parse<Livreur.etat_livreur>(tem[5]);
-                        c1.Add(new Livreur(tem[0], tem[1], tem[3],tem[2], tem[4], en, tem[6]));
+                        c1.Add(new Livreur(tem[0], tem[1], tem[3],tem[2], tem[4], en, Enum.Parse<Livreur.moyen_Livraison>(tem[6])));
                     }
                 }
                 lecteur.Close();
