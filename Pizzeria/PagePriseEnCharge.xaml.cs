@@ -37,7 +37,6 @@ namespace Pizzeria
             }
         }
 
-    
         private void InitListeLivreur()
         {
             foreach (Livreur l in p.Livreur)
@@ -48,7 +47,6 @@ namespace Pizzeria
                 }
             }
         }
-
         private void InitListeCommande()
         {
             ComboxBoxIdCommande.Items.Clear();
@@ -77,14 +75,15 @@ namespace Pizzeria
         {
             currentIdCommande = ComboxBoxIdCommande.SelectedItem.ToString();
         }
-
-        private void ValiderLivreur(object sender, RoutedEventArgs e)
+        private void Valider(object sender, RoutedEventArgs e)
         {
             if (p.CurrentUser is Livreur)
             {
                 if(currentIdCommande != "")
                 {
                     Commande c = p.Commandes.Find(x => x.NumCommande == Int32.Parse(currentIdCommande));
+                    Facture f = new Facture(c);
+                    c.Facture = f;
                     c.LivreurCharge = (Livreur) p.CurrentUser;
                     c.Etat = Commande.EtatCommande.en_livraison;
                     p.ReWriteCsvCommande();
@@ -102,6 +101,12 @@ namespace Pizzeria
                     Commande c = p.Commandes.Find(x => x.NumCommande == Int32.Parse(currentIdCommande));
                     c.Etat = Commande.EtatCommande.fermer;
                     p.ReWriteCsvCommande();
+                    if (c.Facture == null)
+                    {
+                        c.Facture = new Facture(c);
+                    }
+                    p.Factures.Add(c.Facture);
+                    p.ReWriteCsvFacture();
                     this.Close();
                 }
                 else
