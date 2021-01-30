@@ -276,6 +276,7 @@ namespace Pizzeria
             myGridClient.Margin = new Thickness(0, -22, 0, 0);
             myGridClient.BorderThickness = new Thickness(0, 0, 0, 0);
             myGridClient.HorizontalScrollBarVisibility = ScrollBarVisibility.Hidden;
+            myGridClient.IsReadOnly = true;
             Grid.SetRow(myGridClient, 1);
             Grid.SetColumn(myGridClient, 0);
             Grid.SetColumnSpan(myGridClient, 4);
