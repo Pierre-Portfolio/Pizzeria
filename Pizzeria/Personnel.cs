@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 namespace Pizzeria
 {
-    public abstract class Personelle : INotifyPropertyChanged
+    public abstract class Personel : INotifyPropertyChanged
     {
         protected string nomEmploye;
         protected string prenomEmploye;
@@ -14,7 +14,7 @@ namespace Pizzeria
         protected string numEmploye;
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public Personelle(string nomEmploye, string prenomEmploye, string adrEmploye, string mdpEmploye, string numEmploye = null)
+        public Personel(string nomEmploye, string prenomEmploye, string adrEmploye, string mdpEmploye, string numEmploye = null)
         {
             this.nomEmploye = nomEmploye;
             this.prenomEmploye = prenomEmploye;
@@ -22,6 +22,7 @@ namespace Pizzeria
             this.mdpEmploye = mdpEmploye;
             this.numEmploye = numEmploye;
         }
+
         public string NomEmploye
         {
             get { return nomEmploye; }
@@ -45,11 +46,13 @@ namespace Pizzeria
             get { return this.mdpEmploye; }
             set { this.mdpEmploye = value; OnPropertyChanged("MdpEmploye"); }
         }
+
         public string NumEmploye
         {
             get { return numEmploye; }
             set { this.numEmploye = value; OnPropertyChanged("NumEmploye"); }
         }
+
         protected void OnPropertyChanged(string name)
         {
             PropertyChangedEventHandler handler = PropertyChanged;

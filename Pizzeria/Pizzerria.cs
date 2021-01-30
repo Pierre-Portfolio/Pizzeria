@@ -13,7 +13,7 @@ namespace Pizzeria
         private List<Livreur> livreur;
         private List<Commande> commandes;
 
-        private Personelle currentUser;
+        private Personel currentUser;
         public Pizzerria(string nom, string adresse)
         {
             this.nom = nom;
@@ -53,7 +53,7 @@ namespace Pizzeria
             get { return commandes; }
         }
 
-        public Personelle CurrentUser
+        public Personel CurrentUser
         {
             get { return this.currentUser; }
             set { this.currentUser = value; }
