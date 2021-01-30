@@ -238,7 +238,7 @@ namespace Pizzeria
                         string[] tem = line.Split(';');
                         Commande c = Commandes.Find(x => x.NumCommande == Int32.Parse(tem[1]));
                         Facture f = new Facture(Int32.Parse(tem[0]),c,Double.Parse(tem[2]));
-                        factures.Add(f);
+                        c1.Add(f);
                     }
                 }
             }
