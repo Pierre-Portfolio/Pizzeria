@@ -1,0 +1,26 @@
+﻿<Window x:Class="Pizzeria.ModifCommis"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Pizzeria"
+        mc:Ignorable="d"
+        Title="ModifCommis" Height="450" Width="354">
+    <Window.Background>
+        <ImageBrush ImageSource="/Pizza-Background.jpg" Stretch="None"/>
+    </Window.Background>
+    <Canvas>
+        <Button Content="Valider" Height="25" Canvas.Left="114" Canvas.Top="380" Width="126" Cursor="Hand" Background="#FF34B104" Click="Change"/>
+        <TextBox x:Name="BoxNom" Height="22" Canvas.Left="102" Canvas.Top="83" TextWrapping="Wrap" Width="150" AutomationProperties.Name="Nom"/>
+        <TextBlock Height="20" Canvas.Left="102" Canvas.Top="137" Text="Prenom :" TextWrapping="Wrap" Width="59" IsEnabled="False" FontWeight="Bold" Background="#FFFFFF"/>
+        <TextBox x:Name="BoxPrenom" Height="22" Canvas.Left="102" Canvas.Top="157" TextWrapping="Wrap" Width="150" AutomationProperties.Name="Prenom"/>
+        <TextBlock Height="20" Canvas.Left="102" Canvas.Top="63" Text="Nom :" TextWrapping="Wrap" Width="59" IsEnabled="False" FontWeight="Bold" Foreground="Black" Background="White"/>
+        <TextBlock Height="20" Canvas.Left="102" Canvas.Top="202" Text="Adresse : " TextWrapping="Wrap" Width="59" IsEnabled="False" FontWeight="Bold" Background="#FFFFFF"/>
+        <TextBox x:Name="BoxAdresse" Height="22" Canvas.Left="102" Canvas.Top="222" TextWrapping="Wrap" Width="150" AutomationProperties.Name="Adresse"/>
+        <TextBlock Height="20" Canvas.Left="102" Canvas.Top="269" TextWrapping="Wrap" Width="75" IsEnabled="False" FontWeight="Bold" Background="#FFFFFF"><Run Language="fr-fr" Text="Telephone"/><Run Text=" : "/></TextBlock>
+        <TextBox x:Name="BoxTel" Height="22" Canvas.Left="102" Canvas.Top="289" TextWrapping="Wrap" Width="150" AutomationProperties.Name="Tel"/>
+        <TextBlock Height="20" Canvas.Left="102" Canvas.Top="325" TextWrapping="Wrap" Width="75" IsEnabled="False" FontWeight="Bold" Background="#FFFFFF"><Run Language="fr-fr" Text="Etat :"/></TextBlock>
+        <ComboBox x:Name="ComboBoxEtat" Canvas.Left="102" Canvas.Top="345" Width="150"/>
+    </Canvas>
+
+</Window>

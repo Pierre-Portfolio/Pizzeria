@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace Pizzeria
 {
-    public class Commis : Personel
+    public class Commis : Personel , INotifyPropertyChanged
     {
         public enum etat_commis
         {
@@ -24,12 +25,12 @@ namespace Pizzeria
         public etat_commis EtatCommis
         {
             get { return etatCommis; }
-            set { this.etatCommis = value; }
+            set { this.etatCommis = value; OnPropertyChanged("EtatCommis"); }
         }
         public DateTime DateEmbauche
         {
             get { return dateEmbauche; }
-            set { this.dateEmbauche = value; }
+            set { this.dateEmbauche = value; OnPropertyChanged("DateEmbauche"); }
         }
 
         public string GetLineCSV()

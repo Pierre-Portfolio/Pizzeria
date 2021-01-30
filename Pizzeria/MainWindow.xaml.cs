@@ -29,6 +29,8 @@ namespace Pizzeria
         // On crée toutes les pages dynamique
         Grid DynamicGridClient = new Grid();
         DataGrid myGridClient = new DataGrid();
+        DataGrid myGridCommis = new DataGrid();
+        DataGrid myGridLivreur = new DataGrid();
 
         Grid DynamicGridCommands = new Grid();
         ListView ListeViewCommande = new ListView();
@@ -111,6 +113,31 @@ namespace Pizzeria
             }
         }
 
+
+        private void BtnModifCommis(object sender, RoutedEventArgs e)
+        {
+            if (myGridCommis.SelectedItems.Count == 1)
+            {
+                foreach (Object o in myGridCommis.SelectedItems)
+                {
+                    ModifCommis w = new ModifCommis((Commis)o, p1);
+                    w.Show();
+                    
+                    w.BoxNom.Text = ((Commis)o).NomEmploye;
+                    w.BoxPrenom.Text = ((Commis)o).PrenomEmploye;
+                    w.BoxAdresse.Text = ((Commis)o).AdrEmploye;
+                    w.BoxTel.Text = Convert.ToString(((Commis)o).NumEmploye);
+
+                    w.ComboBoxEtat.ItemsSource = Enum.GetValues(typeof(Commis.etat_commis)).Cast<Commis.etat_commis>();
+                    w.ComboBoxEtat.Text = ((Commis)o).EtatCommis.ToString();
+                    
+                }
+            }
+            else
+            {
+                MessageBox.Show("Le nombre de ligne selectionné est incorrect ! ");
+            }
+        }
         #endregion
 
         #region Parti Commande
@@ -344,7 +371,7 @@ namespace Pizzeria
             btnModifCommis.Margin = new Thickness(204, -125, 0, 0);
             btnModifCommis.ToolTip = "Modifier un commis";
             btnModifCommis.Background = new ImageBrush(new BitmapImage(new Uri(@"https://cdn.pixabay.com/photo/2016/03/29/06/22/edit-1287617_1280.png")));
-            //btnModifClient.Click += new RoutedEventHandler(btnModifCommis);
+            btnModifCommis.Click += new RoutedEventHandler(BtnModifCommis);
             Grid.SetRow(btnModifCommis, 3);
             Grid.SetColumn(btnModifCommis, 0);
             DynamicGridClient.Children.Add(btnModifCommis);
@@ -364,7 +391,6 @@ namespace Pizzeria
             DynamicGridClient.Children.Add(btnSuprCommis);
 
             // tableau des commis
-            DataGrid myGridCommis = new DataGrid();
             myGridCommis.Width = 700;
             myGridCommis.Height = 100;
             myGridCommis.Margin = new Thickness(0, -135, 0, 0);
@@ -398,7 +424,6 @@ namespace Pizzeria
             DynamicGridClient.Children.Add(txtBlock3);
 
             // tableau des serveur
-            DataGrid myGridLivreur = new DataGrid();
             myGridLivreur.Width = 700;
             myGridLivreur.Height = 100;
             myGridLivreur.Margin = new Thickness(0, 5, 0, 0);

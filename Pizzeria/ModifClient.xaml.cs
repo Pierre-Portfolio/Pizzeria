@@ -32,18 +32,23 @@ namespace Pizzeria
         }
 
         private void Change(object sender, RoutedEventArgs e)
-        {           
+        {
+            Client cl = null;
+            p.Clients.TryGetValue(c.TelClient, out cl);
+
             c.NomClient = BoxNom.Text;
             c.PrenomClient = BoxPrenom.Text;
             c.AdrClient = BoxAdresse.Text;
             c.TelClient = Convert.ToInt32(BoxTel.Text);
-            Client cl = null;
-            p.Clients.TryGetValue(c.TelClient,out cl);
-            cl.NomClient = BoxNom.Text;
-            cl.PrenomClient = BoxPrenom.Text;
-            cl.AdrClient = BoxAdresse.Text;
-            cl.TelClient = Convert.ToInt32(BoxTel.Text);
-            p.ReWriteCsvClient();
+            
+            if(cl != null)
+            {
+                cl.NomClient = BoxNom.Text;
+                cl.PrenomClient = BoxPrenom.Text;
+                cl.AdrClient = BoxAdresse.Text;
+                cl.TelClient = Convert.ToInt32(BoxTel.Text);
+                p.ReWriteCsvClient();
+            }
             this.Close();
         }
 
