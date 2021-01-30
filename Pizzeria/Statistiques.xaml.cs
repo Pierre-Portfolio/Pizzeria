@@ -118,10 +118,11 @@ namespace Pizzeria
 
             if (p.Commis != null && p.Commis.Count != 0)
             {
+
                 Commis bestCommis = null;
                 foreach (Commis val in p.Commis)
                 {
-                    //S'occuper de la liste view
+                    GridCommis.Items.Add(val);
                     if (bestCommis == null)
                     {
                         bestCommis = val;
@@ -142,7 +143,7 @@ namespace Pizzeria
                 Livreur bestLivreur = null;
                 foreach (Livreur val in p.Livreur)
                 {
-                    //S'occuper de la liste view
+                    GridLivreur.Items.Add(val);
                     if (bestLivreur == null)
                     {
                         bestLivreur = val;
@@ -157,6 +158,7 @@ namespace Pizzeria
                 RecordLivreurTel.Text = bestLivreur.NumEmploye;
                 RecordLivreurCumul.Text = bestLivreur.CumulTache + "";
             }
+            
             
         }
 

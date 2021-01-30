@@ -22,12 +22,23 @@
                     <TranslateTransform Y="0"/>
                 </TransformGroup>
             </Canvas.RenderTransform>
-            <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Name="ListViewCommis" Height="150" Width="150" Canvas.Left="28" Canvas.Top="28">
-            </ListView>
-            <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Name="ListViewLivreur" Height="150" Width="150" Canvas.Left="289" Canvas.Top="28">
-            </ListView>
-            <Label Content="Commis" Canvas.Left="60" Foreground="White" FontSize="20" FontWeight="Bold" RenderTransformOrigin="-0.281,0.598"/>
-            <Label Content="Livreur" Canvas.Left="326" Foreground="White" FontSize="20" FontWeight="Bold" Canvas.Top="1"/>
+
+            <Label Content="Commis" Canvas.Left="95" Foreground="White" FontSize="20" FontWeight="Bold" RenderTransformOrigin="0.52,0.481" Canvas.Top="-4"/>
+            <Label Content="Livreur" Canvas.Left="348" Foreground="White" FontSize="20" FontWeight="Bold" Canvas.Top="-4"/>
+            <DataGrid Name="GridCommis" AutoGenerateColumns="False" ItemsSource="{Binding Commis}" Height="140" Width="243" Canvas.Top="34" Canvas.Left="10" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="25*" Header="Nom" Binding="{Binding Path=NomEmploye}" />
+                    <DataGridTextColumn Width="25*" Header="Prenom" Binding="{Binding Path=PrenomEmploye}"/>
+                    <DataGridTextColumn Header="Cumul Tache" Binding="{Binding CumulTache}" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <DataGrid Name="GridLivreur" Height="140" Width="243" Canvas.Top="34" Canvas.Left="263">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="25*" Header="Nom" Binding="{Binding Path=NomEmploye}" />
+                    <DataGridTextColumn Width="25*" Header="Prenom" Binding="{Binding Path=PrenomEmploye}"/>
+                    <DataGridTextColumn Header="Cumul Tache" Binding="{Binding CumulTache}" />
+                </DataGrid.Columns>
+            </DataGrid>
         </Canvas>
         <Canvas Margin="477,0,1,0" Grid.Column="1">
             <Label Content="Commandes" Canvas.Left="171" Foreground="White" FontSize="20" FontWeight="Bold"/>

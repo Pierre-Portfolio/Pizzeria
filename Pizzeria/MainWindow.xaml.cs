@@ -501,7 +501,6 @@ namespace Pizzeria
 
 
         }
-
         public void GenerationPageCommande()
         {
             /*=== Creation du GridGlobal ===*/
@@ -541,7 +540,6 @@ namespace Pizzeria
             Grid.SetRow(pictTextCmd, 0);
             DynamicGridCommands.Children.Add(pictTextCmd);
         }
-
         public void AjoutCommande()
         {
             //Création liste view
@@ -625,7 +623,6 @@ namespace Pizzeria
             Grid.SetRow(priseEncharge, 2);
             DynamicGridCommands.Children.Add(priseEncharge);
         }
-        
         public void PriseEnChargeCommande(object sender, RoutedEventArgs e)
         {
             var WindowPriseEnCharge = new PagePriseEnCharge(this.p1);
