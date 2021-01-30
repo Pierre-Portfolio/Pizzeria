@@ -4399,7 +4399,7 @@
 											"top": 533,
 											"width": 176.16015625,
 											"height": 13,
-											"text": "-moyenDeTransport: Enum",
+											"text": "-moyenDeLivraison: Enum",
 											"horizontalAlignment": 0
 										}
 									],
@@ -4522,7 +4522,7 @@
 											"top": 573,
 											"width": 176.16015625,
 											"height": 13,
-											"text": "+DeclarerMoyenDeTransport()",
+											"text": "+DeclarerMoyenDeLivraison()",
 											"horizontalAlignment": 0
 										}
 									],
@@ -6465,7 +6465,7 @@
 											"top": 628,
 											"width": 167,
 											"height": 13,
-											"text": "MoyenDeTransport"
+											"text": "MoyenLivraison"
 										},
 										{
 											"_type": "LabelView",
@@ -6618,7 +6618,7 @@
 											"top": 666,
 											"width": 167,
 											"height": 13,
-											"text": "scooteur",
+											"text": "scooter",
 											"horizontalAlignment": 0
 										}
 									],
@@ -8517,7 +8517,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF2qGnVe3hnFy8="
 							},
-							"name": "moyenDeTransport",
+							"name": "moyenDeLivraison",
 							"visibility": "private",
 							"type": "Enum"
 						}
@@ -8569,7 +8569,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF2qGnVe3hnFy8="
 							},
-							"name": "DeclarerMoyenDeTransport"
+							"name": "DeclarerMoyenDeLivraison"
 						}
 					]
 				},
@@ -8793,7 +8793,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "MoyenDeTransport",
+					"name": "MoyenLivraison",
 					"literals": [
 						{
 							"_type": "UMLEnumerationLiteral",
@@ -8809,7 +8809,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF2qIPKAwVOPIA="
 							},
-							"name": "scooteur"
+							"name": "scooter"
 						}
 					]
 				},

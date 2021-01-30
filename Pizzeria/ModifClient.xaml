@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pizzeria"
         mc:Ignorable="d"
-        Title="ModifClient" Height="482" Width="325" Icon="/logoPizza.png">
+        Title="ModifClient" Height="482" Width="325" Icon="/logoPizza.png" ResizeMode="NoResize">
     <Window.Background>
         <ImageBrush ImageSource="/Pizza-Background.jpg" Stretch="None"/>
     </Window.Background>

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace Pizzeria
 {
-    public class Livreur : Personel
+    public class Livreur : Personel , INotifyPropertyChanged
     {
         public enum etat_livreur
         {
@@ -13,9 +14,17 @@ namespace Pizzeria
             enlivraison,
         }
         private etat_livreur etatLivreur;
-        private string moyenLivraison;
+        //private string moyenLivraison;
 
-        public Livreur(string nomEmploye, string prenomEmploye, string adrEmploye, string mdpEmploye, string numEmploye, etat_livreur etatLivreur, string moyenLivraison) : base(nomEmploye, prenomEmploye, adrEmploye, mdpEmploye, numEmploye)
+        public enum moyen_Livraison
+        {
+            velo,
+            scooter,
+            trotinette,
+        }
+        private moyen_Livraison moyenLivraison;
+
+        public Livreur(string nomEmploye, string prenomEmploye, string adrEmploye, string mdpEmploye, string numEmploye, etat_livreur etatLivreur, moyen_Livraison moyenLivraison) : base(nomEmploye, prenomEmploye, adrEmploye, mdpEmploye, numEmploye)
         {
             this.etatLivreur = etatLivreur;
             this.moyenLivraison = moyenLivraison;
@@ -24,12 +33,12 @@ namespace Pizzeria
         public etat_livreur EtatLivreur
         {
             get { return etatLivreur; }
-            set { this.etatLivreur = value; }
+            set { this.etatLivreur = value; OnPropertyChanged("EtatLivreur"); }
         }
-        public string MoyenLivraison
+        public moyen_Livraison MoyenLivraison
         {
             get { return moyenLivraison; }
-            set { this.moyenLivraison = value; }
+            set { this.moyenLivraison = value; OnPropertyChanged("MoyenLivraison"); }
         }
 
         public string GetLineCSV()
