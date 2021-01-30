@@ -421,11 +421,44 @@ namespace Pizzeria
             DynamicGridClient.Children.Add(btnSuprCommis);
 
             // tableau des commis
+            myGridCommis.AutoGenerateColumns = false;
+            DataGridTextColumn nomCom = new DataGridTextColumn();
+            nomCom.Binding = new Binding("NomEmploye");
+            nomCom.Header = "Nom";
+            DataGridTextColumn preCom = new DataGridTextColumn();
+            preCom.Binding = new Binding("PrenomEmploye");
+            preCom.Header = "Prenom";
+            DataGridTextColumn adrCom = new DataGridTextColumn();
+            adrCom.Binding = new Binding("AdrEmploye");
+            adrCom.Header = "Adresse";
+            DataGridTextColumn telCom = new DataGridTextColumn();
+            telCom.Binding = new Binding("NumEmploye");
+            telCom.Header = "Telephone";
+            DataGridTextColumn etatCom = new DataGridTextColumn();
+            etatCom.Binding = new Binding("EtatCommis");
+            etatCom.Header = "Etat actuel";
+            DataGridTextColumn embaucheCom = new DataGridTextColumn();
+            embaucheCom.Binding = new Binding("DateEmbauche");
+            embaucheCom.Header = "Date d'embauche";
+            //Add the column to the DataGrid
+            myGridCommis.Columns.Clear();
+            myGridCommis.Columns.Add(nomCom);
+            myGridCommis.Columns.Add(preCom);
+            myGridCommis.Columns.Add(adrCom);
+            myGridCommis.Columns.Add(telCom);
+            myGridCommis.Columns.Add(etatCom);
+            myGridCommis.Columns.Add(embaucheCom);
+
+
             myGridCommis.Width = 700;
             myGridCommis.Height = 100;
             myGridCommis.Margin = new Thickness(0, -135, 0, 0);
             myGridCommis.GridLinesVisibility = DataGridGridLinesVisibility.None;
-            myGridCommis.ItemsSource = p1.Commis;
+            foreach(Commis c in p1.Commis)
+            {
+                myGridCommis.Items.Add(c);
+            }
+            //myGridCommis.ItemsSource = p1.Commis;
             myGridCommis.Foreground = new SolidColorBrush(Colors.Orange);
             myGridCommis.BorderThickness = new Thickness(0, 0, 0, 0);
             myGridCommis.IsReadOnly = true;
@@ -485,11 +518,43 @@ namespace Pizzeria
             DynamicGridClient.Children.Add(btnModifLivreur);
 
             // tableau des serveur
+            myGridLivreur.AutoGenerateColumns = false;
+            DataGridTextColumn nomLiv = new DataGridTextColumn();
+            nomLiv.Binding = new Binding("NomEmploye");
+            nomLiv.Header = "Nom";
+            DataGridTextColumn preLiv = new DataGridTextColumn();
+            preLiv.Binding = new Binding("PrenomEmploye");
+            preLiv.Header = "Prenom";
+            DataGridTextColumn adrLiv = new DataGridTextColumn();
+            adrLiv.Binding = new Binding("AdrEmploye");
+            adrLiv.Header = "Adresse";
+            DataGridTextColumn telLiv = new DataGridTextColumn();
+            telLiv.Binding = new Binding("NumEmploye");
+            telLiv.Header = "Telephone";
+            DataGridTextColumn etatLiv = new DataGridTextColumn();
+            etatLiv.Binding = new Binding("EtatLivreur");
+            etatLiv.Header = "Etat actuel";
+            DataGridTextColumn embaucheLiv = new DataGridTextColumn();
+            embaucheLiv.Binding = new Binding("MoyenLivraison");
+            embaucheLiv.Header = "Moyen de livraison";
+            //Add the column to the DataGrid
+            myGridLivreur.Columns.Clear();
+            myGridLivreur.Columns.Add(nomLiv);
+            myGridLivreur.Columns.Add(preLiv);
+            myGridLivreur.Columns.Add(adrLiv);
+            myGridLivreur.Columns.Add(telLiv);
+            myGridLivreur.Columns.Add(etatLiv);
+            myGridLivreur.Columns.Add(embaucheLiv);
+
             myGridLivreur.Width = 700;
             myGridLivreur.Height = 100;
             myGridLivreur.Margin = new Thickness(0, 5, 0, 0);
             myGridLivreur.GridLinesVisibility = DataGridGridLinesVisibility.None;
-            myGridLivreur.ItemsSource = p1.Livreur;
+            //myGridLivreur.ItemsSource = p1.Livreur;
+            foreach(Livreur liv in p1.Livreur)
+            {
+                myGridLivreur.Items.Add(liv);
+            }
             myGridLivreur.Foreground = new SolidColorBrush(Colors.Orange);
             myGridLivreur.BorderThickness = new Thickness(0, 0, 0, 0);
             Grid.SetRow(myGridLivreur, 6);
