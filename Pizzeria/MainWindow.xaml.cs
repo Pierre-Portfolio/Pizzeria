@@ -133,6 +133,23 @@ namespace Pizzeria
             }
         }
 
+        private void ButtonSupClient(object sender, RoutedEventArgs e)
+        {
+            if (myGridClient.SelectedItems.Count != 0)
+            {
+                foreach (Object o in myGridClient.SelectedItems)
+                {
+                    p1.Clients.Remove(((Client)o).TelClient);
+                }
+                p1.ReWriteCsvClient();
+                //myGridClient.ItemsSource = p1.Clients.Values;
+            }
+            else
+            {
+                MessageBox.Show("Le nombre de ligne selectionné est incorrect ! ");
+            }
+        }
+
         /// <summary>
         /// Ouverture de la fenetre de modification commis
         /// </summary>
@@ -285,6 +302,7 @@ namespace Pizzeria
             btnSuprClient.ToolTip = "Supprimer un client";
             btnSuprClient.Background = new ImageBrush(new BitmapImage(new Uri(@"https://cdn.pixabay.com/photo/2013/07/12/17/00/remove-151678_960_720.png")));
             btnSuprClient.Margin = new Thickness(250, -11, 0, 0);
+            btnSuprClient.Click += new RoutedEventHandler(ButtonSupClient);
             DynamicGridClient.Children.Add(btnSuprClient);
 
             //Btn Rechercher

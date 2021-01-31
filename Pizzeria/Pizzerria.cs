@@ -308,7 +308,7 @@ namespace Pizzeria
                     if (i != Clients.Count)
                         line += "\n";
                 }
-                wr.Write(line);
+                wr.WriteLine(line);
                 wr.Close();
             }
         }
