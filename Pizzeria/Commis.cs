@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 namespace Pizzeria
 {
-    public class Commis : Personel , INotifyPropertyChanged
+    public class Commis : Personel,ISauvegardable , INotifyPropertyChanged
     {
         public enum etat_commis
         {
@@ -32,8 +32,10 @@ namespace Pizzeria
             get { return dateEmbauche; }
             set { this.dateEmbauche = value; OnPropertyChanged("DateEmbauche"); }
         }
-
-        public string GetLineCSV()
+        /// <summary>
+        /// Fonction de creation de la ligne string permettant de créer le .csv
+        /// </summary>
+        public string GetLineForCSV()
         {
             string date = dateEmbauche.Day + "/" + dateEmbauche.Month+"/" + dateEmbauche.Year;
             return nomEmploye + ";" + prenomEmploye+";"+mdpEmploye + ";" + adrEmploye + ";" + numEmploye + ";" + etatCommis.ToString()+";"+date+";"+cumulTache ;

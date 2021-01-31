@@ -12,9 +12,9 @@ TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 C:\Users\petil\source\repos\Pizzeria\Pizzeria\App.xaml
 121287054420
 
-25-884251244
+26-85537625
 1991363247284
 AddClient.xaml;addCommis.xaml;AddLivreur.xaml;MainWindow.xaml;ModifClient.xaml;ModifCommis.xaml;ModifLivreur.xaml;PagePriseEnCharge.xaml;PasserCommande.xaml;Rechercher.xaml;Settings.xaml;Statistiques.xaml;
 
-False
+True
 

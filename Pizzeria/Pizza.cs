@@ -47,6 +47,10 @@ namespace Pizzeria
             get { return this.prix; }
         }
 
+        /// <summary>
+        /// Fonction de renvois du string d'affichage pour une pizza (remplaçable par un ToString())
+        /// </summary>
+        /// <returns></returns>
         public string AffichePizza()
         {
             string s = this.Taille + " ";

@@ -4,6 +4,7 @@ using System.Text;
 using System.IO;
 namespace Pizzeria
 {
+    /// Pour un soucis de conflit classe / namespace. La classe Pizzeria s'écrit avec 2 r
     public class Pizzerria
     {
         private string nom;
@@ -89,6 +90,10 @@ namespace Pizzeria
             this.currentUser.CumulTache++;
         }
 
+        /// <summary>
+        /// Les fonctions de la region suivante permettent toute de charger un fichier csv.
+        /// </summary>
+        /// <returns>List<T></returns>
         #region Fonctions pour charger les CSV
         public Dictionary<int,Client> ChargerCSVClient()
         {
@@ -251,11 +256,50 @@ namespace Pizzeria
         }
         #endregion
 
+        /// <summary>
+        /// Les fonctions de la region suivante permettent toute de modifier un fichier csv.
+        /// </summary>
         #region AddToCsv
         public void AjouterClientFinCSV(Client c)
         {
             string path = "..\\..\\..\\Clients.csv";
             string line = c.NumClient + ";" + c.NomClient + ";" + c.PrenomClient + ";" + c.AdrClient + ";" + c.TelClient + ";" + c.DatePremiereCmd.Day + "/" + c.DatePremiereCmd.Month + "/" + c.DatePremiereCmd.Year + ";" + c.CmlCmd;
+            if (!File.Exists(path))
+            {
+                // Creation du fichier.
+                StreamWriter sw = File.CreateText(path);
+                sw.WriteLine(line);
+                sw.Close();
+            }
+            else
+            {
+                StreamWriter sw = File.AppendText(path);
+                sw.WriteLine(line);
+                sw.Close();
+            }
+        }
+        public void AjouterCommisFinCSV(Commis c)
+        {
+            string path = "..\\..\\..\\Commis.csv";
+            string line = c.GetLineForCSV();
+            if (!File.Exists(path))
+            {
+                // Creation du fichier.
+                StreamWriter sw = File.CreateText(path);
+                sw.WriteLine(line);
+                sw.Close();
+            }
+            else
+            {
+                StreamWriter sw = File.AppendText(path);
+                sw.WriteLine(line);
+                sw.Close();
+            }
+        }
+        public void AjouterLivreurFinCSV(Livreur l)
+        {
+            string path = "..\\..\\..\\Livreur.csv";
+            string line = l.GetLineForCSV();
             if (!File.Exists(path))
             {
                 // Creation du fichier.
@@ -301,7 +345,7 @@ namespace Pizzeria
                 foreach (Commis c in Commis)
                 {
                     i++;
-                    line += c.GetLineCSV();
+                    line += c.GetLineForCSV();
                     if (i != Commis.Count)
                         line += "\n";
                 }
@@ -321,7 +365,7 @@ namespace Pizzeria
                 foreach (Livreur l in Livreur)
                 {
                     i++;
-                    line += l.GetLineCSV();
+                    line += l.GetLineForCSV();
                     if (i != Livreur.Count)
                         line += "\n";
                 }
@@ -372,6 +416,9 @@ namespace Pizzeria
         #endregion
 
         #region Refresh
+        /// <summary>
+        /// Recharger les liste de la classe Pizzerria
+        /// </summary>
         public void Refresh()
         {
             this.clients = ChargerCSVClient();

@@ -28,6 +28,9 @@ namespace Pizzeria
 
         }
 
+        /// <summary>
+        /// Fonction pour se deconnecter
+        /// </summary>
         private void Deconnect(object sender, RoutedEventArgs e)
         {
             MainWindow mainWin = new MainWindow();
@@ -35,6 +38,9 @@ namespace Pizzeria
             mw.Close();
         }
 
+        /// <summary>
+        /// Fonction pour changer le mdp de l'utilisateur connecté
+        /// </summary>
         private void ChangeMdp(object sender, RoutedEventArgs e)
         {
             if (mdp1.Text.Length == 0 || mdp2.Text.Length == 0 || !mdp1.Text.Equals(mdp2.Text))

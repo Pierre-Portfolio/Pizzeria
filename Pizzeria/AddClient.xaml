@@ -17,14 +17,14 @@
                 <ImageBrush ImageSource="/banner2.jpg" Stretch="UniformToFill"/>
             </Canvas.Background>
             <Button Content="Valider" Height="25" Canvas.Left="106" Canvas.Top="378" Width="126" Cursor="Hand" Background="#FF34B104" Click="AjouterClient"/>
-            <TextBox Name="BoxNom" Height="22" Canvas.Left="94" Canvas.Top="89" TextWrapping="Wrap" Width="150" AutomationProperties.Name="Nom" TextChanged="BoxNom_TextChanged"/>
+            <TextBox Name="BoxNom" Height="22" Canvas.Left="94" Canvas.Top="89" TextWrapping="Wrap" Width="150" AutomationProperties.Name="Nom" />
             <TextBlock Height="20" Canvas.Left="94" Canvas.Top="161" Text="Prenom :" TextWrapping="Wrap" Width="59" IsEnabled="False" FontWeight="Bold" Background="#FFFFFF"/>
-            <TextBox Name="BoxPrenom" Height="22" Canvas.Left="94" Canvas.Top="181" TextWrapping="Wrap" Width="150" AutomationProperties.Name="Prenom" TextChanged="TextBox_TextChanged_1"/>
+            <TextBox Name="BoxPrenom" Height="22" Canvas.Left="94" Canvas.Top="181" TextWrapping="Wrap" Width="150" AutomationProperties.Name="Prenom" />
             <TextBlock Height="20" Canvas.Left="94" Canvas.Top="69" Text="Nom :" TextWrapping="Wrap" Width="59" IsEnabled="False" FontWeight="Bold" Foreground="Black" Background="White"/>
             <TextBlock Height="20" Canvas.Left="94" Canvas.Top="238" Text="Adresse : " TextWrapping="Wrap" Width="59" IsEnabled="False" FontWeight="Bold" Background="#FFFFFF"/>
-            <TextBox Name="BoxAdresse" Height="22" Canvas.Left="94" Canvas.Top="258" TextWrapping="Wrap" Width="150" TextChanged="TextBox_TextChanged" AutomationProperties.Name="Adresse"/>
+            <TextBox Name="BoxAdresse" Height="22" Canvas.Left="94" Canvas.Top="258" TextWrapping="Wrap" Width="150" AutomationProperties.Name="Adresse"/>
             <TextBlock Height="20" Canvas.Left="94" Canvas.Top="305" TextWrapping="Wrap" Width="75" IsEnabled="False" FontWeight="Bold" Background="#FFFFFF"><Run Language="fr-fr" Text="Telephone"/><Run Text=" : "/></TextBlock>
-            <TextBox Name="BoxTel" Height="22" Canvas.Left="94" Canvas.Top="325" TextWrapping="Wrap" Width="150" TextChanged="TextBox_TextChanged" AutomationProperties.Name="Tel"/>
+            <TextBox Name="BoxTel" Height="22" Canvas.Left="94" Canvas.Top="325" TextWrapping="Wrap" Width="150" AutomationProperties.Name="Tel"/>
 
         </Canvas>
 

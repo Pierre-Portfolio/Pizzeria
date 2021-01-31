@@ -43,7 +43,9 @@ namespace Pizzeria
 
         #region fonction refresh
 
-
+        /// <summary>
+        /// Vider le mainGrid
+        /// </summary>
         public void RefreshPasOpti()
         {
             p1.Refresh();
@@ -67,33 +69,51 @@ namespace Pizzeria
         #endregion
 
         #region Parti Client
+        /// <summary>
+        /// Bonton du menu ouvrir la page client
+        /// </summary>
         private void ClientsBtn_Click(object sender, RoutedEventArgs e)
         {
             RefreshPasOpti();
             MainGrid.Children.Add(DynamicGridClient);
         }
+        /// <summary>
+        /// Ouverture de la fenetre d'ajout client
+        /// </summary>
         private void OpenAddClient(object sender, RoutedEventArgs e)
         {
             var WindowAddClient = new AddClient(p1);
             WindowAddClient.Show();
         }
+        /// <summary>
+        /// Ouverture de la fenetre de recherche client
+        /// </summary>
         private void OpenChercherClient(object sender, RoutedEventArgs e)
         {
             var WindowChercher = new Rechercher(this.p1);
             WindowChercher.Show();
         }
+        /// <summary>
+        /// Ouverture de la fenetre d'ajout commis
+        /// </summary>
         private void OpenAddCommis(object sender, RoutedEventArgs e)
         {
-            var WindowAddComis = new addCommis();
+            var WindowAddComis = new addCommis(p1);
             WindowAddComis.Show();
             this.Close();
         }
+        /// <summary>
+        /// Ouverture de la fenetre d'ajout livreur
+        /// </summary>
         private void OpenAddLivreur(object sender, RoutedEventArgs e)
         {
-            var WindowAddLivreur = new AddLivreur();
+            var WindowAddLivreur = new AddLivreur(p1);
             WindowAddLivreur.Show();
             this.Close();
         }
+        /// <summary>
+        /// Ouverture de la fenetre de modification client
+        /// </summary>
         private void ButtonModifClient(object sender, RoutedEventArgs e)
         {
             if (myGridClient.SelectedItems.Count == 1)
@@ -114,7 +134,9 @@ namespace Pizzeria
             }
         }
 
-
+        /// <summary>
+        /// Ouverture de la fenetre de modification commis
+        /// </summary>
         private void BtnModifCommis(object sender, RoutedEventArgs e)
         {
             if (myGridCommis.SelectedItems.Count == 1)
@@ -139,7 +161,9 @@ namespace Pizzeria
                 MessageBox.Show("Le nombre de ligne selectionné est incorrect ! ");
             }
         }
-
+        /// <summary>
+        /// Ouverture de la fenetre de modification livreur
+        /// </summary>
         private void BtnModifLivreur(object sender, RoutedEventArgs e)
         {
             if (myGridLivreur.SelectedItems.Count == 1)
@@ -168,89 +192,9 @@ namespace Pizzeria
                 MessageBox.Show("Le nombre de ligne selectionné est incorrect ! ");
             }
         }
-        #endregion
-
-        #region Parti Commande
-        private void CommandesBtn_Click(object sender, RoutedEventArgs e)
-        {
-            RefreshPasOpti();
-            AjoutCommande();
-            MainGrid.Children.Add(DynamicGridCommands);
-        }
-        #endregion
-
-        #region Parti Statistique
-        private void StatistiqueBtn_Click(object sender, RoutedEventArgs e)
-        {
-            RefreshPasOpti();
-            Frame frame = new Frame();
-            frame.Content = new Statistiques(p1);
-            DynamicGridStat.Children.Add(frame);
-            MainGrid.Children.Add(DynamicGridStat);
-        }
-
-        private void GenerationPageStatistiques()
-        {
-            /* ==== Creation partie client ====*/
-            // création grid dynamic
-            DynamicGridStat.HorizontalAlignment = HorizontalAlignment.Left;
-            DynamicGridStat.VerticalAlignment = VerticalAlignment.Center;
-            DynamicGridStat.Height = 400;
-            DynamicGridStat.Width = 780;
-            DynamicGridStat.Margin = new Thickness(0, 0, 0, 0);
-            Grid.SetRow(DynamicGridStat, 2);
-            Grid.SetColumn(DynamicGridStat, 0);
-            Grid.SetColumnSpan(DynamicGridStat, 4);
-        }
-        #endregion
-
-        #region Parti Administration
-        private void AdminitrationBtn_Click(object sender, RoutedEventArgs e)
-        {
-            RefreshPasOpti();
-            Frame frame = new Frame();
-            frame.Content = new Settings(p1,this);
-            DynamicGridAdmin.Children.Add(frame);
-            MainGrid.Children.Add(DynamicGridAdmin);
-        }
-
-        private void GenerationPageAdministration()
-        {
-            /* ==== Creation partie client ====*/
-            // création grid dynamic
-            DynamicGridAdmin.HorizontalAlignment = HorizontalAlignment.Left;
-            DynamicGridAdmin.VerticalAlignment = VerticalAlignment.Center;
-            DynamicGridAdmin.Height = 400;
-            DynamicGridAdmin.Width = 780;
-            DynamicGridAdmin.Margin = new Thickness(100, 20, 0, 0);
-            Grid.SetRow(DynamicGridAdmin, 2);
-            Grid.SetColumn(DynamicGridAdmin, 0);
-            Grid.SetColumnSpan(DynamicGridAdmin, 4);
-        }
-        #endregion
-
-        #region Parti Main
-        public void BlockBtnBase()
-        {
-            if(p1.CurrentUser is Commis)
-            {
-                ClientsBtn.IsEnabled = true;
-                CommandesBtn.IsEnabled = true;
-                StatistiqueBtn.IsEnabled = true;
-                AdminitrationBtn.IsEnabled = true;
-            }
-            else if(p1.CurrentUser is Livreur)
-            {
-                CommandesBtn.IsEnabled = true;
-            }
-            else
-            {   
-                ClientsBtn.IsEnabled = false;
-                CommandesBtn.IsEnabled = false;
-                StatistiqueBtn.IsEnabled = false;
-                AdminitrationBtn.IsEnabled = false;
-            }
-        }
+        /// <summary>
+        /// Generation du grid / des data grids et des differents bouttons de la page Client
+        /// </summary>
         public void GenerationPageClient()
         {
             /* ==== Creation partie client ====*/
@@ -471,7 +415,7 @@ namespace Pizzeria
             myGridCommis.Height = 100;
             myGridCommis.Margin = new Thickness(0, -135, 0, 0);
             myGridCommis.GridLinesVisibility = DataGridGridLinesVisibility.None;
-            foreach(Commis c in p1.Commis)
+            foreach (Commis c in p1.Commis)
             {
                 myGridCommis.Items.Add(c);
             }
@@ -518,7 +462,7 @@ namespace Pizzeria
             Grid.SetRow(btnAddLivreur, 5);
             Grid.SetColumn(btnAddLivreur, 0);
             DynamicGridClient.Children.Add(btnAddLivreur);
-            
+
             //Btn modifier
             Button btnModifLivreur = new Button();
             btnModifLivreur.Content = "";
@@ -568,7 +512,7 @@ namespace Pizzeria
             myGridLivreur.Margin = new Thickness(0, 5, 0, 0);
             myGridLivreur.GridLinesVisibility = DataGridGridLinesVisibility.None;
             //myGridLivreur.ItemsSource = p1.Livreur;
-            foreach(Livreur liv in p1.Livreur)
+            foreach (Livreur liv in p1.Livreur)
             {
                 myGridLivreur.Items.Add(liv);
             }
@@ -580,6 +524,22 @@ namespace Pizzeria
 
             #endregion
         }
+        #endregion
+
+        #region Parti Commande
+        /// <summary>
+        /// Bonton du menu ouvrir la page commande
+        /// </summary>
+        private void CommandesBtn_Click(object sender, RoutedEventArgs e)
+        {
+            RefreshPasOpti();
+            AjoutCommande();
+            MainGrid.Children.Add(DynamicGridCommands);
+        }
+
+        /// <summary>
+        /// Preparation de la grid / du tableau / boutton et autre de la page Commande
+        /// </summary>
         public void GenerationPageCommande()
         {
             /*=== Creation du GridGlobal ===*/
@@ -601,7 +561,7 @@ namespace Pizzeria
             RowDefinition gridRowCommande1 = new RowDefinition();
             gridRowCommande1.Height = new GridLength(30);
             RowDefinition gridRowCommande2 = new RowDefinition();
-            gridRowCommande2.Height = new GridLength(300); 
+            gridRowCommande2.Height = new GridLength(300);
             RowDefinition gridRowCommande3 = new RowDefinition();
             gridRowCommande3.Height = new GridLength(40);
             DynamicGridCommands.RowDefinitions.Add(gridRowCommande1);
@@ -619,6 +579,9 @@ namespace Pizzeria
             Grid.SetRow(pictTextCmd, 0);
             DynamicGridCommands.Children.Add(pictTextCmd);
         }
+        /// <summary>
+        /// Fonction permettant de lister les commandes dans le tableau de la page commande
+        /// </summary>
         public void AjoutCommande()
         {
             //Création liste view
@@ -689,7 +652,7 @@ namespace Pizzeria
             priseEncharge.Height = 30;
             priseEncharge.Background = new SolidColorBrush(Colors.Green);
             priseEncharge.BorderThickness = new Thickness(0, 0, 0, 0);
-            priseEncharge.Margin = new Thickness(0, 10, 0,0);
+            priseEncharge.Margin = new Thickness(0, 10, 0, 0);
             priseEncharge.Click += new RoutedEventHandler(PriseEnChargeCommande);
             if (p1.CurrentUser is Livreur)
             {
@@ -702,11 +665,105 @@ namespace Pizzeria
             Grid.SetRow(priseEncharge, 2);
             DynamicGridCommands.Children.Add(priseEncharge);
         }
+        /// <summary>
+        /// Fonction permettant d'ouvrir la page de prise en charge des commandes (Encaissement / Livraison)
+        /// </summary>
         public void PriseEnChargeCommande(object sender, RoutedEventArgs e)
         {
             var WindowPriseEnCharge = new PagePriseEnCharge(this.p1);
             WindowPriseEnCharge.Show();
         }
+        #endregion
+
+        #region Parti Statistique
+        /// <summary>
+        /// Bonton du menu ouvrir la page statistique
+        /// </summary>
+        private void StatistiqueBtn_Click(object sender, RoutedEventArgs e)
+        {
+            RefreshPasOpti();
+            Frame frame = new Frame();
+            frame.Content = new Statistiques(p1);
+            DynamicGridStat.Children.Add(frame);
+            MainGrid.Children.Add(DynamicGridStat);
+        }
+        /// <summary>
+        /// Preparation de la grid de la page statistique
+        /// </summary>
+        private void GenerationPageStatistiques()
+        {
+            /* ==== Creation partie client ====*/
+            // création grid dynamic
+            DynamicGridStat.HorizontalAlignment = HorizontalAlignment.Left;
+            DynamicGridStat.VerticalAlignment = VerticalAlignment.Center;
+            DynamicGridStat.Height = 400;
+            DynamicGridStat.Width = 780;
+            DynamicGridStat.Margin = new Thickness(0, 0, 0, 0);
+            Grid.SetRow(DynamicGridStat, 2);
+            Grid.SetColumn(DynamicGridStat, 0);
+            Grid.SetColumnSpan(DynamicGridStat, 4);
+        }
+        #endregion
+
+        #region Parti Administration
+        /// <summary>
+        /// Bonton du menu ouvrir la page Administration
+        /// </summary>
+        private void AdminitrationBtn_Click(object sender, RoutedEventArgs e)
+        {
+            RefreshPasOpti();
+            Frame frame = new Frame();
+            frame.Content = new Settings(p1,this);
+            DynamicGridAdmin.Children.Add(frame);
+            MainGrid.Children.Add(DynamicGridAdmin);
+        }
+        /// <summary>
+        /// Preparation du grid de la page Admin
+        /// </summary>
+        private void GenerationPageAdministration()
+        {
+            /* ==== Creation partie client ====*/
+            // création grid dynamic
+            DynamicGridAdmin.HorizontalAlignment = HorizontalAlignment.Left;
+            DynamicGridAdmin.VerticalAlignment = VerticalAlignment.Center;
+            DynamicGridAdmin.Height = 400;
+            DynamicGridAdmin.Width = 780;
+            DynamicGridAdmin.Margin = new Thickness(100, 20, 0, 0);
+            Grid.SetRow(DynamicGridAdmin, 2);
+            Grid.SetColumn(DynamicGridAdmin, 0);
+            Grid.SetColumnSpan(DynamicGridAdmin, 4);
+        }
+        #endregion
+
+        #region Parti Main
+        /// <summary>
+        /// Bloquer ou debloquer l'accès aux boutons suivant le role de l'utilisateur
+        /// </summary>
+        public void BlockBtnBase()
+        {
+            if(p1.CurrentUser is Commis)
+            {
+                ClientsBtn.IsEnabled = true;
+                CommandesBtn.IsEnabled = true;
+                StatistiqueBtn.IsEnabled = true;
+                AdminitrationBtn.IsEnabled = true;
+            }
+            else if(p1.CurrentUser is Livreur)
+            {
+                CommandesBtn.IsEnabled = true;
+                AdminitrationBtn.IsEnabled = true;
+            }
+            else
+            {   
+                ClientsBtn.IsEnabled = false;
+                CommandesBtn.IsEnabled = false;
+                StatistiqueBtn.IsEnabled = false;
+                AdminitrationBtn.IsEnabled = false;
+            }
+        }
+        /// <summary>
+        /// Main. Initialisation de la page
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
@@ -721,6 +778,9 @@ namespace Pizzeria
         #endregion
 
         #region Connexion application
+        /// <summary>
+        /// Si p.CurrentUser est null, il faut se connecter. Le bouton permer la connexion et la verification des infos
+        /// </summary>
         private void Click_Connection(object sender, RoutedEventArgs e)
         {
             if(BoxNom.Text.Length != 0 && PasseWordBox.Password.Length != 0)
