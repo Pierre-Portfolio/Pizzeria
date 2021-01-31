@@ -135,14 +135,22 @@ namespace Pizzeria
 
         private void ButtonSupClient(object sender, RoutedEventArgs e)
         {
-            if (myGridClient.SelectedItems.Count != 0)
+            if (myGridClient.SelectedItems.Count == 1)
             {
-                foreach (Object o in myGridClient.SelectedItems)
+                Object o = myGridClient.SelectedItems[0];
+                bool b = p1.Clients.Remove(((Client)o).TelClient);
+                if (b)
                 {
-                    p1.Clients.Remove(((Client)o).TelClient);
+                    p1.ReWriteCsvClient();
+                    myGridClient.ItemsSource = p1.Clients.Values;
+                    RefreshPasOpti();
+                    MainGrid.Children.Add(DynamicGridClient);
+                    MessageBox.Show("Client supprimé");
                 }
-                p1.ReWriteCsvClient();
-                //myGridClient.ItemsSource = p1.Clients.Values;
+                else
+                {
+                    MessageBox.Show("Suppression impossible");
+                }
             }
             else
             {

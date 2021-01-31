@@ -87,7 +87,7 @@ namespace Pizzeria
                     //Peek() est une fonction qui retourne -1 s'il n'y a
                     //plus de caractère à lire
                     ligne = lecteur.ReadLine();
-                    if (ligne != null)
+                    if (ligne != null && ligne != "" && ligne != "\n")
                     {
                         string[] tem = ligne.Split(';');
                         string[] date = tem[5].Split('/');
@@ -113,7 +113,7 @@ namespace Pizzeria
                     //Peek() est une fonction qui retourne -1 s'il n'y a
                     //plus de caractère à lire
                     ligne = lecteur.ReadLine();
-                    if (ligne != null)
+                    if (ligne != null && ligne != "" && ligne != "\n")
                     {
                         string[] tem = ligne.Split(';');
                         Commis.etat_commis en = Enum.Parse<Commis.etat_commis>(tem[5]);
@@ -138,7 +138,7 @@ namespace Pizzeria
                     //Peek() est une fonction qui retourne -1 s'il n'y a
                     //plus de caractère à lire
                     ligne = lecteur.ReadLine();
-                    if (ligne != null)
+                    if (ligne != null && ligne != "" && ligne != "\n")
                     {
                         string[] tem = ligne.Split(';');
                         Livreur.etat_livreur en = Enum.Parse<Livreur.etat_livreur>(tem[5]);
@@ -163,7 +163,7 @@ namespace Pizzeria
                     //Peek() est une fonction qui retourne -1 s'il n'y a
                     //plus de caractère à lire
                     ligne = lecteur.ReadLine();
-                    if (ligne != null)
+                    if (ligne != null && ligne != "" && ligne != "\n")
                     {
 
                         string[] tem = ligne.Split(';');
@@ -222,7 +222,7 @@ namespace Pizzeria
                 while(reader.Peek() > 0)
                 {
                     line = reader.ReadLine();
-                    if(line != null)
+                    if(line != null && line != "" && line != "\n")
                     {
                         string[] tem = line.Split(';');
                         Commande c = Commandes.Find(x => x.NumCommande == Int32.Parse(tem[1]));
@@ -304,11 +304,9 @@ namespace Pizzeria
                 foreach (KeyValuePair<int, Client> val in Clients)
                 {
                     i++;
-                    line += val.Value.GetLineForCSV();
-                    if (i != Clients.Count)
-                        line += "\n";
+                    line += val.Value.GetLineForCSV()+"\n";
                 }
-                wr.WriteLine(line);
+                wr.Write(line);
                 wr.Close();
             }
         }
@@ -324,9 +322,7 @@ namespace Pizzeria
                 foreach (Commis c in Commis)
                 {
                     i++;
-                    line += c.GetLineForCSV();
-                    if (i != Commis.Count)
-                        line += "\n";
+                    line += c.GetLineForCSV()+"\n";
                 }
                 wr.Write(line);
                 wr.Close();
@@ -344,9 +340,7 @@ namespace Pizzeria
                 foreach (Livreur l in Livreur)
                 {
                     i++;
-                    line += l.GetLineForCSV();
-                    if (i != Livreur.Count)
-                        line += "\n";
+                    line += l.GetLineForCSV()+"\n";
                 }
                 wr.Write(line);
                 wr.Close();
@@ -364,9 +358,7 @@ namespace Pizzeria
                 foreach (Commande c in Commandes)
                 {
                     i++;
-                    line += c.GetLineForCSV();
-                    if (i != Commandes.Count)
-                        line += "\n";
+                    line += c.GetLineForCSV()+"`\n";
                 }
                 wr.Write(line);
                 wr.Close();
@@ -384,9 +376,7 @@ namespace Pizzeria
                 foreach (Facture f in factures)
                 {
                     i++;
-                    line += f.GetLineForCSV();
-                    if (i != factures.Count)
-                        line += "\n";
+                    line += f.GetLineForCSV()+"\n";
                 }
                 wr.Write(line);
                 wr.Close();
