@@ -117,7 +117,6 @@ namespace Pizzeria
                 }
             }
         }
-
         private void ComboxBoxLivreur_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             currentLName = ComboxBoxLivreur.SelectedItem.ToString();
