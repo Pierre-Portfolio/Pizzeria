@@ -615,7 +615,12 @@ namespace Pizzeria
                     Commande1.Height = 100;
                     Commande1.Width = 750;
                     Commande1.Margin = new Thickness(0, 0, 0, 0);
-                    Commande1.Background = new SolidColorBrush(Colors.DarkGray);
+                    if (c.Etat == Commande.EtatCommande.fermer)
+                        Commande1.Background = new SolidColorBrush(Colors.Green);
+                    else if (c.Etat == Commande.EtatCommande.perdue)
+                        Commande1.Background = new SolidColorBrush(Colors.Red);
+                    else
+                        Commande1.Background = new SolidColorBrush(Colors.DarkGray);
                     Grid.SetRow(Commande1, i);
                     ListeViewCommande.Items.Add(Commande1);
 

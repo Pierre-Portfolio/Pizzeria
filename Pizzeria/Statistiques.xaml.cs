@@ -49,7 +49,9 @@ namespace Pizzeria
             Commande1.Margin = new Thickness(0, 0, 0, 0);
             if (c.Etat == Commande.EtatCommande.fermer)
                 Commande1.Background = new SolidColorBrush(Colors.Green);
-            else
+            else if(c.Etat == Commande.EtatCommande.perdue)
+                Commande1.Background = new SolidColorBrush(Colors.Red);
+            else    
                 Commande1.Background = new SolidColorBrush(Colors.DarkGray);
             Grid.SetRow(Commande1, i);
             ListViewCommandes.Items.Add(Commande1);
@@ -194,6 +196,7 @@ namespace Pizzeria
                         i++;
                     }
                 }
+
                 List<Facture> facturePeriode = new List<Facture>();
                 facturePeriode = p.Factures.FindAll(x => {
                     if (x.Details != null)
