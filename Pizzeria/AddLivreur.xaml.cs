@@ -35,8 +35,6 @@ namespace Pizzeria
             {
                 Livreur l = new Livreur(BoxNom.Text, BoxPrenom.Text, BoxAdresse.Text, "x", BoxTel.Text, Livreur.etat_livreur.surplace, Enum.Parse<Livreur.moyen_Livraison>(BoxLivraison.Text));
                 p.AjouterLivreurFinCSV(l);
-                var WindowMain = new MainWindow();
-                WindowMain.Show();
                 this.Close();
             }
             else

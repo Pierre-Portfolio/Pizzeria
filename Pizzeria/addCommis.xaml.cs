@@ -35,8 +35,6 @@ namespace Pizzeria
             {
                 Commis c = new Commis(BoxNom.Text, BoxPrenom.Text, BoxAdresse.Text,"x", BoxTel.Text, Commis.etat_commis.surplace,DateTime.Now,0);
                 p.AjouterCommisFinCSV(c);
-                var WindowMain = new MainWindow();
-                WindowMain.Show();
                 this.Close();
             }
             else
