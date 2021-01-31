@@ -23,6 +23,7 @@ namespace Pizzeria
         {
             this.p = p;
             InitializeComponent();
+            BoxLivraison.ItemsSource = Enum.GetValues(typeof(Livreur.moyen_Livraison));
         }
 
         /// <summary>
@@ -32,7 +33,7 @@ namespace Pizzeria
         {
             if (BoxNom.Text != "" && BoxPrenom.Text.Length != 0 && BoxAdresse.Text.Length != 0 && BoxTel.Text.Length != 0 && BoxLivraison.Text.Length != 0)
             {
-                Livreur l = new Livreur(BoxNom.Text, BoxPrenom.Text,"x", BoxAdresse.Text, BoxTel.Text, Livreur.etat_livreur.surplace, Enum.Parse<Livreur.moyen_Livraison>(BoxLivraison.Text));
+                Livreur l = new Livreur(BoxNom.Text, BoxPrenom.Text, BoxAdresse.Text, "x", BoxTel.Text, Livreur.etat_livreur.surplace, Enum.Parse<Livreur.moyen_Livraison>(BoxLivraison.Text));
                 p.AjouterLivreurFinCSV(l);
                 var WindowMain = new MainWindow();
                 WindowMain.Show();

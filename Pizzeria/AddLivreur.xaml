@@ -26,7 +26,7 @@
             <TextBlock Height="20" Canvas.Left="94" Canvas.Top="260" TextWrapping="Wrap" Width="75" IsEnabled="False" FontWeight="Bold" Background="#FFFFFF"><Run Language="fr-fr" Text="Telephone"/><Run Text=" : "/></TextBlock>
             <TextBox Name="BoxTel" Height="22" Canvas.Left="94" Canvas.Top="280" TextWrapping="Wrap" Width="150" AutomationProperties.Name="Tel"/>
             <TextBlock Height="20" Canvas.Left="94" Canvas.Top="315" TextWrapping="Wrap" Width="138" IsEnabled="False" FontWeight="Bold" Background="#FFFFFF"><Run Language="fr-fr" Text="Moyen de livraison"/><Run Text=" : "/></TextBlock>
-            <TextBox Name="BoxLivraison" Height="22" Canvas.Left="94" Canvas.Top="335" TextWrapping="Wrap" Width="150" AutomationProperties.Name="Tel"/>
+            <ComboBox x:Name="BoxLivraison" Canvas.Left="94" Canvas.Top="335" Width="138"/>
 
         </Canvas>
     </Grid>

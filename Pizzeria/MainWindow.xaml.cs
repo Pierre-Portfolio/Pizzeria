@@ -100,7 +100,6 @@ namespace Pizzeria
         {
             var WindowAddComis = new addCommis(p1);
             WindowAddComis.Show();
-            this.Close();
         }
         /// <summary>
         /// Ouverture de la fenetre d'ajout livreur
@@ -109,7 +108,6 @@ namespace Pizzeria
         {
             var WindowAddLivreur = new AddLivreur(p1);
             WindowAddLivreur.Show();
-            this.Close();
         }
         /// <summary>
         /// Ouverture de la fenetre de modification client
