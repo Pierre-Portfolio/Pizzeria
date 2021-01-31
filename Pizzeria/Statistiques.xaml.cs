@@ -20,6 +20,7 @@ namespace Pizzeria
     {
         public Pizzerria p;
         public double prixMoyen = 0;
+        public double prixMoyPeriode = 0;
         public Statistiques(Pizzerria p)
         {
             InitializeComponent();
@@ -92,7 +93,7 @@ namespace Pizzeria
                 }
                 prixMoyen /= p.Factures.Count;
             }
-            Moy.Text = prixMoyen+"€";
+            Moy.Text = prixMoyen.ToString("0.##")+"€";
             if(p.Commandes != null && p.Commandes.Count != 0)
             {
                 int i = 0;
@@ -119,7 +120,7 @@ namespace Pizzeria
                 RecordClientNom.Text = bestClient.NomClient;
                 RecordClientPrenom.Text = bestClient.PrenomClient;
                 RecordClientTel.Text = bestClient.TelClient+"";
-                RecordClientCumul.Text = bestClient.CmlCmd+" Commandes";
+                RecordClientCumul.Text = bestClient.CmlCmd+ (bestClient.CmlCmd > 1 ? " commandes" : " commande");
             }
 
             if (p.Commis != null && p.Commis.Count != 0)
@@ -141,7 +142,7 @@ namespace Pizzeria
                 RecordCommisNom.Text = bestCommis.NomEmploye;
                 RecordCommisPrenom.Text = bestCommis.PrenomEmploye;
                 RecordCommisTel.Text = bestCommis.NumEmploye;
-                RecordCommisCumul.Text = bestCommis.CumulTache + "";
+                RecordCommisCumul.Text = bestCommis.CumulTache + (bestCommis.CumulTache > 1 ?" commandes": " commande");
             }
             
             if (p.Livreur != null && p.Livreur.Count != 0)
@@ -162,7 +163,7 @@ namespace Pizzeria
                 RecordLivreurNom.Text = bestLivreur.NomEmploye;
                 RecordLivreurPrenom.Text = bestLivreur.PrenomEmploye;
                 RecordLivreurTel.Text = bestLivreur.NumEmploye;
-                RecordLivreurCumul.Text = bestLivreur.CumulTache + "";
+                RecordLivreurCumul.Text = bestLivreur.CumulTache + (bestLivreur.CumulTache > 1 ? " livraisons" : " livraison");
             }
             
             
@@ -182,8 +183,9 @@ namespace Pizzeria
         {
             ListViewCommandes.Items.Clear();
             int countCommande = 0;
-            double prixMoy = 0;
-            foreach(DateTime d in dates)
+            prixMoyPeriode = 0;
+            List<Facture> facturePeriode = new List<Facture>();
+            foreach (DateTime d in dates)
             {
                 List<Commande> commandeToAdd = new List<Commande>();
                 commandeToAdd = p.Commandes.FindAll(x => x.Date.Day == d.Day && x.Date.Month == d.Month && x.Date.Year == d.Year);
@@ -194,34 +196,39 @@ namespace Pizzeria
                     {
                         AddCommandeToList(c, i);
                         i++;
+                        if(c.Etat == Commande.EtatCommande.fermer)
+                            countCommande++;
                     }
                 }
-
-                List<Facture> facturePeriode = new List<Facture>();
-                facturePeriode = p.Factures.FindAll(x => {
+                List<Facture> facttmp = new List<Facture>();
+                facttmp = p.Factures.FindAll(x => {
                     if (x.Details != null)
                     {
                         return x.Details.Date.Day == d.Day && x.Details.Date.Month == d.Month && x.Details.Date.Year == d.Year;
                     }
                     return false;
                 });
-                if (facturePeriode != null)
+                if(facttmp != null)
                 {
-                    foreach(Facture f in facturePeriode)
-                    {
-                        prixMoyen += f.Prix;
-                        countCommande++;
-                    }
+                    facttmp.ForEach(x => facturePeriode.Add(x));
                 }
             }
-            if(countCommande != 0)
+
+            if(facturePeriode != null)
             {
-                prixMoy /= countCommande;
+                foreach(Facture f in facturePeriode)
+                {
+                    prixMoyPeriode += f.Prix;
+                }
             }
-            if (prixMoy == 0)
+            if (countCommande != 0)
+            {
+                prixMoyPeriode /= countCommande;
+            }
+            if (prixMoyPeriode == 0)
                 MoyPeriode.Text = "Erreur";
             else
-                MoyPeriode.Text = prixMoy + "€";
+                MoyPeriode.Text = prixMoyPeriode.ToString("0.##") + "€";
 
         }
     }

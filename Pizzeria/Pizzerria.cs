@@ -64,27 +64,6 @@ namespace Pizzeria
             set { this.currentUser = value; }
         }
         #endregion
-
-        public void addClient(Client c)
-        {
-            this.clients.Add(c.TelClient,c);
-        }
-
-        public void addCommis(Commis c)
-        {
-            this.commis.Add(c);
-        }
-
-        public void addLivreur(Livreur l)
-        {
-            this.livreur.Add(l);
-        }
-
-        public void addCommande(Commande c)
-        {
-            this.commandes.Add(c);
-        }
-
         public void ModifCumule()
         {
             this.currentUser.CumulTache++;
