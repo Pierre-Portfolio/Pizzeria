@@ -62,10 +62,11 @@ namespace Pizzeria
                 }
                 else
                 {
-                    Livreur c = p.Livreur.Find(x => x.NumEmploye.Equals(p.CurrentUser.NumEmploye));
-                    if (c != null)
+                    Livreur l = p.Livreur.Find(x => x.NumEmploye.Equals(p.CurrentUser.NumEmploye));
+                    if (l != null)
                     {
-                        c.MdpEmploye = pass;
+                        l.MdpEmploye = pass;
+                        Livreur lbis = p.Livreur.Find(x => x.NumEmploye.Equals(p.CurrentUser.NumEmploye));
                         p.ReWriteCsvLivreur();
                         MessageBox.Show("Mot de passe modifié");
                     }

@@ -18,10 +18,12 @@ namespace Pizzeria
     /// </summary>
     public partial class AddLivreur : Window
     {
+        public MainWindow mw;
         public Pizzerria p;
-        public AddLivreur(Pizzerria p)
+        public AddLivreur(Pizzerria p, MainWindow mw)
         {
             this.p = p;
+            this.mw = mw;
             InitializeComponent();
             BoxLivraison.ItemsSource = Enum.GetValues(typeof(Livreur.moyen_Livraison));
             BoxTel.MaxLength = 10;
@@ -42,9 +44,18 @@ namespace Pizzeria
                     int test = 0;
                     if (Int32.TryParse(BoxTel.Text, out test))
                     {
-                        Livreur l = new Livreur(BoxNom.Text, BoxPrenom.Text, BoxAdresse.Text, "x", BoxTel.Text, Livreur.etat_livreur.surplace, Enum.Parse<Livreur.moyen_Livraison>(BoxLivraison.Text));
-                        p.AjouterLivreurFinCSV(l);
-                        this.Close();
+                        if (p.Livreur.Find(x => x.NumEmploye.Equals(BoxTel.Text)) != null)
+                            MessageBox.Show("Numero déjà utilisé");
+                        else
+                        {
+                            Livreur l = new Livreur(BoxNom.Text, BoxPrenom.Text, BoxAdresse.Text, "x", BoxTel.Text, Livreur.etat_livreur.surplace, Enum.Parse<Livreur.moyen_Livraison>(BoxLivraison.Text));
+                            p.AjouterLivreurFinCSV(l);
+                            p.Livreur.Add(l);
+                            mw.myGridLivreur.Items.Clear();
+                            foreach(Livreur val in p.Livreur)
+                                mw.myGridLivreur.Items.Add(val);
+                            this.Close();
+                        }
                     }
                     else
                     {

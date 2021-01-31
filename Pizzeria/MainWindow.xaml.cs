@@ -28,15 +28,15 @@ namespace Pizzeria
         // permet de savoir la fenetre actuel
         // On crée toutes les pages dynamique
         Grid DynamicGridClient = new Grid();
-        DataGrid myGridClient = new DataGrid();
-        DataGrid myGridCommis = new DataGrid();
-        DataGrid myGridLivreur = new DataGrid();
+        public DataGrid myGridClient = new DataGrid();
+        public DataGrid myGridCommis = new DataGrid();
+        public DataGrid myGridLivreur = new DataGrid();
 
         Grid DynamicGridCommands = new Grid();
         ListView ListeViewCommande = new ListView();
         ComboBox cbRecherche = new ComboBox();
 
-        Grid DynamicGridStat= new Grid();
+        Grid DynamicGridStat = new Grid();
         Grid DynamicGridAdmin = new Grid();
 
         public Pizzerria p1;
@@ -83,7 +83,7 @@ namespace Pizzeria
         /// </summary>
         private void OpenAddClient(object sender, RoutedEventArgs e)
         {
-            var WindowAddClient = new AddClient(p1);
+            var WindowAddClient = new AddClient(p1, this);
             WindowAddClient.Show();
         }
         /// <summary>
@@ -99,7 +99,7 @@ namespace Pizzeria
         /// </summary>
         private void OpenAddCommis(object sender, RoutedEventArgs e)
         {
-            var WindowAddComis = new addCommis(p1);
+            var WindowAddComis = new addCommis(p1,this);
             WindowAddComis.Show();
         }
         /// <summary>
@@ -107,7 +107,7 @@ namespace Pizzeria
         /// </summary>
         private void OpenAddLivreur(object sender, RoutedEventArgs e)
         {
-            var WindowAddLivreur = new AddLivreur(p1);
+            var WindowAddLivreur = new AddLivreur(p1,this);
             WindowAddLivreur.Show();
         }
         /// <summary>
@@ -301,6 +301,7 @@ namespace Pizzeria
             DynamicGridClient.Children.Add(btnChercher);
 
             // tableau des clients
+            myGridClient.Items.Clear();
             myGridClient.Width = 700;
             myGridClient.Height = 100;
             Dictionary<int, Client> l = p1.Clients;
@@ -477,7 +478,7 @@ namespace Pizzeria
             Grid.SetColumn(btnModifLivreur, 0);
             DynamicGridClient.Children.Add(btnModifLivreur);
 
-            // tableau des serveur
+            // tableau des livreur
             myGridLivreur.AutoGenerateColumns = false;
             DataGridTextColumn nomLiv = new DataGridTextColumn();
             nomLiv.Binding = new Binding("NomEmploye");
@@ -580,6 +581,55 @@ namespace Pizzeria
             pictTextCmd.Stretch = Stretch.Fill;
             Grid.SetRow(pictTextCmd, 0);
             DynamicGridCommands.Children.Add(pictTextCmd);
+
+
+            //Ajout bouton prise en charge commande
+            Button priseEncharge = new Button();
+            priseEncharge.Width = 773;
+            priseEncharge.Height = 30;
+            priseEncharge.Background = new SolidColorBrush(Colors.Orange);
+            priseEncharge.BorderThickness = new Thickness(0, 0, 0, 0);
+            priseEncharge.Margin = new Thickness(0, 10, 0, 0);
+            priseEncharge.Click += new RoutedEventHandler(PriseEnChargeCommande);
+            if (p1.CurrentUser is Livreur)
+            {
+                priseEncharge.Content = "Prendre une commande en charge";
+            }
+            else
+            {
+                priseEncharge.Content = "Encaisser une commande";
+            }
+            Grid.SetRow(priseEncharge, 2);
+            DynamicGridCommands.Children.Add(priseEncharge);
+
+            //Ajout Label descriptive
+            Label btnRecherche = new Label();
+            //btnRecherche.Width = 386;
+            btnRecherche.Height = 30;
+            btnRecherche.Background = new SolidColorBrush(Colors.Orange);
+            btnRecherche.BorderThickness = new Thickness(0, 0, 0, 0);
+            btnRecherche.Margin = new Thickness(4, 0, 0, 0);
+            btnRecherche.HorizontalAlignment = HorizontalAlignment.Left;
+            btnRecherche.Content = "Rechercher une commande : ";
+            Grid.SetRow(btnRecherche, 3);
+            DynamicGridCommands.Children.Add(btnRecherche);
+
+            //Ajout ComboBox recherche commande
+            DynamicGridCommands.Children.Remove(cbRecherche);
+            cbRecherche.Width = 600;
+            cbRecherche.Height = 30;
+            cbRecherche.BorderThickness = new Thickness(0, 0, 0, 0);
+            cbRecherche.Margin = new Thickness(0, 0, 4, 0);
+            cbRecherche.HorizontalAlignment = HorizontalAlignment.Right;
+            cbRecherche.SelectionChanged += new SelectionChangedEventHandler(ComboBoxRecherche);
+            Grid.SetRow(cbRecherche, 3);
+            DynamicGridCommands.Children.Add(cbRecherche);
+            cbRecherche.Items.Clear();
+            cbRecherche.Items.Add("Toutes les commandes");
+            foreach (Commande c in p1.Commandes)
+            {
+                cbRecherche.Items.Add(c.NumCommande + "");
+            }
         }
         /// <summary>
         /// Fonction permettant de lister les commandes dans le tableau de la page commande
@@ -705,59 +755,26 @@ namespace Pizzeria
                 Grid.SetColumn(Infos, 2);
                 Commande1.Children.Add(Infos);
             }
-            //Ajout bouton prise en charge commande
-            Button priseEncharge = new Button();
-            priseEncharge.Width = 773;
-            priseEncharge.Height = 30;
-            priseEncharge.Background = new SolidColorBrush(Colors.Orange);
-            priseEncharge.BorderThickness = new Thickness(0, 0, 0, 0);
-            priseEncharge.Margin = new Thickness(0, 10, 0, 0);
-            priseEncharge.Click += new RoutedEventHandler(PriseEnChargeCommande);
-            if (p1.CurrentUser is Livreur)
-            {
-                priseEncharge.Content = "Prendre une commande en charge";
-            }
-            else
-            {
-                priseEncharge.Content = "Encaisser une commande";
-            }
-            Grid.SetRow(priseEncharge, 2);
-            DynamicGridCommands.Children.Add(priseEncharge);
-
-            //Ajout Label descriptive
-            Label btnRecherche = new Label();
-            //btnRecherche.Width = 386;
-            btnRecherche.Height = 30;
-            btnRecherche.Background = new SolidColorBrush(Colors.Orange);
-            btnRecherche.BorderThickness = new Thickness(0, 0, 0, 0);
-            btnRecherche.Margin = new Thickness(4, 0, 0, 0);
-            btnRecherche.HorizontalAlignment = HorizontalAlignment.Left;
-            btnRecherche.Content = "Rechercher une commande : ";
-            Grid.SetRow(btnRecherche, 3);
-            DynamicGridCommands.Children.Add(btnRecherche);
-
-            //Ajout ComboBox recherche commande
-            DynamicGridCommands.Children.Remove(cbRecherche);
-            cbRecherche.Width = 600;
-            cbRecherche.Height = 30;
-            cbRecherche.BorderThickness = new Thickness(0, 0, 0, 0);
-            cbRecherche.Margin = new Thickness(0 , 0, 4, 0);
-            cbRecherche.HorizontalAlignment = HorizontalAlignment.Right;
-            cbRecherche.SelectionChanged += new SelectionChangedEventHandler(ComboBoxRecherche);
-            Grid.SetRow(cbRecherche, 3);
-            DynamicGridCommands.Children.Add(cbRecherche);
-            cbRecherche.Items.Clear();
-            cbRecherche.Items.Add("Toutes les commandes");
-            foreach (Commande c in p1.Commandes)
-            {
-                cbRecherche.Items.Add(c.NumCommande + "" );
-            }
         }
 
         public void ComboBoxRecherche(object sender, RoutedEventArgs e)
         {
-            //AjoutCommande(cbRecherche.SelectedItem.ToString());
-            MessageBox.Show(cbRecherche.SelectedItem.ToString());
+            if (cbRecherche.SelectedIndex != -1)
+            {
+                string s = cbRecherche.SelectedItem.ToString();
+                if (s != null)
+                {
+                    AjoutCommande(cbRecherche.SelectedItem.ToString());
+                }
+                else
+                {
+                    AjoutCommande("Toutes les commandes");
+                }
+            }
+            else
+            {
+                AjoutCommande("Toutes les commandes");
+            }
         }
 
         /// <summary>

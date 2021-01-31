@@ -400,6 +400,11 @@ namespace Pizzeria
         /// </summary>
         public void Refresh()
         {
+            this.clients = new Dictionary<int, Client>();
+            this.commis = new List<Commis>();
+            this.livreur = new List<Livreur>();
+            this.commandes = new List<Commande>();
+            
             this.clients = ChargerCSVClient();
             this.commis = ChargerCSVCommis();
             this.livreur = ChargerCSVLivreur();

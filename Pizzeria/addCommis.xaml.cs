@@ -19,9 +19,11 @@ namespace Pizzeria
     public partial class addCommis : Window
     {
         public Pizzerria p;
-        public addCommis(Pizzerria p)
+        public MainWindow mw;
+        public addCommis(Pizzerria p, MainWindow mw)
         {
             this.p = p;
+            this.mw = mw;
             InitializeComponent();
             BoxTel.MaxLength = 10;
         }
@@ -41,9 +43,22 @@ namespace Pizzeria
                     int test = 0;
                     if (Int32.TryParse(BoxTel.Text, out test))
                     {
-                        Commis c = new Commis(BoxNom.Text, BoxPrenom.Text, BoxAdresse.Text, "x", BoxTel.Text, Commis.etat_commis.surplace, DateTime.Now, 0);
-                        p.AjouterCommisFinCSV(c);
-                        this.Close();
+                        if (p.Commis.Find(x => x.NumEmploye.Equals(BoxTel.Text)) != null)
+                        {
+                            MessageBox.Show("Numero déjà utilisé");
+                        }
+                        else
+                        {
+                            Commis c = new Commis(BoxNom.Text, BoxPrenom.Text, BoxAdresse.Text, "x", BoxTel.Text, Commis.etat_commis.surplace, DateTime.Now, 0);
+                            p.AjouterCommisFinCSV(c);
+                            p.Commis.Add(c);
+                            mw.myGridCommis.Items.Clear();
+                            foreach(Commis val in p.Commis)
+                            {
+                                mw.myGridCommis.Items.Add(val);
+                            }
+                            this.Close();
+                        }
                     }
                     else
                     {

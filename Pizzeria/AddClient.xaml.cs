@@ -20,10 +20,12 @@ namespace Pizzeria
     public partial class AddClient : Window
     {
         public Pizzerria p;
-        public AddClient(Pizzerria p)
+        public MainWindow mw;
+        public AddClient(Pizzerria p, MainWindow mw)
         {
             InitializeComponent();
             this.p = p;
+            this.mw = mw;
             BoxTel.MaxLength = 10;
         }
         /// <summary>
@@ -43,6 +45,7 @@ namespace Pizzeria
                         Client c = new Client(Client.lastNum + 1, BoxNom.Text, BoxPrenom.Text, BoxAdresse.Text, int.Parse(BoxTel.Text));
                         p.AjouterClientFinCSV(c);
                         p.Clients.Add(c.TelClient, c);
+                        mw.myGridClient.ItemsSource = p.Clients.Values;
                         this.Close();
                     }
                     else
