@@ -158,6 +158,65 @@ namespace Pizzeria
             }
         }
 
+        private void ButtonSupCommis(object sender, RoutedEventArgs e)
+        {
+            if (myGridCommis.SelectedItems.Count == 1)
+            {
+                Object o = myGridCommis.SelectedItems[0];
+                //bool b = p1.Commis.Remove(((Commis)o));
+                int b = p1.Commis.RemoveAll(x => x.NumEmploye == ((Commis)o).NumEmploye);
+                if (b >= 1)
+                {
+                    p1.ReWriteCsvCommis();
+
+                    myGridCommis.Items.Clear();
+
+                    foreach (Commis c in p1.Commis)
+                    {
+                        myGridCommis.Items.Add(c);
+                    }
+                    MessageBox.Show("Commis supprimé");
+                }
+                else
+                {
+                    MessageBox.Show("Suppression impossible");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Le nombre de ligne selectionné est incorrect ! ");
+            }
+        }
+
+        private void ButtonSupLivreur(object sender, RoutedEventArgs e)
+        {
+            if (myGridLivreur.SelectedItems.Count == 1)
+            {
+                Object o = myGridLivreur.SelectedItems[0];
+                int b = p1.Livreur.RemoveAll(x => x.NumEmploye == ((Livreur)o).NumEmploye);
+                if (b >= 1)
+                {
+                    p1.ReWriteCsvLivreur();
+
+                    myGridLivreur.Items.Clear();
+
+                    foreach (Livreur c in p1.Livreur)
+                    {
+                        myGridLivreur.Items.Add(c);
+                    }
+                    MessageBox.Show("Livreur supprimé");
+                }
+                else
+                {
+                    MessageBox.Show("Suppression impossible");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Le nombre de ligne selectionné est incorrect ! ");
+            }
+        }
+
         /// <summary>
         /// Ouverture de la fenetre de modification commis
         /// </summary>
@@ -403,6 +462,7 @@ namespace Pizzeria
             btnSuprCommis.Background = new ImageBrush(new BitmapImage(new Uri(@"https://cdn.pixabay.com/photo/2013/07/12/17/00/remove-151678_960_720.png")));
             btnSuprCommis.Margin = new Thickness(254, -125, 0, 0);
             btnSuprCommis.ToolTip = "Supprimer un commis";
+            btnSuprCommis.Click += new RoutedEventHandler(ButtonSupCommis);
             Grid.SetRow(btnSuprCommis, 3);
             Grid.SetColumn(btnSuprCommis, 0);
             DynamicGridClient.Children.Add(btnSuprCommis);
@@ -503,6 +563,21 @@ namespace Pizzeria
             Grid.SetRow(btnModifLivreur, 5);
             Grid.SetColumn(btnModifLivreur, 0);
             DynamicGridClient.Children.Add(btnModifLivreur);
+
+            //Btn del
+            Button btnSuprLivreur = new Button();
+            btnSuprLivreur.Content = "";
+            btnSuprLivreur.Background = Brushes.Red;
+            btnSuprLivreur.Height = 15;
+            btnSuprLivreur.Width = 15;
+            btnSuprLivreur.BorderThickness = new Thickness(0, 0, 0, 0);
+            btnSuprLivreur.Background = new ImageBrush(new BitmapImage(new Uri(@"https://cdn.pixabay.com/photo/2013/07/12/17/00/remove-151678_960_720.png")));
+            btnSuprLivreur.Margin = new Thickness(254, -110, 0, 0);
+            btnSuprLivreur.ToolTip = "Supprimer un commis";
+            btnSuprLivreur.Click += new RoutedEventHandler(ButtonSupLivreur);
+            Grid.SetRow(btnSuprLivreur, 5);
+            Grid.SetColumn(btnSuprLivreur, 0);
+            DynamicGridClient.Children.Add(btnSuprLivreur);
 
             // tableau des livreur
             myGridLivreur.AutoGenerateColumns = false;
