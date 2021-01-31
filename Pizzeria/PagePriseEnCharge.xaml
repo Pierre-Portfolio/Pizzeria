@@ -18,13 +18,13 @@
             <Canvas x:Name="SelectLivreur">
                 <ComboBox Name="ComboxBoxLivreur" Margin="0,99,0,0" Width="120" Canvas.Left="109" Canvas.Top="1" SelectionChanged="ComboxBoxLivreur_SelectionChanged"/>
                 <Label Content="Selectionner un Livreur" Canvas.Left="72" Canvas.Top="48" Height="34" Width="194" FontWeight="Bold" FontSize="17" Foreground="White"/>
-                <Button Content="X" Canvas.Left="288" Canvas.Top="393" Height="30" Width="30" Background="Red" Click="CommandePerdu"/>
+                <Button Content="Declarer Perte" Canvas.Left="53" Canvas.Top="391" Height="34" Width="103" Background="Red" Click="CommandePerdu" BorderBrush="{x:Null}"/>
             </Canvas>
             <Canvas x:Name="SelectCommande">
                 <ComboBox Name="ComboxBoxIdCommande" Margin="0,99,0,0" Width="120" Canvas.Left="109" Canvas.Top="113" SelectionChanged="ComboxBoxIdCommande_SelectionChanged"/>
                 <Label Content="Selectionner une commande" Canvas.Left="49" Canvas.Top="173" Height="34" Width="240" FontWeight="Bold" FontSize="17" Foreground="White"/>
             </Canvas>
-            <Button Content="Valider" Canvas.Left="116" Canvas.Top="392" Height="32" Width="106" Background="Green" BorderBrush="{x:Null}" Click="Valider"/>
+            <Button Content="Valider" Canvas.Left="181" Canvas.Top="391" Height="34" Width="106" Background="Green" BorderBrush="{x:Null}" Click="Valider"/>
         </Canvas>
 
     </Grid>
