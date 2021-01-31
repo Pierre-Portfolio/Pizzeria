@@ -25,14 +25,14 @@
 
             <Label Content="Commis" Canvas.Left="95" Foreground="White" FontSize="20" FontWeight="Bold" RenderTransformOrigin="0.52,0.481" Canvas.Top="-4"/>
             <Label Content="Livreur" Canvas.Left="348" Foreground="White" FontSize="20" FontWeight="Bold" Canvas.Top="-4"/>
-            <DataGrid Name="GridCommis" AutoGenerateColumns="False" ItemsSource="{Binding Commis}" Height="140" Width="243" Canvas.Top="34" Canvas.Left="10" >
+            <DataGrid Name="GridCommis" AutoGenerateColumns="False" ItemsSource="{Binding Commis}" Height="140" Width="243" Canvas.Top="36" Canvas.Left="10" >
                 <DataGrid.Columns>
                     <DataGridTextColumn Width="25*" Header="Nom" Binding="{Binding Path=NomEmploye}" />
                     <DataGridTextColumn Width="25*" Header="Prenom" Binding="{Binding Path=PrenomEmploye}"/>
                     <DataGridTextColumn Header="Cumul Tache" Binding="{Binding CumulTache}" />
                 </DataGrid.Columns>
             </DataGrid>
-            <DataGrid Name="GridLivreur" Height="140" Width="243" Canvas.Top="34" Canvas.Left="263">
+            <DataGrid Name="GridLivreur" Height="140" Width="243" Canvas.Top="36" Canvas.Left="263">
                 <DataGrid.Columns>
                     <DataGridTextColumn Width="25*" Header="Nom" Binding="{Binding Path=NomEmploye}" />
                     <DataGridTextColumn Width="25*" Header="Prenom" Binding="{Binding Path=PrenomEmploye}"/>
@@ -42,31 +42,31 @@
         </Canvas>
         <Canvas Margin="477,0,1,0" Grid.Column="1">
             <Label Content="Commandes" Canvas.Left="171" Foreground="White" FontSize="20" FontWeight="Bold"/>
-            <Calendar SelectionMode="SingleRange" x:Name="Calendar" Canvas.Top="42" DisplayMode="Month" Height="163" Width="474" SelectedDatesChanged="calendar_SelectedDatesChanged"/>
+            <Calendar SelectionMode="SingleRange" x:Name="Calendar" Canvas.Top="31" DisplayMode="Month" Height="163" Width="474" SelectedDatesChanged="calendar_SelectedDatesChanged"/>
             <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Name="ListViewCommandes" Height="140" Width="469" Canvas.Top="220">
             </ListView>
-            <TextBox Name="MoyPeriode"  Canvas.Left="45" Canvas.Top="396" Text="" TextWrapping="Wrap" Width="120" IsReadOnly="True"/>
-            <TextBox Name="Moy" Canvas.Left="315" Canvas.Top="396" Text="" TextWrapping="Wrap" Width="120" IsReadOnly="True"/>
-            <Label Content="Moyenne sur periode:" Foreground="White" FontSize="15" FontWeight="Bold" Canvas.Top="365" Canvas.Left="45"/>
-            <Label Content="Moyenne:" Foreground="White" FontSize="15" FontWeight="Bold" Canvas.Top="366" Canvas.Left="315"/>
+            <TextBox Name="MoyPeriode"  Canvas.Left="214" Canvas.Top="398" Text="" TextWrapping="Wrap" Width="120" IsReadOnly="True"/>
+            <TextBox Name="Moy" Canvas.Left="125" Canvas.Top="369" Text="" TextWrapping="Wrap" Width="120" IsReadOnly="True"/>
+            <Label Content="Moyenne sur periode:" Foreground="White" FontSize="15" FontWeight="Bold" Canvas.Top="392" Canvas.Left="45"/>
+            <Label Content="Moyenne:" Foreground="White" FontSize="15" FontWeight="Bold" Canvas.Top="363" Canvas.Left="45"/>
         </Canvas>
-        <Canvas Margin="-1,206,475,0" Grid.ColumnSpan="2">
-            <Label Content="Record" Foreground="White" FontSize="22" FontWeight="Bold" Canvas.Left="155"/>
-            <Label Content="Commis" Foreground="White" FontSize="22" FontWeight="Bold" Canvas.Top="51" Canvas.Left="10"/>
-            <Label Content="Livreur" Foreground="White" FontSize="22" FontWeight="Bold" Canvas.Top="51" Canvas.Left="160"/>
-            <Label Content="Client" Foreground="White" FontSize="22" FontWeight="Bold" Canvas.Top="51" Canvas.Left="284"/>
-            <TextBlock Name="RecordCommisNom" Canvas.Left="20" Canvas.Top="90" Text="Nom" TextWrapping="Wrap" Foreground="White" FontSize="15" FontWeight="Bold"/>
-            <TextBlock Name="RecordCommisPrenom" Canvas.Left="20" Canvas.Top="115" Text="Prenom" TextWrapping="Wrap" Foreground="White" FontSize="15" FontWeight="Bold"/>
-            <TextBlock Name="RecordCommisTel" Canvas.Left="20" Canvas.Top="140" Text="Telephone" TextWrapping="Wrap" Foreground="White" FontSize="15" FontWeight="Bold"/>
-            <TextBlock Name="RecordCommisCumul" Canvas.Left="20" Canvas.Top="165" Text="Cumul" TextWrapping="Wrap" Foreground="White" FontSize="15" FontWeight="Bold"/>
-            <TextBlock Name="RecordLivreurNom" Canvas.Left="160" Canvas.Top="95" Text="Nom" TextWrapping="Wrap" Foreground="White" FontSize="15" FontWeight="Bold"/>
-            <TextBlock Name="RecordLivreurPrenom" Canvas.Left="160" Canvas.Top="120" Text="Prenom" TextWrapping="Wrap" Foreground="White" FontSize="15" FontWeight="Bold"/>
-            <TextBlock Name="RecordLivreurTel" Canvas.Left="160" Canvas.Top="145" Text="Telephone" TextWrapping="Wrap" Foreground="White" FontSize="15" FontWeight="Bold"/>
-            <TextBlock Name="RecordLivreurCumul" Canvas.Left="160" Canvas.Top="170" Text="Cumul" TextWrapping="Wrap" Foreground="White" FontSize="15" FontWeight="Bold"/>
-            <TextBlock Name="RecordClientNom" Canvas.Left="291" Canvas.Top="89" Text="Nom" TextWrapping="Wrap" Foreground="White" FontSize="15" FontWeight="Bold"/>
-            <TextBlock Name="RecordClientPrenom" Canvas.Left="291" Canvas.Top="114" Text="Prenom" TextWrapping="Wrap" Foreground="White" FontSize="15" FontWeight="Bold"/>
-            <TextBlock Name="RecordClientTel" Canvas.Left="291" Canvas.Top="139" Text="Telephone" TextWrapping="Wrap" Foreground="White" FontSize="15" FontWeight="Bold"/>
-            <TextBlock Name="RecordClientCumul" Canvas.Left="291" Canvas.Top="164" Text="Cumul" TextWrapping="Wrap" Foreground="White" FontSize="15" FontWeight="Bold"/>
+        <Canvas Margin="-1,207,475,-1" Grid.ColumnSpan="2">
+            <Label Content="Record" Foreground="White" FontSize="22" FontWeight="Bold" Canvas.Left="212" Canvas.Top="10"/>
+            <Label Content="Commis :" Foreground="White" FontSize="22" FontWeight="Bold" Canvas.Top="127" Canvas.Left="10"/>
+            <Label Content="Livreur :" Foreground="White" FontSize="22" FontWeight="Bold" Canvas.Top="183" Canvas.Left="10"/>
+            <Label Content="Client :" Foreground="White" FontSize="22" FontWeight="Bold" Canvas.Top="71" Canvas.Left="10"/>
+            <TextBlock Name="RecordCommisNom" Canvas.Left="118" Canvas.Top="140" Text="Nom" TextWrapping="Wrap" Foreground="White" FontSize="15" FontWeight="Bold"/>
+            <TextBlock Name="RecordCommisPrenom" Canvas.Left="172" Canvas.Top="140" Text="Prenom" TextWrapping="Wrap" Foreground="White" FontSize="15" FontWeight="Bold"/>
+            <TextBlock Name="RecordCommisTel" Canvas.Left="243" Canvas.Top="140" Text="Telephone" TextWrapping="Wrap" Foreground="White" FontSize="15" FontWeight="Bold"/>
+            <TextBlock Name="RecordCommisCumul" Canvas.Left="339" Canvas.Top="140" Text="Cumul" TextWrapping="Wrap" Foreground="White" FontSize="15" FontWeight="Bold" RenderTransformOrigin="0.413,0.04"/>
+            <TextBlock Name="RecordLivreurNom" Canvas.Left="118" Canvas.Top="193" Text="Nom" TextWrapping="Wrap" Foreground="White" FontSize="15" FontWeight="Bold"/>
+            <TextBlock Name="RecordLivreurPrenom" Canvas.Left="172" Canvas.Top="193" Text="Prenom" TextWrapping="Wrap" Foreground="White" FontSize="15" FontWeight="Bold"/>
+            <TextBlock Name="RecordLivreurTel" Canvas.Left="243" Canvas.Top="193" Text="Telephone" TextWrapping="Wrap" Foreground="White" FontSize="15" FontWeight="Bold"/>
+            <TextBlock Name="RecordLivreurCumul" Canvas.Left="339" Canvas.Top="193" Text="Cumul" TextWrapping="Wrap" Foreground="White" FontSize="15" FontWeight="Bold"/>
+            <TextBlock Name="RecordClientNom" Canvas.Left="118" Canvas.Top="81" Text="Nom" TextWrapping="Wrap" Foreground="White" FontSize="15" FontWeight="Bold"/>
+            <TextBlock Name="RecordClientPrenom" Canvas.Left="172" Canvas.Top="81" Text="Prenom" TextWrapping="Wrap" Foreground="White" FontSize="15" FontWeight="Bold"/>
+            <TextBlock Name="RecordClientTel" Canvas.Left="243" Canvas.Top="81" Text="Telephone" TextWrapping="Wrap" Foreground="White" FontSize="15" FontWeight="Bold"/>
+            <TextBlock Name="RecordClientCumul" Canvas.Left="339" Canvas.Top="81" Text="Cumul" TextWrapping="Wrap" Foreground="White" FontSize="15" FontWeight="Bold"/>
         </Canvas>
     </Grid>
 </Page>
