@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 namespace Pizzeria
 {
-    public class Livreur : Personel , INotifyPropertyChanged
+    public class Livreur : Personel, ISauvegardable , INotifyPropertyChanged
     {
         public enum etat_livreur
         {
@@ -40,8 +40,10 @@ namespace Pizzeria
             get { return moyenLivraison; }
             set { this.moyenLivraison = value; OnPropertyChanged("MoyenLivraison"); }
         }
-
-        public string GetLineCSV()
+        /// <summary>
+        /// Fonction de creation de la ligne string permettant de créer le .csv
+        /// </summary>
+        public string GetLineForCSV()
         {
             return nomEmploye + ";" + prenomEmploye + ";" + mdpEmploye + ";" + adrEmploye + ";" + numEmploye + ";" + etatLivreur.ToString() + ";" + moyenLivraison+";"+cumulTache;
         }

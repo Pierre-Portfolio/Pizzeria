@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Pizzeria
 {
-    public class Facture
+    public class Facture : ISauvegardable
     {
         private int idFacture;
         private Commande details;
@@ -56,7 +56,10 @@ namespace Pizzeria
             }
             return res;
         }
-    
+        /// <summary>
+        /// Fonction de creation de la ligne string permettant de créer le .csv
+        /// </summary>
+        /// <returns>string</returns>
         public string GetLineForCSV()
         {
             return idFacture + ";" + details.NumCommande + ";" + prix;

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Pizzeria
 {
-    public class Commande
+    public class Commande : ISauvegardable
     {
         public enum EtatCommande
         {
@@ -66,7 +66,10 @@ namespace Pizzeria
             lastCommande = numCommande;
 
         }
-
+        /// <summary>
+        /// Creation du string permettant l'ajout au .csv
+        /// </summary>
+        /// <returns>string</returns>
         public string GetLineForCSV()
         {
             string ndate = date.Day + "/" +date.Month +"/"+date.Year;

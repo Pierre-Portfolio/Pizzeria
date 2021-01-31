@@ -32,7 +32,9 @@ namespace Pizzeria
         {
             get { return this.prix; }
         }
-
+        /// <summary>
+        /// Creation du string des boissons
+        /// </summary>
         public string AfficherBoisson()
         {
             return this.nomBoisson + " " + this.volume + "L " + this.prix + "€\n";

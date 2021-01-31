@@ -29,7 +29,9 @@ namespace Pizzeria
             Calendar.DisplayDateStart = new DateTime(2010,01,01);
             InitAll();
         }
-
+        /// <summary>
+        /// Ajout des commandes à la liste des commande dans la page statistiques
+        /// </summary>
         public void AddCommandeToList(Commande c, int i)
         {
             Grid Commande1 = new Grid();
@@ -75,7 +77,9 @@ namespace Pizzeria
             Grid.SetColumn(Infos, 2);
             Commande1.Children.Add(Infos);
         }
-
+        /// <summary>
+        /// Initialisation des variable et des items .xaml
+        /// </summary>
         public void InitAll()
         {
             if (p.Factures != null && p.Factures.Count != 0)
@@ -161,13 +165,17 @@ namespace Pizzeria
             
             
         }
-
+        /// <summary>
+        /// Gestion de l'event en cas de selection dans le calendrier
+        /// </summary>
         public void calendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
             SelectedDatesCollection dates = Calendar.SelectedDates;
             ChangementCommande(dates);
         }
-
+        /// <summary>
+        /// Affiche les commandes suivant la plage de date donné
+        /// </summary>
         public void ChangementCommande(SelectedDatesCollection dates)
         {
             ListViewCommandes.Items.Clear();

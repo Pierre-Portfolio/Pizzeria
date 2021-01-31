@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 namespace Pizzeria
 {
-    public class Client : INotifyPropertyChanged
+    public class Client :ISauvegardable, INotifyPropertyChanged
     {
         private int numClient;
         private string nomClient;
@@ -90,7 +90,10 @@ namespace Pizzeria
                 handler(this, new PropertyChangedEventArgs(name));
             }
         }
-
+        /// <summary>
+        /// Fonction de creation de la ligne string permettant de créer le .csv
+        /// </summary>
+        /// <returns>string</returns>
         public string GetLineForCSV()
         {
             string date = datePremiereCmd.Day + "/" + datePremiereCmd.Month + "/" + datePremiereCmd.Year;

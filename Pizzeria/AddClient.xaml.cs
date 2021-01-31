@@ -25,7 +25,9 @@ namespace Pizzeria
             InitializeComponent();
             this.p = p;
         }
-        
+        /// <summary>
+        /// Ajouter un client à la liste p.Client et au .csv
+        /// </summary>
         private void AjouterClient(object sender, RoutedEventArgs e)
         {
             if(BoxNom.Text != "" && BoxPrenom.Text.Length != 0 && BoxAdresse.Text.Length != 0 && BoxTel.Text.Length != 0)
@@ -42,22 +44,6 @@ namespace Pizzeria
                 MessageBox.Show("Champs manquant","Erreur d'ajout");
             }
         }
-
-
-        #region Fonction Useless
-        private void BoxNom_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
-        {
-
-        }
-        #endregion
 
     }
 }

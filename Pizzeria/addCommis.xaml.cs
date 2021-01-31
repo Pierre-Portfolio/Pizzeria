@@ -18,35 +18,23 @@ namespace Pizzeria
     /// </summary>
     public partial class addCommis : Window
     {
-        public addCommis()
+        public Pizzerria p;
+        public addCommis(Pizzerria p)
         {
+            this.p = p;
             InitializeComponent();
         }
-
-        private void AddToCsv(Commis c)
-        {
-            string path = "..\\..\\..\\Commis.csv";
-            string line = c.GetLineCSV();
-            if (!File.Exists(path))
-            {
-                // Creation du fichier.
-                StreamWriter sw = File.CreateText(path);
-                sw.WriteLine(line);
-                sw.Close();
-            }
-            else
-            {
-                StreamWriter sw = File.AppendText(path);
-                sw.WriteLine(line);
-                sw.Close();
-            }
-        }
+        /// <summary>
+        /// Ajouter un commis à la liste p.Commis et au csv
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AjouterCommis(object sender, RoutedEventArgs e)
         {
             if (BoxNom.Text != "" && BoxPrenom.Text.Length != 0 && BoxAdresse.Text.Length != 0 && BoxTel.Text.Length != 0)
             {
                 Commis c = new Commis(BoxNom.Text, BoxPrenom.Text, BoxAdresse.Text,"x", BoxTel.Text, Commis.etat_commis.surplace,DateTime.Now,0);
-                AddToCsv(c);
+                p.AjouterCommisFinCSV(c);
                 var WindowMain = new MainWindow();
                 WindowMain.Show();
                 this.Close();
@@ -55,21 +43,6 @@ namespace Pizzeria
             {
                 MessageBox.Show("Champs manquant", "Erreur d'ajout");
             }
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void BoxNom_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
     }
 }
