@@ -34,6 +34,7 @@ namespace Pizzeria
 
         Grid DynamicGridCommands = new Grid();
         ListView ListeViewCommande = new ListView();
+        ComboBox cbRecherche = new ComboBox();
 
         Grid DynamicGridStat= new Grid();
         Grid DynamicGridAdmin = new Grid();
@@ -531,7 +532,7 @@ namespace Pizzeria
         private void CommandesBtn_Click(object sender, RoutedEventArgs e)
         {
             RefreshPasOpti();
-            AjoutCommande();
+            AjoutCommande("Toutes les commandes");
             MainGrid.Children.Add(DynamicGridCommands);
         }
 
@@ -543,7 +544,7 @@ namespace Pizzeria
             /*=== Creation du GridGlobal ===*/
             DynamicGridCommands.HorizontalAlignment = HorizontalAlignment.Left;
             DynamicGridCommands.VerticalAlignment = VerticalAlignment.Center;
-            DynamicGridCommands.Height = 400;
+            DynamicGridCommands.Height = 420;
             DynamicGridCommands.Width = 780;
             DynamicGridCommands.Margin = new Thickness(100, 20, 0, 0);
             Grid.SetRow(DynamicGridCommands, 2);
@@ -562,9 +563,12 @@ namespace Pizzeria
             gridRowCommande2.Height = new GridLength(300);
             RowDefinition gridRowCommande3 = new RowDefinition();
             gridRowCommande3.Height = new GridLength(40);
+            RowDefinition gridRowCommande4 = new RowDefinition();
+            gridRowCommande4.Height = new GridLength(40);
             DynamicGridCommands.RowDefinitions.Add(gridRowCommande1);
             DynamicGridCommands.RowDefinitions.Add(gridRowCommande2);
             DynamicGridCommands.RowDefinitions.Add(gridRowCommande3);
+            DynamicGridCommands.RowDefinitions.Add(gridRowCommande4);
 
             //Ajout des btns
             Image pictTextCmd = new Image();
@@ -580,7 +584,7 @@ namespace Pizzeria
         /// <summary>
         /// Fonction permettant de lister les commandes dans le tableau de la page commande
         /// </summary>
-        public void AjoutCommande()
+        public void AjoutCommande(string strComboBox)
         {
             //Création liste view
             DynamicGridCommands.Children.Remove(ListeViewCommande);
@@ -595,6 +599,8 @@ namespace Pizzeria
             DynamicGridCommands.Children.Add(ListeViewCommande);
             //Ajout des commandes
             int i = 0;
+            if (strComboBox.Equals("Toutes les commandes"))
+            {
             p1.Commandes.ForEach(c =>
             {
                 if (p1.CurrentUser is Commis || (p1.CurrentUser is Livreur && (c.Etat == Commande.EtatCommande.en_preparation || (c.Etat == Commande.EtatCommande.en_livraison && c.LivreurCharge.NumEmploye.Equals(p1.CurrentUser.NumEmploye)))))
@@ -649,11 +655,61 @@ namespace Pizzeria
                 }
             });
 
+            }
+            else
+            {
+                Commande c = p1.Commandes.Find(x => x.NumCommande.ToString().Equals(strComboBox));
+                Grid Commande1 = new Grid();
+                ColumnDefinition Test1commande1Colum = new ColumnDefinition();
+                ColumnDefinition Test2commande1Colum = new ColumnDefinition();
+                ColumnDefinition Test3commande1Colum = new ColumnDefinition();
+
+                Commande1.ColumnDefinitions.Add(Test1commande1Colum);
+                Commande1.ColumnDefinitions.Add(Test2commande1Colum);
+                Commande1.ColumnDefinitions.Add(Test3commande1Colum);
+
+                Commande1.HorizontalAlignment = HorizontalAlignment.Left;
+                Commande1.VerticalAlignment = VerticalAlignment.Top;
+                Commande1.Height = 100;
+                Commande1.Width = 750;
+                Commande1.Margin = new Thickness(0, 0, 0, 0);
+                if (c.Etat == Commande.EtatCommande.fermer)
+                    Commande1.Background = new SolidColorBrush(Colors.Green);
+                else if (c.Etat == Commande.EtatCommande.perdue)
+                    Commande1.Background = new SolidColorBrush(Colors.Red);
+                else
+                    Commande1.Background = new SolidColorBrush(Colors.DarkGray);
+                Grid.SetRow(Commande1, i);
+                ListeViewCommande.Items.Add(Commande1);
+
+                Label pizzas = new Label();
+                //pizzas.Foreground = new SolidColorBrush(Colors.White);
+                c.ListePizza.ForEach(p =>
+                    pizzas.Content += p.AffichePizza()
+                );
+                Grid.SetColumn(pizzas, 0);
+                Commande1.Children.Add(pizzas);
+
+                Label extra = new Label();
+                //extra.Foreground = new SolidColorBrush(Colors.White);
+                c.ProduitAnnexes.ForEach(b =>
+                    extra.Content = b.AfficherBoisson()
+                );
+                Grid.SetColumn(extra, 1);
+                Commande1.Children.Add(extra);
+
+                Label Infos = new Label();
+                //Infos.Foreground = new SolidColorBrush(Colors.White);
+
+                Infos.Content += "Num commande :" + c.NumCommande + "\nClient : " + c.NomClient + "\nCommis : " + c.NomCommis + "\nHeure :" + c.Heure + "h\nEtat : " + c.Etat;
+                Grid.SetColumn(Infos, 2);
+                Commande1.Children.Add(Infos);
+            }
             //Ajout bouton prise en charge commande
             Button priseEncharge = new Button();
-            priseEncharge.Width = 780;
+            priseEncharge.Width = 773;
             priseEncharge.Height = 30;
-            priseEncharge.Background = new SolidColorBrush(Colors.Green);
+            priseEncharge.Background = new SolidColorBrush(Colors.Orange);
             priseEncharge.BorderThickness = new Thickness(0, 0, 0, 0);
             priseEncharge.Margin = new Thickness(0, 10, 0, 0);
             priseEncharge.Click += new RoutedEventHandler(PriseEnChargeCommande);
@@ -667,7 +723,43 @@ namespace Pizzeria
             }
             Grid.SetRow(priseEncharge, 2);
             DynamicGridCommands.Children.Add(priseEncharge);
+
+            //Ajout Label descriptive
+            Label btnRecherche = new Label();
+            //btnRecherche.Width = 386;
+            btnRecherche.Height = 30;
+            btnRecherche.Background = new SolidColorBrush(Colors.Orange);
+            btnRecherche.BorderThickness = new Thickness(0, 0, 0, 0);
+            btnRecherche.Margin = new Thickness(4, 0, 0, 0);
+            btnRecherche.HorizontalAlignment = HorizontalAlignment.Left;
+            btnRecherche.Content = "Rechercher une commande : ";
+            Grid.SetRow(btnRecherche, 3);
+            DynamicGridCommands.Children.Add(btnRecherche);
+
+            //Ajout ComboBox recherche commande
+            DynamicGridCommands.Children.Remove(cbRecherche);
+            cbRecherche.Width = 600;
+            cbRecherche.Height = 30;
+            cbRecherche.BorderThickness = new Thickness(0, 0, 0, 0);
+            cbRecherche.Margin = new Thickness(0 , 0, 4, 0);
+            cbRecherche.HorizontalAlignment = HorizontalAlignment.Right;
+            cbRecherche.SelectionChanged += new SelectionChangedEventHandler(ComboBoxRecherche);
+            Grid.SetRow(cbRecherche, 3);
+            DynamicGridCommands.Children.Add(cbRecherche);
+            cbRecherche.Items.Clear();
+            cbRecherche.Items.Add("Toutes les commandes");
+            foreach (Commande c in p1.Commandes)
+            {
+                cbRecherche.Items.Add(c.NumCommande + "" );
+            }
         }
+
+        public void ComboBoxRecherche(object sender, RoutedEventArgs e)
+        {
+            //AjoutCommande(cbRecherche.SelectedItem.ToString());
+            MessageBox.Show(cbRecherche.SelectedItem.ToString());
+        }
+
         /// <summary>
         /// Fonction permettant d'ouvrir la page de prise en charge des commandes (Encaissement / Livraison)
         /// </summary>
