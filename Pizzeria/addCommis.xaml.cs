@@ -23,6 +23,7 @@ namespace Pizzeria
         {
             this.p = p;
             InitializeComponent();
+            BoxTel.MaxLength = 10;
         }
         /// <summary>
         /// Ajouter un commis à la liste p.Commis et au csv
@@ -33,9 +34,22 @@ namespace Pizzeria
         {
             if (BoxNom.Text != "" && BoxPrenom.Text.Length != 0 && BoxAdresse.Text.Length != 0 && BoxTel.Text.Length != 0)
             {
-                Commis c = new Commis(BoxNom.Text, BoxPrenom.Text, BoxAdresse.Text,"x", BoxTel.Text, Commis.etat_commis.surplace,DateTime.Now,0);
-                p.AjouterCommisFinCSV(c);
-                this.Close();
+                if (BoxTel.Text.Length != 10)
+                    MessageBox.Show("Erreur numéro de téléphone");
+                else
+                {
+                    int test = 0;
+                    if (Int32.TryParse(BoxTel.Text, out test))
+                    {
+                        Commis c = new Commis(BoxNom.Text, BoxPrenom.Text, BoxAdresse.Text, "x", BoxTel.Text, Commis.etat_commis.surplace, DateTime.Now, 0);
+                        p.AjouterCommisFinCSV(c);
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erreur, numéro au mauvais format");
+                    }
+                }
             }
             else
             {
