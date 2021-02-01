@@ -358,7 +358,7 @@ namespace Pizzeria
                 foreach (Commande c in Commandes)
                 {
                     i++;
-                    line += c.GetLineForCSV()+"`\n";
+                    line += c.GetLineForCSV()+ "\n";
                 }
                 wr.Write(line);
                 wr.Close();
