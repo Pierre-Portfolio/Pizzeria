@@ -8,5 +8,7 @@
 8;18;30/1/2021;603454661;Payet;c;fermer;06123456;Moyenne,Fromage;
 9;18;30/1/2021;603454661;Payet;c;en_preparation;;Moyenne,Fromage;
 10;20;30/1/2021;1020304;client1;c;en_preparation;;Moyenne,Fromage,Toute_garnies;Sprite-1,5
-11;24;1/2/2021;102030405;Delacour;c;en_preparation;;Petite,Fromage;Sprite-1,5
-12;24;1/2/2021;102030405;Delacour;c;en_preparation;;Moyenne,Vegetarienne;Coca-0,5
+11;24;1/2/2021;102030405;Delacour;c;en_livraison;1111111111;Petite,Fromage;Sprite-1,5
+12;24;1/2/2021;102030405;Delacour;c;en_livraison;1111111111;Moyenne,Vegetarienne;Coca-0,5
+13;18;2/2/2021;601020305;Dupond;c;en_preparation;;Moyenne,Fromage/Grande,Fromage,Vegetarienne;Coca-1,5
+14;19;2/2/2021;123412031;TestClient;c;en_preparation;;Grande,Fromage;Coca-2

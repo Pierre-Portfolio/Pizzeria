@@ -46,7 +46,10 @@ namespace Pizzeria
                         p.AjouterClientFinCSV(c);
                         p.Clients.Add(c.TelClient, c);
                         mw.myGridClient.ItemsSource = p.Clients.Values;
+                        var WindowCommande = new PasserCommande(p, c);
+                        WindowCommande.Show();
                         this.Close();
+                        
                     }
                     else
                     {

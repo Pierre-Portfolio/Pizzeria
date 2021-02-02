@@ -692,13 +692,13 @@ namespace Pizzeria
             priseEncharge.BorderThickness = new Thickness(0, 0, 0, 0);
             priseEncharge.Margin = new Thickness(0, 10, 0, 0);
             priseEncharge.Click += new RoutedEventHandler(PriseEnChargeCommande);
-            if (p1.CurrentUser is Livreur)
+            if (p1.CurrentUser is Commis)
             {
-                priseEncharge.Content = "Prendre une commande en charge";
+                priseEncharge.Content = "Encaisser une commande";
             }
             else
             {
-                priseEncharge.Content = "Encaisser une commande";
+                priseEncharge.Content = "Prendre une commande en charge";
             }
             Grid.SetRow(priseEncharge, 2);
             DynamicGridCommands.Children.Add(priseEncharge);
