@@ -72,11 +72,6 @@ namespace Pizzeria
 
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
         private void PasserCommande(object sender, RoutedEventArgs e)
         {
             if (client != null)

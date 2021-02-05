@@ -18,7 +18,7 @@
             </Canvas.Background>
             <Button Content="Rechercher" Height="25" Canvas.Left="106" Canvas.Top="111" Width="126" Cursor="Hand" Background="#FF34B104" Click="ChercherClient"/>
             <TextBlock Height="20" Canvas.Left="94" Canvas.Top="38" TextWrapping="Wrap" Width="75" IsEnabled="False" FontWeight="Bold" Background="#FFFFFF"><Run Language="fr-fr" Text="Telephone"/><Run Text=" : "/></TextBlock>
-            <TextBox Name="BoxTel" Height="22" Canvas.Left="94" Canvas.Top="58" TextWrapping="Wrap" Width="150" TextChanged="TextBox_TextChanged" AutomationProperties.Name="Tel"/>
+            <TextBox Name="BoxTel" Height="22" Canvas.Left="94" Canvas.Top="58" TextWrapping="Wrap" Width="150" AutomationProperties.Name="Tel"/>
             <Canvas Name="CanvaClient" Height="240" Width="214" Canvas.Left="58" Canvas.Top="171" Visibility="Hidden">
                 <Rectangle Name="RectText" Height="240" Stroke="Black" Width="214" Fill="White" Visibility="Visible"/>
                 <Label Name="LabelNom" Content="Nom" Canvas.Left="11" Canvas.Top="19" Width="190"/>
