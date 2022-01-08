@@ -10,7 +10,7 @@
 
 - Plat emblématique de la culture italienne, et de la restauration rapide dans le monde entier, elle est déclinée sous de multiples variantes.
 
-- La livraison quand à elle, séduit de plus en plus de Français avec un taux de pénétration de la restauration livrée, passée de 40 à 46 % en un an.
+- La livraison quand à elle, séduit de plus en plus. La proportion des Français ayant recours à la livraison est ainsi passée de 40 à 46 % entre 2019 et 2020, séduisant à présent toutes les classes d'âges.
 
 ## Problème
 
