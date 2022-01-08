@@ -16,17 +16,17 @@
 
 - Nous avons dû informatiser le système de commande et livraison d’une pizzeria.
 
-## Technologie utilisé
+## Techno
 - C#
 - Visual Studio
 
-## Diagramme UML
+## UML
 <img src="./static/UML.png" alt="Pizza" />
 
-## Interface Utilisateur
+## UI
 <img src="./static/logiciel.png" alt="Pizza" />
 
-## Authors
+## Auteur
 
 - [@Pierre](https://github.com/Pierre-Portfolio)
 - [@Tom](https://github.com/Flaye)
