@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="./static/pizza.gif" alt="Bikes" />
+  <img src="./static/pizza.gif" alt="Pizza" />
 </h1>
 
 ---
@@ -14,17 +14,17 @@
 
 ## Problème
 
--  nous avons dû informatiser le système de commande et livraison d’une pizzeria.
+- Nous avons dû informatiser le système de commande et livraison d’une pizzeria.
 
 ## Technologie utilisé
 - C#
 - Visual Studio
 
 ## Diagramme UML
-<img src="./static/UML.png" alt="Bikes" />
+<img src="./static/UML.png" alt="Pizza" />
 
 ## Interface Utilisateur
-<img src="./static/logiciel.png" alt="Bikes" />
+<img src="./static/logiciel.png" alt="Pizza" />
 
 ## Authors
 
