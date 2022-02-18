@@ -24,7 +24,7 @@
 <img src="./static/UML.png" alt="Pizza" />
 
 ## UI
-<img src="./static/logiciel.png" alt="Pizza" />
+<img src="./static/demo.gif" alt="Pizza" />
 
 ## Auteur
 
