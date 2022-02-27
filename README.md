@@ -15,7 +15,7 @@ Ce projet couvre deux aspects :
 
 ## Objectif
 
-- Informatiser le système de commande et livraison d’une pizzeria.
+- Intégrer dans un système unique la gestion et la livraison d’une pizza.
 
 ## Techno
 - C#
