@@ -7,6 +7,7 @@
 # LOGICIEL DE GESTION D’UNE PIZZERIA
 
 ## Petit résumé
+Ce projet couvre deux aspects :
 
 - Plat emblématique de la culture italienne et de la restauration rapide dans le monde entier, la pizza est déclinée sous de multiples variantes.
 
