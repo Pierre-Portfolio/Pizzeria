@@ -15,7 +15,7 @@ Ce projet couvre deux aspects :
 
 ## Objectif
 
-- Intégrer dans un système unique la gestion et la livraison d’une pizza.
+- Intégrer dans un système unique de la gestion et de la livraison d’une pizza.
 
 ## Techno
 - C#
